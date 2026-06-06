@@ -1,0 +1,1 @@
+export { CharterFooter } from './CharterFooter';

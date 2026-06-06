@@ -1,0 +1,27 @@
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 2;
+}
+
+.ticks {
+  fill: none;
+  stroke: var(--uv-red);
+  stroke-width: 3;
+  stroke-dasharray: 2 7;
+}
+
+.spokes line {
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 2;
+}
+
+.hub {
+  fill: var(--uv-red);
+}

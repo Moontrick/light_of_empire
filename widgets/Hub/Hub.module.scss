@@ -1,0 +1,73 @@
+.root {
+  min-height: calc(100vh - var(--uv-header-height));
+  padding: 72px 24px 96px;
+  background: var(--uv-bg);
+  color: var(--uv-text);
+  font-family: var(--uv-font) !important;
+}
+
+// globals.scss форсит GolosText — возвращаем Manrope (текст) и Russo One (заголовки).
+.root * {
+  font-family: var(--uv-font) !important;
+}
+
+.root h1,
+.root h2 {
+  font-family: var(--uv-font-display) !important;
+}
+
+.head {
+  max-width: 760px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--uv-red-bright);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px !important;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 18px;
+  color: var(--uv-text-strong);
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.intro {
+  margin: 0;
+  color: var(--uv-text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .root {
+    padding: 56px 18px 72px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

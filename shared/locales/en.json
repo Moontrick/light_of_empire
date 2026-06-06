@@ -1,0 +1,14 @@
+{
+  "test": "Test",
+  "notFound": {
+    "title": "404",
+    "tagline": "You lost your own way, soldier",
+    "heading": "Page not found",
+    "subTitle": "The page you are looking for doesn't exist or has been moved. Check the URL or return to the home page.",
+    "homeButton": "Back to home"
+  },
+  "charter": {
+    "toc": "Contents",
+    "menu": "Menu"
+  }
+}

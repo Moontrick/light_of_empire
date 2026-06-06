@@ -1,0 +1,25 @@
+.root {
+  min-height: calc(100vh - var(--uv-header-height));
+  background: var(--uv-bg);
+  color: var(--uv-text);
+  font-family: var(--uv-font);
+}
+
+// globals.scss объявляет `* { font-family: 'GolosText-Regular' !important }`,
+// что иначе навязало бы общий шрифт проекта этой странице. Точечно возвращаем
+// Manrope (текст) и Russo One (крупный заголовок) в пределах поддерева устава.
+.root,
+.root * {
+  font-family: var(--uv-font) !important;
+}
+
+// Крупный заголовок страницы — фирменный Russo One (как на лендинге).
+.root h1 {
+  font-family: var(--uv-font-display) !important;
+}
+
+.content {
+  max-width: var(--uv-content-max);
+  margin: 0 auto;
+  padding: 0 24px 24px;
+}

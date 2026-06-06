@@ -1,0 +1,30 @@
+.section {
+  scroll-margin-top: calc(var(--uv-header-height) + 20px);
+  padding: 28px 0;
+  border-top: 1px solid var(--uv-border);
+}
+
+.section:first-child {
+  border-top: none;
+}
+
+.title {
+  margin: 0 0 24px;
+  color: var(--uv-accent);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.body {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 26px;
+  }
+}

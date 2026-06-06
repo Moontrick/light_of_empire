@@ -1,0 +1,137 @@
+.item {
+  list-style: none;
+}
+
+.link {
+  position: relative;
+  display: block;
+  color: var(--uv-text-muted);
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.active {
+  color: var(--uv-text-strong);
+}
+
+.caret {
+  display: inline-block;
+  margin-left: 6px;
+  border: 4px solid transparent;
+  border-top-color: currentColor;
+  transform: translateY(2px);
+}
+
+// ---- Top level (horizontal bar) --------------------------------------------
+.depth0 {
+  position: relative;
+}
+
+.depth0 > .link {
+  padding: 0 20px;
+  line-height: var(--uv-header-height);
+}
+
+.depth0 > .link:hover {
+  color: var(--uv-text-strong);
+}
+
+// короткое красное подчёркивание активного пункта (как в референсе)
+.depth0 > .active::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  height: 2px;
+  background: var(--uv-red);
+}
+
+// ---- Dropdown panel --------------------------------------------------------
+.submenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.submenuDepth0 {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 50;
+  min-width: 248px;
+  padding: 8px;
+  background: rgba(20, 20, 22, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--uv-border);
+  border-radius: var(--uv-radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.depth0:hover > .submenuDepth0 {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.depth1 > .link,
+.depth2 > .link {
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.depth1 > .link:hover,
+.depth2 > .link:hover {
+  background: var(--uv-bg-hover);
+  color: var(--uv-red-bright);
+}
+
+// ---- Nested group (third level shown inline in the same panel) -------------
+.submenuDepth1 {
+  margin: 2px 0 6px;
+  padding-left: 10px;
+  border-left: 1px solid var(--uv-border);
+}
+
+// ---- Mobile: expand the whole tree inside the drawer -----------------------
+@media (max-width: 900px) {
+  .depth0 {
+    position: static;
+  }
+
+  .depth0 > .link {
+    line-height: 2.6;
+    font-size: 16px;
+  }
+
+  .depth0 > .active::after {
+    display: none;
+  }
+
+  .caret {
+    display: none;
+  }
+
+  .submenuDepth0 {
+    position: static;
+    min-width: 0;
+    padding: 0 0 4px 14px;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+}

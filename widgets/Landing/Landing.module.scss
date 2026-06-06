@@ -1,0 +1,18 @@
+.landing {
+  background: var(--uv-bg);
+  color: var(--uv-text);
+  font-family: var(--uv-font) !important;
+}
+
+// globals.scss форсит `* { font-family: 'GolosText-Regular' !important }` —
+// возвращаем Manrope на текст и Russo One на заголовки.
+.landing * {
+  font-family: var(--uv-font) !important;
+}
+
+.landing h1,
+.landing h2,
+.landing h3,
+.landing h4 {
+  font-family: var(--uv-font-display) !important;
+}

@@ -1,0 +1,260 @@
+:root {
+  --surface: #ffffff;
+  --surface-60: #ffffff;
+  --surface-deep: #f5f5f5;
+
+  --content: #000000;
+  --content-60: #000000;
+  --content-14: #000000;
+  --content-06: #000000;
+
+  --level-0: #181818;
+  --level-1: #767676;
+  --level-2: #969696;
+  --level-3: #a8a8a8;
+  --level-4: #0000000f;
+  --level-5: #00000024;
+
+  --accent: #7846f3;
+  --accent-content: #ffffff;
+  --accent-content-60: #ffffff;
+  --accent-10: #7846f3;
+  --accent-deep: #6432cd;
+  --accent-blue: #0077ff;
+  --accent-blue-smooth: #0077ffc9;
+
+  --negative: #f60000;
+  --negative-10: #f60000;
+  --negative-light: #dc6868;
+
+  --positive: #41953b;
+  --positive-light: #7bbb76;
+  --positive-10: #41953b;
+
+  --warning: #bc9000;
+  --warning-10: #bc9000;
+
+  --overlay-60: #000000;
+  --details-color-1: #767bbb;
+  --details-color-2: #76bbbb;
+  --details-color-3: #bb76bb;
+
+  --menu-content: #ffffff;
+  --menu-bg: #000000;
+
+  //NEW
+  --sidebar-width: 265px;
+
+  --color-primary-light: #3876d2;
+  --color-primary: #2a5697;
+  --color-primary-dark: #18396f;
+  --color-primary-10: #b7caff66;
+  --color-gray: #525157;
+  --color-black: #2d2c36;
+  --color-white: #ffffff;
+  --color-green: #246f47;
+
+  --bg-primary: #f9f9fa;
+  --bg-secondary: #f3f0f7;
+  --bg-secondary-10: #ebedfa; // поменять название
+  --bg-secondary-5: #2c2c360d;
+  --bg-secondary-60: #2c2c3699;
+  --bg-secondary-40: #2c2c3666;
+
+  --border-primary: #e3e0e7;
+
+  // Status palette
+  --color-info: #3876d2;
+  --color-info-bg: #ebedfa;
+  --color-success: #41953b;
+  --color-success-bg: #e5f1e4;
+  --color-warn: #bc9000;
+  --color-warn-bg: #fbf3da;
+  --color-error: #d93b3b;
+  --color-error-bg: #fbe5e5;
+
+  --shadow-modal: 0 20px 60px rgba(45, 44, 54, 0.18);
+}
+
+// =============================================================================
+// Извлечено из мокапов Company Settings / Voice AI screens.
+// Используется в новых компонентах. Старые переменные выше сохранены для
+// обратной совместимости и могут быть удалены при миграции.
+// =============================================================================
+
+:root {
+  // --- Brand / Primary (green) -------------------------------------------------
+  --ls-brand: #2f6b50; // основной зелёный (топбар, primary button, акценты)
+  --ls-brand-hover: #4f9e7d; // светлее, для hover/secondary CTA
+  --ls-brand-dark: #234c3b; // тёмный текст в заголовках таблиц
+  --ls-brand-100: #f0f7f3; // светлый фон секций
+  --ls-brand-200: #e8f0ec; // фон активного состояния
+  --ls-brand-300: #d6e8df; // фон badge
+  --ls-brand-400: #c8e0d4; // border
+  --ls-brand-tint: #f9fcfb; // самый бледный оттенок (upload zone)
+
+  --ls-primary-light: #3876d2;
+  --ls-primary: #2a5697;
+  --ls-primary-dark: #18396f;
+
+  // --- Voice AI Assistant (blue) -----------------------------------------------
+  --ls-blue: #3b53b8;
+  --ls-blue-hover: #5f75d6;
+  --ls-blue-100: #eef4ff;
+  --ls-blue-200: #e3e9fb;
+  --ls-blue-300: #dbe5ff;
+  --ls-blue-400: #c7d7fe;
+  --ls-blue-tint: #f7f9ff;
+
+  // --- Voice AI Call Bot (purple) ----------------------------------------------
+  --ls-purple: #6b4fc4;
+  --ls-purple-100: #f3f0fb;
+  --ls-purple-200: #efe7fb;
+  --ls-purple-400: #d9cef2;
+
+  // --- Extras (orange) ---------------------------------------------------------
+  --ls-orange: #b5701a;
+  --ls-orange-200: #fde9d8;
+  --ls-orange-400: #f0dcc0;
+
+  // --- Misc accents ------------------------------------------------------------
+  --ls-folder: #d4b15e; // иконка папки в сайдбаре
+
+  // --- Status ------------------------------------------------------------------
+  --ls-success: #2f8a5a;
+  --ls-success-dot: #3a9c6d;
+  --ls-success-bg: #e3f3ea;
+
+  --ls-warning: #bc9000;
+  --ls-warning-bg: #fbf3da;
+  --ls-warning-amber: #92400e;
+  --ls-warning-amber-bg: #fef3c7;
+
+  --ls-error: #c0392b;
+  --ls-error-icon: #b91c1c;
+  --ls-error-bg: #fde2e2;
+  --ls-error-border: #ecc9c5;
+
+  // --- Text --------------------------------------------------------------------
+  --ls-text-primary: #1f2937; // основной текст, заголовки
+  --ls-text-secondary: #374151;
+  --ls-text-tertiary: #4b5563;
+  --ls-text-muted: #6b7280; // подписи, hints
+  --ls-text-disabled: #9ca3af; // placeholder, disabled
+  --ls-text-faint: #aab1b8; // пустые ячейки таблиц
+
+  // --- Borders / dividers ------------------------------------------------------
+  --ls-border-strong: #cbd5e1;
+  --ls-border-default: #d1d5db;
+  --ls-border-light: #e5e7eb;
+  --ls-border-subtle: #f1f3f5;
+
+  // --- Surfaces ----------------------------------------------------------------
+  --ls-surface: #ffffff;
+  --ls-surface-faint: #fafafa;
+  --ls-surface-tint: #fbfcfd;
+  --ls-surface-zebra: #fcfcfd;
+  --ls-surface-locked: #f3f4f6;
+  --ls-surface-hover: #f4f5f7;
+  --ls-surface-table-head: #f4f6f7;
+  --ls-surface-info: #f8fafc;
+
+  // --- Typography: families ----------------------------------------------------
+  // @font-face объявления находятся в globals.scss
+  --ls-font-regular: "GolosText-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ls-font-medium: "GolosText-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ls-font-semibold: "GolosText-SemiBold", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ls-font-bold: "GolosText-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  // --- Typography: font weights ------------------------------------------------
+  --ls-fw-regular: 400;
+  --ls-fw-medium: 500;
+  --ls-fw-semibold: 600;
+  --ls-fw-bold: 700;
+
+  // --- Typography: font sizes --------------------------------------------------
+  --ls-fs-display: 30px; // page title
+  --ls-fs-xl: 18px; // logo, крупные заголовки
+  --ls-fs-lg: 16px; // section title
+  --ls-fs-md: 14px; // base / body
+  --ls-fs-sm: 13px; // tab, table cell
+  --ls-fs-xs: 12px; // hint, sub-label
+  --ls-fs-2xs: 11px; // uppercase eyebrow, file meta
+  --ls-fs-tag: 10px; // scope tag
+
+  // --- Typography: line heights ------------------------------------------------
+  --ls-lh-tight: 1.2;
+  --ls-lh-snug: 1.4;
+  --ls-lh-normal: 1.5;
+  --ls-lh-relaxed: 1.6;
+
+  //  --- Others -----------------------------------------------------------------
+  --ls-root-padding: 20px 40px;
+}
+
+// =============================================================================
+// Charter — «Устав ВАР» (Star Wars RP, тёмная военная тема)
+// Извлечено из исходной страницы sites.google.com/view/inifinity-sw-rp.
+// Используется только внутри страницы устава, не влияет на остальной проект.
+// =============================================================================
+
+:root {
+  // --- Surfaces ----------------------------------------------------------------
+  --uv-bg: #212121; // основной фон страницы
+  --uv-bg-elevated: #2a2a2a; // карточки секций
+  --uv-bg-header: #1a1a1a; // шапка сайта
+  --uv-bg-soft: rgba(255, 255, 255, 0.06); // лёгкая подложка (оглавление, note)
+  --uv-bg-hover: rgba(255, 255, 255, 0.1); // hover пунктов
+
+  // --- Text --------------------------------------------------------------------
+  --uv-text: #dcddde; // основной текст
+  --uv-text-muted: #a8a9aa; // вторичный текст, футер
+  --uv-text-strong: #ffffff;
+
+  // --- Accents -----------------------------------------------------------------
+  // Историческое золото заменено на имперский красный (единый акцент сайта).
+  --uv-accent: #d22730; // красный — заголовки, акценты устава
+  --uv-accent-soft: #ff3b43; // ярче — hover/маркеры
+  --uv-link: #5095eb; // ссылки
+  --uv-danger: #e54b4b; // акцент для наказаний/преступлений
+
+  // --- Imperial accent (red) — лендинг и навигация ----------------------------
+  --uv-red: #d22730; // имперский красный — основной акцент сайта
+  --uv-red-bright: #ff3b43; // ярче — hover, свечения
+  --uv-red-deep: #8b1115; // тёмный красный — градиенты, тени
+  --uv-red-glow: rgba(210, 39, 48, 0.45); // свечение/halo
+  --uv-red-soft: rgba(210, 39, 48, 0.12); // лёгкая подложка
+
+  // --- Borders -----------------------------------------------------------------
+  --uv-border: rgba(255, 255, 255, 0.12);
+  --uv-border-accent: rgba(210, 39, 48, 0.5);
+
+  // --- Typography --------------------------------------------------------------
+  // next/font задаёт --uv-font-russo (заголовки) и --uv-font-manrope (текст) на корне.
+  --uv-font: var(--uv-font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, sans-serif;
+  --uv-font-display: var(--uv-font-russo), "Arial Narrow", Arial, sans-serif;
+
+  // --- Layout ------------------------------------------------------------------
+  --uv-content-max: 920px;
+  --uv-header-height: 68px;
+  // Угловатый HUD-стиль — без скруглений.
+  --uv-radius: 0;
+}
+
+// 0%  - 00
+// 5%  - 0D
+// 10% - 1A
+// 20% - 33
+// 30% - 4D
+// 40% - 66
+// 50% - 80
+// 60% - 99
+// 70% - B3
+// 80% - CC
+// 90% - E6
+// 100% - FF

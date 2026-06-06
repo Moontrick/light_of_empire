@@ -1,0 +1,1 @@
+export { LandingNews } from './LandingNews';

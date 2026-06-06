@@ -1,0 +1,386 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #05060a;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  animation: heroFade 0.6s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: radial-gradient(
+      ellipse at 50% 62%,
+      rgba(255, 96, 40, 0.18) 0%,
+      transparent 46%
+    ),
+    linear-gradient(180deg, rgba(5, 6, 8, 0.78) 0%, rgba(5, 6, 8, 0.92) 100%);
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ---- HUD frame -------------------------------------------------------------
+.frame {
+  position: absolute;
+  inset: 74px 22px 22px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.squareTL {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 9px;
+  height: 9px;
+  background: var(--uv-text-strong);
+}
+
+.corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+}
+
+.cornerTR {
+  top: -1px;
+  right: -1px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cornerBL {
+  bottom: -1px;
+  left: -1px;
+  border-right: none;
+  border-top: none;
+}
+
+.cornerBR {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+// ---- Left rail -------------------------------------------------------------
+.leftRail {
+  position: absolute;
+  left: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.railEmblem {
+  width: 34px;
+  height: 34px;
+  opacity: 0.85;
+}
+
+.railText {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 6px !important;
+  text-transform: uppercase;
+}
+
+// ---- Right rail ------------------------------------------------------------
+.rightRail {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.crosshair {
+  display: inline-flex;
+  color: var(--uv-red);
+}
+
+.dottedLine {
+  width: 0;
+  height: 120px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.tick {
+  width: 16px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+// ---- Content ---------------------------------------------------------------
+.content {
+  max-width: 540px;
+  margin-left: clamp(28px, 7%, 132px);
+  animation: heroFade 0.5s ease;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--uv-red-bright);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px !important;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 10px;
+  color: var(--uv-text-strong);
+  font-size: 64px;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: 2px !important;
+  text-transform: uppercase;
+  text-shadow: 0 6px 40px rgba(0, 0, 0, 0.7);
+}
+
+.subtitle {
+  display: block;
+  margin-bottom: 26px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 5px !important;
+  text-transform: uppercase;
+}
+
+.desc {
+  display: flex;
+  gap: 16px;
+  max-width: 440px;
+  margin: 0 0 34px;
+  color: var(--uv-text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.descMark {
+  flex-shrink: 0;
+  width: 30px;
+  height: 2px;
+  margin-top: 11px;
+  background: var(--uv-red);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 52px;
+  padding: 0 8px 0 28px;
+  color: var(--uv-text-strong);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 100px;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.cta:hover {
+  border-color: var(--uv-red);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ctaIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--uv-text-strong);
+  background: var(--uv-red);
+  border-radius: 50%;
+  box-shadow: 0 6px 20px var(--uv-red-glow);
+}
+
+.ghost {
+  color: var(--uv-text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.ghost:hover {
+  color: var(--uv-red-bright);
+}
+
+// ---- Slider ----------------------------------------------------------------
+.slider {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: inherit;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.arrow:hover {
+  color: var(--uv-red-bright);
+  border-color: var(--uv-red);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot,
+.dotActive {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.15s ease, width 0.2s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.dotActive {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--uv-red);
+}
+
+// ---- Location tag ----------------------------------------------------------
+.location {
+  position: absolute;
+  right: 30px;
+  bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.locName {
+  color: var(--uv-text-strong);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+}
+
+.locSub {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  letter-spacing: 1px !important;
+}
+
+// ---- Responsive ------------------------------------------------------------
+@media (max-width: 900px) {
+  .leftRail,
+  .rightRail {
+    display: none;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 0 8px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .frame {
+    inset: 64px 12px 12px;
+  }
+
+  .location {
+    display: none;
+  }
+
+  .title {
+    font-size: 38px;
+    white-space: normal;
+  }
+
+  .desc {
+    gap: 12px;
+  }
+
+  .descMark {
+    display: none;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .title {
+    font-size: 32px;
+  }
+}
