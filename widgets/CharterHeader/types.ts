@@ -15,3 +15,17 @@ export interface NavItemProps {
   activePath?: string;
   onNavigate?: () => void;
 }
+
+export interface MobileNavProps {
+  open: boolean;
+  items: NavNode[];
+  activePath?: string;
+  onNavigate: () => void;
+}
+
+export interface MobileNavItemProps {
+  node: NavNode;
+  depth: number;
+  activePath?: string;
+  onNavigate: () => void;
+}

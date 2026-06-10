@@ -1,0 +1,107 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  color: var(--uv-text);
+  text-decoration: none;
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--uv-red);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--uv-border);
+}
+
+.image {
+  object-fit: cover;
+  filter: grayscale(0.4) contrast(1.05);
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+  filter: grayscale(0) contrast(1.05);
+}
+
+.tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 11px;
+  color: var(--uv-text-strong);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  background: var(--uv-red);
+}
+
+.body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 22px 24px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  background: var(--uv-text-muted);
+}
+
+.title {
+  margin: 0 0 10px;
+  color: var(--uv-text-strong);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.excerpt {
+  margin: 0 0 20px;
+  color: var(--uv-text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--uv-red-bright);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.arrow {
+  transition: transform 0.18s ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(4px);
+}

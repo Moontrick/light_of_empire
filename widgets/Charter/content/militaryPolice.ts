@@ -2,7 +2,7 @@ import type { CharterContent } from '../types';
 
 export const militaryPoliceContent: CharterContent = {
   hero: {
-    eyebrow: 'Структуры · Light of Empire',
+    eyebrow: 'Структуры · The Light of Empire',
     title: 'Военная полиция',
     intro:
       'Имперская военная полиция (ВП) — орган поддержания порядка на военных объектах и соблюдения устава среди личного состава. Действует в координации с ИСБ, которой передаёт дела о признаках измены, саботажа и мятежа.',
@@ -90,5 +90,5 @@ export const militaryPoliceContent: CharterContent = {
       ],
     },
   ],
-  footer: 'Light of Empire · Военная полиция. Порядок и дисциплина на каждом объекте.',
+  footer: 'The Light of Empire · Военная полиция. Порядок и дисциплина на каждом объекте.',
 };

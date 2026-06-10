@@ -2,7 +2,7 @@ import type { CharterContent } from '../types';
 
 export const highCommandContent: CharterContent = {
   hero: {
-    eyebrow: 'Структуры · Light of Empire',
+    eyebrow: 'Структуры · The Light of Empire',
     title: 'Высшее командование',
     intro:
       'Генеральный штаб Галактической Империи (ГШГИ) — высший орган управления вооружёнными силами Империи. Действует от имени Императора и проводит в жизнь его волю.',
@@ -82,5 +82,5 @@ export const highCommandContent: CharterContent = {
     },
   ],
   footer:
-    'Light of Empire · Высшее командование. Воля Императора — закон для всех вооружённых сил Империи.',
+    'The Light of Empire · Высшее командование. Воля Императора — закон для всех вооружённых сил Империи.',
 };

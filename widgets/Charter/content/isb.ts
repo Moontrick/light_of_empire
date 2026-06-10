@@ -2,7 +2,7 @@ import type { CharterContent } from '../types';
 
 export const isbContent: CharterContent = {
   hero: {
-    eyebrow: 'Структуры · Light of Empire',
+    eyebrow: 'Структуры · The Light of Empire',
     title: 'Имперская служба безопасности',
     intro:
       'ИСБ — уполномоченный орган Галактической Империи: обеспечение безопасности на военных объектах, надзор за соблюдением устава и лояльностью личного состава, выявление измены, саботажа и мятежа, а также проведение трибуналов.',
@@ -84,5 +84,5 @@ export const isbContent: CharterContent = {
       ],
     },
   ],
-  footer: 'Light of Empire · Имперская служба безопасности. Лояльность превыше всего.',
+  footer: 'The Light of Empire · Имперская служба безопасности. Лояльность превыше всего.',
 };

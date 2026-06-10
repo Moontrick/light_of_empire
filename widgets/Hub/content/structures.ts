@@ -1,7 +1,7 @@
 import type { HubContent } from '../types';
 
 export const structuresContent: HubContent = {
-  eyebrow: 'Light of Empire',
+  eyebrow: 'The Light of Empire',
   title: 'Структуры Империи',
   intro:
     'Командование и специальные службы Галактической Империи — выбери раздел, чтобы изучить устав структуры.',

@@ -73,6 +73,17 @@
 }
 
 @media (max-width: 900px) {
+  // при открытом меню шапка всегда сплошная (важно для прозрачного варианта)
+  .open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--uv-bg-overlay);
+    backdrop-filter: none;
+    border-bottom-color: var(--uv-border);
+  }
+
   .burger {
     display: flex;
     flex-direction: column;
@@ -109,27 +120,6 @@
   }
 
   .nav {
-    position: absolute;
-    top: var(--uv-header-height);
-    left: 0;
-    right: 0;
     display: none;
-    max-height: calc(100vh - var(--uv-header-height));
-    overflow-y: auto;
-    padding: 12px 24px 20px;
-    background: rgba(15, 15, 16, 0.98);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--uv-border);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
-  }
-
-  .navOpen {
-    display: block;
-  }
-
-  .navList {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
   }
 }

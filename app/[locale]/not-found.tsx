@@ -14,7 +14,7 @@ export default async function NotFound() {
       <div className={styles.panel}>
         <HudCorners />
 
-        <span className={styles.eyebrow}>Light of Empire</span>
+        <span className={styles.eyebrow}>The Light of Empire</span>
         <h1 className={styles.code}>404</h1>
         <p className={styles.tagline}>{t('tagline')}</p>
         <h2 className={styles.heading}>{t('heading')}</h2>

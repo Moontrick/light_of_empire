@@ -100,38 +100,3 @@
   padding-left: 10px;
   border-left: 1px solid var(--uv-border);
 }
-
-// ---- Mobile: expand the whole tree inside the drawer -----------------------
-@media (max-width: 900px) {
-  .depth0 {
-    position: static;
-  }
-
-  .depth0 > .link {
-    line-height: 2.6;
-    font-size: 16px;
-  }
-
-  .depth0 > .active::after {
-    display: none;
-  }
-
-  .caret {
-    display: none;
-  }
-
-  .submenuDepth0 {
-    position: static;
-    min-width: 0;
-    padding: 0 0 4px 14px;
-    background: transparent;
-    backdrop-filter: none;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    transition: none;
-  }
-}

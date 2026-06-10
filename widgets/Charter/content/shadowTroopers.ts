@@ -2,7 +2,7 @@ import type { CharterContent } from '../types';
 
 export const shadowTroopersContent: CharterContent = {
   hero: {
-    eyebrow: 'Структуры · Light of Empire',
+    eyebrow: 'Структуры · The Light of Empire',
     title: 'Корпус тёмных штурмовиков',
     intro:
       'КТШ — элитное специальное формирование Имперской Армии, укомплектованное лучшими штурмовиками для тайных и специальных операций. Личный состав носит чёрную броню и действует на острие самых сложных задач Империи.',
@@ -77,5 +77,5 @@ export const shadowTroopersContent: CharterContent = {
       ],
     },
   ],
-  footer: 'Light of Empire · Корпус тёмных штурмовиков. В тени — сила Империи.',
+  footer: 'The Light of Empire · Корпус тёмных штурмовиков. В тени — сила Империи.',
 };

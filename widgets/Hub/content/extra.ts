@@ -1,7 +1,7 @@
 import type { HubContent } from '../types';
 
 export const extraContent: HubContent = {
-  eyebrow: 'Light of Empire',
+  eyebrow: 'The Light of Empire',
   title: 'Дополнительно',
   intro: 'Справочные материалы Имперской Армии — вооружение, техника и дроиды.',
   cards: [

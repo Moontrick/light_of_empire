@@ -1,0 +1,74 @@
+.item {
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  color: var(--uv-text-muted);
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  text-align: left;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.row:hover,
+.active {
+  color: var(--uv-text-strong);
+}
+
+// ---- Top level — sectioned list rows ---------------------------------------
+.depth0 {
+  padding: 14px 4px;
+  font-size: 17px;
+  border-bottom: 1px solid var(--uv-border);
+}
+
+// ---- Nested rows ------------------------------------------------------------
+.depth1 {
+  padding: 11px 4px;
+  font-size: 15px;
+}
+
+.depth2 {
+  padding: 9px 4px;
+  font-size: 14px;
+  color: var(--uv-text-muted);
+}
+
+// ---- Accordion chevron ------------------------------------------------------
+.chevron {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.toggleOpen .chevron {
+  transform: rotate(-135deg);
+}
+
+// ---- Collapsible panel ------------------------------------------------------
+.submenu {
+  margin: 0;
+  padding: 0;
+  padding-left: 14px;
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.submenuOpen {
+  max-height: 1200px;
+}

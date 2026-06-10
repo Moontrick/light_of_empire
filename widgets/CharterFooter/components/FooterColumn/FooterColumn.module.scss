@@ -1,0 +1,33 @@
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: 18px;
+  color: var(--uv-text-strong);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  color: var(--uv-text-muted);
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--uv-red-bright);
+}

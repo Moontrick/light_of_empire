@@ -5,6 +5,7 @@ import { Link } from '@/shared/i18n/navigation';
 import { DISCORD_URL, HERO_SLIDES } from '../../data';
 import { ImperialEmblem } from '../ImperialEmblem';
 import styles from './LandingHero.module.scss';
+import { IconDiscord } from '@/public/icons/IconDiscord';
 
 export function LandingHero() {
   const [active, setActive] = useState(0);
@@ -29,7 +30,7 @@ export function LandingHero() {
 
         <div className={styles.leftRail} aria-hidden>
           <ImperialEmblem className={styles.railEmblem} />
-          <span className={styles.railText}>LIGHT OF EMPIRE</span>
+          <span className={styles.railText}>THE LIGHT OF EMPIRE</span>
         </div>
 
         <div className={styles.rightRail} aria-hidden>
@@ -67,7 +68,7 @@ export function LandingHero() {
               </span>
             </Link>
             <a href={DISCORD_URL} target="_blank" rel="noreferrer" className={styles.ghost}>
-              Discord
+              Discord<IconDiscord />
             </a>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { russoOne, manrope } from '@utils/fonts';
 import { Link } from '@/shared/i18n/navigation';
 import { NavItem } from './components/NavItem';
+import { MobileNav } from './components/MobileNav';
 import { useCharterHeader } from './hooks/useCharterHeader';
 import { NAV_ITEMS, SITE_TITLE } from './constants';
 import type { CharterHeaderProps } from './types';
@@ -18,6 +19,7 @@ export function CharterHeader({ transparent = false }: CharterHeaderProps) {
     <header
       className={classNames(styles.header, russoOne.variable, manrope.variable, {
         [styles.transparent]: transparent,
+        [styles.open]: open,
       })}
     >
       <div className={styles.bar}>
@@ -25,16 +27,10 @@ export function CharterHeader({ transparent = false }: CharterHeaderProps) {
           {SITE_TITLE}
         </Link>
 
-        <nav className={classNames(styles.nav, { [styles.navOpen]: open })}>
+        <nav className={styles.nav}>
           <ul className={styles.navList}>
             {NAV_ITEMS.map((node) => (
-              <NavItem
-                key={node.label}
-                node={node}
-                depth={0}
-                activePath={activePath}
-                onNavigate={close}
-              />
+              <NavItem key={node.label} node={node} depth={0} activePath={activePath} />
             ))}
           </ul>
         </nav>
@@ -51,6 +47,8 @@ export function CharterHeader({ transparent = false }: CharterHeaderProps) {
           <span />
         </button>
       </div>
+
+      <MobileNav open={open} items={NAV_ITEMS} activePath={activePath} onNavigate={close} />
     </header>
   );
 }

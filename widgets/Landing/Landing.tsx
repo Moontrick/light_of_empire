@@ -10,7 +10,7 @@ export function Landing() {
     <main className={classNames(styles.landing, russoOne.variable, manrope.variable)}>
       <LandingHero />
       <CharterCta />
-      {/* <LandingNews /> */}
+      <LandingNews />
     </main>
   );
 }

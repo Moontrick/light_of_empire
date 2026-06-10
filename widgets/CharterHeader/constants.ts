@@ -2,9 +2,12 @@ import type { NavNode } from './types';
 
 export const SITE_TITLE = 'LIGHT OF EMPIRE';
 
+export const MOBILE_QUERY = '(max-width: 900px)';
+
 export const NAV_ITEMS: NavNode[] = [
   { label: 'Главная', href: '/' },
   { label: 'Устав ИА', href: '/ustav' },
+  { label: 'Новости', href: '/news' },
   {
     label: 'Структуры',
     href: '/structures',

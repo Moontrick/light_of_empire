@@ -2,7 +2,7 @@ import type { CharterContent } from './types';
 
 export const charterContent: CharterContent = {
   hero: {
-    eyebrow: 'Light of Empire',
+    eyebrow: 'The Light of Empire',
     title: 'Устав Имперской Армии',
     intro:
       'Все военнослужащие, находящиеся в рядах армии Галактической Империи, обязаны соблюдать и выполнять все правила, прописанные далее. Нарушение данных правил влечёт наказание, вплоть до понижения или расстрела.',
@@ -506,5 +506,5 @@ export const charterContent: CharterContent = {
     },
   ],
   footer:
-    'Light of Empire · Галактическая Империя. Дисциплина, верность и служение Империи — основа воинского долга.',
+    'The Light of Empire · Галактическая Империя. Дисциплина, верность и служение Империи — основа воинского долга.',
 };

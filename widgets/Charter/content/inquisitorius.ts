@@ -2,7 +2,7 @@ import type { CharterContent } from '../types';
 
 export const inquisitoriusContent: CharterContent = {
   hero: {
-    eyebrow: 'Структуры · Light of Empire',
+    eyebrow: 'Структуры · The Light of Empire',
     title: 'Инквизиторий',
     intro:
       'Особое формирование Галактической Империи, созданное по воле Императора и подчинённое лорду Вейдеру. Инквизиторы — одарённые Силой агенты, направленные на выявление, преследование и уничтожение выживших джедаев и чувствительных к Силе.',
@@ -71,5 +71,5 @@ export const inquisitoriusContent: CharterContent = {
       ],
     },
   ],
-  footer: 'Light of Empire · Инквизиторий. Свет джедаев угаснет.',
+  footer: 'The Light of Empire · Инквизиторий. Свет джедаев угаснет.',
 };

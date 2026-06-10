@@ -1,0 +1,71 @@
+.root {
+  background: var(--uv-bg);
+  color: var(--uv-text);
+}
+
+// globals.scss форсит `* { font-family: 'GolosText-Regular' !important }` —
+// возвращаем Manrope тексту и Russo One заголовкам.
+.root,
+.root * {
+  font-family: var(--uv-font) !important;
+}
+
+.root h1,
+.root h2,
+.root h3 {
+  font-family: var(--uv-font-display) !important;
+}
+
+.head {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 120px 24px 56px;
+  border-bottom: 1px solid var(--uv-border);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: var(--uv-red-bright);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 28px;
+  color: var(--uv-text-strong);
+  font-size: clamp(48px, 9vw, 104px);
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.intro {
+  max-width: 620px;
+  color: var(--uv-text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.list {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+  border-bottom: 1px solid var(--uv-border);
+}
+
+@media (max-width: 640px) {
+  .head {
+    padding: 84px 18px 40px;
+  }
+
+  .intro {
+    font-size: 15px;
+  }
+
+  .list {
+    padding: 0 18px 84px;
+  }
+}

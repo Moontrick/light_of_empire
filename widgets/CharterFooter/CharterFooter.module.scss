@@ -1,0 +1,133 @@
+.footer {
+  padding: 56px 48px 40px;
+  background: var(--uv-bg-overlay);
+  border-top: 1px solid var(--uv-border);
+}
+
+// globals.scss форсит `* { font-family: 'GolosText-Regular' !important }` —
+// возвращаем Manrope тексту и Russo One логотипу.
+.footer,
+.footer * {
+  font-family: var(--uv-font) !important;
+}
+
+.inner {
+  position: relative;
+  // max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--uv-border);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.brand {
+  max-width: 360px;
+}
+
+.logo {
+  display: inline-block;
+  color: var(--uv-text-strong);
+  font-family: var(--uv-font-display) !important;
+  font-size: 22px;
+  letter-spacing: 4px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.logo:hover {
+  color: var(--uv-red-bright);
+  text-shadow: 0 0 24px var(--uv-red-glow);
+}
+
+.tagline {
+  margin: 18px 0 24px;
+  color: var(--uv-text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.socials {
+  display: flex;
+  gap: 12px;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--uv-border);
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.social:hover {
+  border-color: var(--uv-red);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.columns {
+  display: flex;
+  gap: 72px;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--uv-border);
+}
+
+.copyright,
+.note {
+  color: var(--uv-text-muted);
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    padding: 40px 24px 32px;
+  }
+
+  .inner {
+    padding: 36px 28px;
+  }
+
+  .top {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .brand {
+    max-width: none;
+  }
+
+  .columns {
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 560px) {
+  .columns {
+    gap: 32px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
