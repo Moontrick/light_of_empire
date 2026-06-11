@@ -2,7 +2,6 @@
 
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import { russoOne, manrope } from '@utils/fonts';
 import { Link } from '@/shared/i18n/navigation';
 import { NavItem } from './components/NavItem';
 import { MobileNav } from './components/MobileNav';
@@ -17,7 +16,7 @@ export function CharterHeader({ transparent = false }: CharterHeaderProps) {
 
   return (
     <header
-      className={classNames(styles.header, russoOne.variable, manrope.variable, {
+      className={classNames(styles.header, {
         [styles.transparent]: transparent,
         [styles.open]: open,
       })}

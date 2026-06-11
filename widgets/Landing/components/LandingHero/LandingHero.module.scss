@@ -346,12 +346,25 @@
   }
 
   .content {
+    max-width: 100%;
+    min-width: 0;
     margin-left: 0;
-    padding: 0 8px;
+    padding: 0 16px;
+  }
+
+  // На узких экранах однострочный заголовок и eyebrow без переносов
+  // вылезают за рамку — разрешаем перенос и масштабируем от ширины.
+  .eyebrow {
+    width: auto;
   }
 
   .title {
-    font-size: 48px;
+    font-size: clamp(32px, 7.5vw, 48px);
+    white-space: normal;
+  }
+
+  .desc {
+    max-width: 100%;
   }
 }
 
@@ -362,11 +375,6 @@
 
   .location {
     display: none;
-  }
-
-  .title {
-    font-size: 38px;
-    white-space: normal;
   }
 
   .desc {
@@ -380,11 +388,5 @@
   .actions {
     flex-wrap: wrap;
     gap: 14px;
-  }
-}
-
-@media (max-width: 380px) {
-  .title {
-    font-size: 32px;
   }
 }

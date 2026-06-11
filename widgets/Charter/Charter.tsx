@@ -1,4 +1,3 @@
-import { russoOne, manrope } from '@utils/fonts';
 import { charterContent } from './data';
 import { CharterHero } from './components/CharterHero';
 import { CharterBody } from './components/CharterBody';
@@ -10,7 +9,7 @@ export function Charter({ content = charterContent }: CharterProps) {
   const { hero, sections, footer } = content;
 
   return (
-    <div className={`${russoOne.variable} ${manrope.variable} ${styles.root}`}>
+    <div className={styles.root}>
       <CharterHero eyebrow={hero.eyebrow} title={hero.title} intro={hero.intro} />
       <main className={styles.content}>
         <CharterBody sections={sections} />

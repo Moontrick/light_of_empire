@@ -8,7 +8,7 @@ body, #__next {
   max-width: 100vw;
   word-wrap: break-word;
   height: 100%;
-  font-family: 'DinPro-Regular', sans-serif;
+  font-family: var(--ls-font);
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.3px;
@@ -89,7 +89,10 @@ body {
 }
 
 * {
-  font-family: 'GolosText-Regular' !important;
+  // !important — перебивает inline-шрифты Ant Design, чтобы весь UI был на Cormorant Garamond
+  font-family: var(--ls-font) !important;
+  // По умолчанию у Cormorant минускульные цифры (пляшут по базовой линии) — включаем выровненные
+  font-variant-numeric: lining-nums;
   letter-spacing: 0px !important;
   box-sizing: border-box;
   font-weight: 400;

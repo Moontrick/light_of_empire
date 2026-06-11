@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-import { russoOne, manrope } from '@utils/fonts';
 import { Link } from '@/shared/i18n/navigation';
 import { HudCorners } from '@ui/HudCorners';
 import { IconDiscord } from '@/public/icons/IconDiscord';
@@ -16,7 +14,7 @@ import styles from './CharterFooter.module.scss';
 
 export function CharterFooter() {
   return (
-    <footer className={classNames(styles.footer, russoOne.variable, manrope.variable)}>
+    <footer className={styles.footer}>
       <div className={styles.inner}>
         <HudCorners />
 

@@ -3,18 +3,6 @@
   color: var(--uv-text);
 }
 
-// globals.scss форсит `* { font-family: 'GolosText-Regular' !important }` —
-// возвращаем Manrope тексту и Russo One заголовкам.
-.root,
-.root * {
-  font-family: var(--uv-font) !important;
-}
-
-.root h1,
-.root h2 {
-  font-family: var(--uv-font-display) !important;
-}
-
 .hero {
   position: relative;
   display: flex;

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { russoOne, manrope } from '@utils/fonts';
 import { Link } from '@/shared/i18n/navigation';
 import { NewsContent } from './components/NewsContent';
 import type { NewsArticleProps } from './types';
@@ -7,7 +6,7 @@ import styles from './NewsArticle.module.scss';
 
 export function NewsArticle({ item }: NewsArticleProps) {
   return (
-    <main className={`${russoOne.variable} ${manrope.variable} ${styles.root}`}>
+    <main className={styles.root}>
       <header className={styles.hero}>
         <Image
           src={item.image}

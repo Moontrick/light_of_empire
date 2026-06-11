@@ -4,13 +4,6 @@
   border-top: 1px solid var(--uv-border);
 }
 
-// globals.scss форсит `* { font-family: 'GolosText-Regular' !important }` —
-// возвращаем Manrope тексту и Russo One логотипу.
-.footer,
-.footer * {
-  font-family: var(--uv-font) !important;
-}
-
 .inner {
   position: relative;
   // max-width: 1180px;
@@ -34,7 +27,6 @@
 .logo {
   display: inline-block;
   color: var(--uv-text-strong);
-  font-family: var(--uv-font-display) !important;
   font-size: 22px;
   letter-spacing: 4px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
   text-transform: uppercase;

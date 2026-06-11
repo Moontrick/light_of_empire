@@ -1,1 +1,1 @@
-export { russoOne, manrope } from './charterFonts';
+export { cormorant } from './cormorant';

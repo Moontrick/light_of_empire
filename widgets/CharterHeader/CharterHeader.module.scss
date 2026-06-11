@@ -16,13 +16,6 @@
   border-bottom-color: transparent;
 }
 
-// globals.scss форсит `* { font-family: 'GolosText-Regular' !important }` —
-// возвращаем Manrope на навигацию и Russo One на логотип.
-.header,
-.header * {
-  font-family: var(--uv-font) !important;
-}
-
 .bar {
   display: flex;
   align-items: center;
@@ -35,7 +28,6 @@
 
 .logo {
   color: var(--uv-text-strong);
-  font-family: var(--uv-font-display) !important;
   font-size: 24px;
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -121,5 +113,17 @@
 
   .nav {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .bar {
+    padding: 0 16px;
+  }
+
+  // Лого с разрядкой 4px не помещается рядом с бургером на узких телефонах
+  .logo {
+    font-size: clamp(16px, 4.5vw, 22px);
+    letter-spacing: 2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
   }
 }

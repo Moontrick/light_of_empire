@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import { russoOne, manrope } from '@utils/fonts';
 import { Link } from '@/shared/i18n/navigation';
 import { HudCorners } from '@ui/HudCorners';
 import styles from './not-found.module.scss';
@@ -8,7 +7,7 @@ export default async function NotFound() {
   const t = await getTranslations('notFound');
 
   return (
-    <main className={`${russoOne.variable} ${manrope.variable} ${styles.root}`}>
+    <main className={styles.root}>
       <div className={styles.overlay} />
 
       <div className={styles.panel}>

@@ -3,17 +3,6 @@
   padding: 72px 24px 96px;
   background: var(--uv-bg);
   color: var(--uv-text);
-  font-family: var(--uv-font) !important;
-}
-
-// globals.scss форсит GolosText — возвращаем Manrope (текст) и Russo One (заголовки).
-.root * {
-  font-family: var(--uv-font) !important;
-}
-
-.root h1,
-.root h2 {
-  font-family: var(--uv-font-display) !important;
 }
 
 .head {

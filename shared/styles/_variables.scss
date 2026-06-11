@@ -160,15 +160,14 @@
   --ls-surface-info: #f8fafc;
 
   // --- Typography: families ----------------------------------------------------
-  // @font-face объявления находятся в globals.scss
-  --ls-font-regular: "GolosText-Regular", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --ls-font-medium: "GolosText-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --ls-font-semibold: "GolosText-SemiBold", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --ls-font-bold: "GolosText-Bold", -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  // Единый шрифт проекта — Cormorant Garamond (вариативный, --font-cormorant
+  // задаётся через next/font/local в app/[locale]/layout.tsx).
+  // Вес задаём через font-weight ($ls-fw-*), а не отдельными семействами.
+  --ls-font: var(--font-cormorant), "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --ls-font-regular: var(--ls-font);
+  --ls-font-medium: var(--ls-font);
+  --ls-font-semibold: var(--ls-font);
+  --ls-font-bold: var(--ls-font);
 
   // --- Typography: font weights ------------------------------------------------
   --ls-fw-regular: 400;
@@ -235,10 +234,10 @@
   --uv-border-accent: rgba(210, 39, 48, 0.5);
 
   // --- Typography --------------------------------------------------------------
-  // next/font задаёт --uv-font-russo (заголовки) и --uv-font-manrope (текст) на корне.
-  --uv-font: var(--uv-font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Arial, sans-serif;
-  --uv-font-display: var(--uv-font-russo), "Arial Narrow", Arial, sans-serif;
+  // Весь сайт использует Cormorant Garamond (см. --ls-font выше);
+  // display-токен сохранён как семантический алиас для заголовков.
+  --uv-font: var(--ls-font);
+  --uv-font-display: var(--ls-font);
 
   // --- Layout ------------------------------------------------------------------
   --uv-content-max: 920px;

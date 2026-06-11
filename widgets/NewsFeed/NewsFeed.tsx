@@ -1,4 +1,3 @@
-import { russoOne, manrope } from '@utils/fonts';
 import { getNews } from '@/shared/news';
 import { NewsFeatured } from './components/NewsFeatured';
 import { NewsRow } from './components/NewsRow';
@@ -8,7 +7,7 @@ export function NewsFeed() {
   const [featured, ...rest] = getNews();
 
   return (
-    <main className={`${russoOne.variable} ${manrope.variable} ${styles.root}`}>
+    <main className={styles.root}>
       <header className={styles.head}>
         <span className={styles.eyebrow}>Новости командования</span>
         <h1 className={styles.title}>
