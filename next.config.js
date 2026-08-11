@@ -9,6 +9,8 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  // gamedig тянет telnet-client/xmlrpc и ломается при бандлинге — грузим его как обычный require в рантайме
+  serverExternalPackages: ['gamedig'],
   output: 'standalone',
 };
 

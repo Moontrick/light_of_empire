@@ -24,6 +24,30 @@ export function NewsContent({ blocks }: NewsContentProps) {
           );
         }
 
+        if (block.type === 'member') {
+          return (
+            <p key={key} className={styles.member}>
+              <span className={styles.memberName}>{block.name}</span> —{' '}
+              <span className={styles.memberRole}>{block.role}</span>
+            </p>
+          );
+        }
+
+        if (block.type === 'list') {
+          return (
+            <div key={key} className={styles.listBlock}>
+              {block.title && <p className={styles.listTitle}>{block.title}</p>}
+              <ul className={styles.list}>
+                {block.items.map((item, itemIndex) => (
+                  <li key={itemIndex} className={styles.listItem}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        }
+
         return (
           <p key={key} className={styles.paragraph}>
             {block.text}

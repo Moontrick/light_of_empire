@@ -1,14 +1,17 @@
 import { Link } from '@/shared/i18n/navigation';
 import { HudCorners } from '@ui/HudCorners';
-import { IconDiscord } from '@/public/icons/IconDiscord';
 import { FooterColumn } from './components/FooterColumn';
 import {
+  CONNECT_URL,
+  CONNECT_URL_IP,
   FOOTER_COLUMNS,
   FOOTER_COPYRIGHT,
   FOOTER_NOTE,
   FOOTER_SOCIALS,
   FOOTER_TAGLINE,
   FOOTER_TITLE,
+  SERVER_ADDRESS,
+  SERVER_ADDRESS_IP,
 } from './constants';
 import styles from './CharterFooter.module.scss';
 
@@ -23,22 +26,29 @@ export function CharterFooter() {
             <Link href="/" className={styles.logo}>
               {FOOTER_TITLE}
             </Link>
-            <p className={styles.tagline}>{FOOTER_TAGLINE}</p>
+            {/* <p className={styles.tagline}>{FOOTER_TAGLINE}</p> */}
 
             <div className={styles.socials}>
-              {FOOTER_SOCIALS.map((social) => (
+              {FOOTER_SOCIALS.map(({ label, href, icon: Icon, external }) => (
                 <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={social.label}
+                  key={label}
+                  href={href}
+                  {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                  aria-label={label}
+                  title={label}
                   className={styles.social}
                 >
-                  <IconDiscord width={18} height={18} />
+                  <Icon className={styles.socialIcon} />
                 </a>
               ))}
             </div>
+
+            <a href={CONNECT_URL} className={styles.connect}>
+              connect {SERVER_ADDRESS}
+            </a>
+            <a href={CONNECT_URL_IP} className={styles.connect}>
+              connect {SERVER_ADDRESS_IP}
+            </a>
           </div>
 
           <nav className={styles.columns}>

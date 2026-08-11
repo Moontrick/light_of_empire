@@ -1,0 +1,80 @@
+.introSection {
+  padding: 28px 0;
+  border-top: 1px solid var(--uv-border);
+}
+
+.introSection:first-child {
+  border-top: none;
+}
+
+.introTitle {
+  margin: 0 0 18px;
+  color: var(--uv-accent);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.introParagraph {
+  margin: 0 0 14px;
+  color: var(--uv-text);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.introParagraph:last-child {
+  margin-bottom: 0;
+}
+
+.introList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.introItem {
+  position: relative;
+  padding-left: 26px;
+  color: var(--uv-text);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.introItem::before {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  background: var(--uv-accent);
+  transform: rotate(45deg);
+}
+
+.introVideo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--uv-red-bright);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.introVideo:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .introTitle {
+    font-size: 24px;
+  }
+}

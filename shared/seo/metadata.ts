@@ -14,7 +14,7 @@ export const SITE = {
   name: 'The Light of Empire',
   shortName: 'The Light of Empire',
   description:
-    'The Light of Empire — ролевой проект по вселенной Звёздных Войн. Эпоха Галактической Империи и Нового Порядка: Имперская Армия, ИСБ, Инквизиторий и Корпус тёмных штурмовиков.',
+    'The Light of Empire — ролевой проект по вселенной Звёздных Войн. Эпоха Галактической Империи и Нового Порядка: Имперская Армия, ИББ, Инквизиторий и Корпус тёмных штурмовиков.',
   url: 'https://thelightofempire.com',
   logo: '/Logo.jpg',
   locale: 'ru_RU',

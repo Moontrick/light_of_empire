@@ -14,7 +14,19 @@ export interface NewsQuote {
   author?: string;
 }
 
-export type NewsBlock = NewsParagraph | NewsHeading | NewsQuote;
+export interface NewsMember {
+  type: 'member';
+  name: string;
+  role: string;
+}
+
+export interface NewsList {
+  type: 'list';
+  title?: string;
+  items: string[];
+}
+
+export type NewsBlock = NewsParagraph | NewsHeading | NewsQuote | NewsMember | NewsList;
 
 export interface NewsItem {
   slug: string;

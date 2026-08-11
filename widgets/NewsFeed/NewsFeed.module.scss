@@ -43,6 +43,10 @@
   border-bottom: 1px solid var(--uv-border);
 }
 
+.list > :first-child {
+  border-top: none;
+}
+
 @media (max-width: 640px) {
   .head {
     padding: 84px 18px 40px;

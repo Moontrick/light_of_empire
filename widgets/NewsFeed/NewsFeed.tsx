@@ -4,7 +4,7 @@ import { NewsRow } from './components/NewsRow';
 import styles from './NewsFeed.module.scss';
 
 export function NewsFeed() {
-  const [featured, ...rest] = getNews();
+  const news = getNews();
 
   return (
     <main className={styles.root}>
@@ -21,12 +21,14 @@ export function NewsFeed() {
         </p>
       </header>
 
-      {featured && <NewsFeatured item={featured} />}
-
       <div className={styles.list}>
-        {rest.map((item, index) => (
-          <NewsRow key={item.slug} item={item} index={index + 2} />
-        ))}
+        {news.map((item, index) =>
+          index % 3 === 0 ? (
+            <NewsFeatured key={item.slug} item={item} />
+          ) : (
+            <NewsRow key={item.slug} item={item} index={index + 1} />
+          ),
+        )}
       </div>
     </main>
   );

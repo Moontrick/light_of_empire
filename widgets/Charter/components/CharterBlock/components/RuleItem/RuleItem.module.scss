@@ -1,0 +1,54 @@
+.rule {
+  list-style: none;
+  margin: 0 0 12px;
+}
+
+.body {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  color: var(--uv-text);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.code {
+  flex: none;
+  min-width: 46px;
+  color: var(--uv-accent);
+  font-weight: 600;
+}
+
+.text {
+  flex: 1;
+}
+
+.penalty {
+  margin: 4px 0 0 56px;
+  color: var(--uv-text-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.penaltyLabel {
+  color: var(--uv-danger);
+  font-weight: 600;
+}
+
+.children {
+  margin: 10px 0 0 56px;
+  padding-left: 14px;
+  border-left: 1px solid var(--uv-border);
+  list-style: none;
+}
+
+@media (max-width: 560px) {
+  .code {
+    min-width: 38px;
+  }
+
+  .penalty,
+  .children {
+    margin-left: 0;
+  }
+}

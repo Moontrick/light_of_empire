@@ -1,3 +1,4 @@
+import { RuleItem } from './components/RuleItem';
 import type { CharterBlockProps } from './types';
 import styles from './CharterBlock.module.scss';
 
@@ -44,6 +45,15 @@ export function CharterBlock({ block }: CharterBlockProps) {
           </ul>
         )}
       </aside>
+    );
+
+  case 'rules':
+    return (
+      <ul className={styles.rules}>
+        {block.items.map((rule) => (
+          <RuleItem key={rule.code} rule={rule} />
+        ))}
+      </ul>
     );
 
   default:

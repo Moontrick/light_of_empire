@@ -1,0 +1,1 @@
+export { ChronicleEntry } from './ChronicleEntry';

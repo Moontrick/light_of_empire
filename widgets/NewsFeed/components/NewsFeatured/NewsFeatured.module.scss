@@ -1,11 +1,10 @@
 .featured {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 56px 24px;
+  padding: 56px 0;
   color: var(--uv-text);
   text-decoration: none;
+  border-top: 1px solid var(--uv-border);
 }
 
 .media {
@@ -129,6 +128,6 @@
 
 @media (max-width: 640px) {
   .featured {
-    padding: 40px 18px;
+    padding: 40px 0;
   }
 }

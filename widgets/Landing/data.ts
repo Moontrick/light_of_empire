@@ -17,11 +17,11 @@ export interface HeroSlide {
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'home',
-    eyebrow: 'Galactic Empire · 2 года После Провозглашения  Империи ',
+    eyebrow: 'The Light of Empire · 20 лет После Провозглашения  Империи ',
     title: 'The Light of Empire',
     subtitle: 'The Light of Empire — Новый Порядок',
     description:
-      'Год после 66 приказа. Галактическая Империя устанавливает Новый Порядок — вступай в ряды Имперской Армии и впиши имя в историю галактики.',
+      '20 год после 66 приказа. Галактическая Империя устанавливает Новый Порядок — вступай в ряды Имперской Армии и впиши имя в историю галактики.',
     ctaLabel: 'Читать устав',
     ctaHref: '/ustav',
     image: '/images/destroer.jpg',
@@ -41,16 +41,28 @@ export const HERO_SLIDES: HeroSlide[] = [
     location: { name: 'Корусант', sub: 'Галактическое ядро' },
   },
   {
+    id: 'chronicle',
+    eyebrow: 'История проекта',
+    title: '34-я Ударная эскадра «Пепел»',
+    subtitle: 'После падения Звезды Смерти',
+    description:
+      'После уничтожения Звезды Смерти Империя начала операцию «Имперский удар». 34-я Ударная эскадра «Пепел» развернулась у фондорских верфей для наведения порядка во Внешнем кольце.',
+    ctaLabel: 'Читать хронику',
+    ctaHref: '/chronicle',
+    image: '/images/news/2.png',
+    location: { name: 'Фондор', sub: 'Верфи Галактической Империи' },
+  },
+  {
     id: 'isb',
     eyebrow: 'Структуры',
-    title: 'ИСБ',
+    title: 'ИББ',
     subtitle: 'Имперская служба безопасности',
     description:
       'Надзор за лояльностью личного состава, выявление измены, саботажа и мятежа, проведение трибуналов.',
     ctaLabel: 'Подробнее',
     ctaHref: '/isb',
     image: '/images/isb.jpg',
-    location: { name: 'Сектор', sub: 'Под наблюдением ИСБ' },
+    location: { name: 'Сектор', sub: 'Под наблюдением ИББ' },
   },
   {
     id: 'inquisitorius',

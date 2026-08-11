@@ -3,9 +3,15 @@
 import { useMemo, useState } from 'react';
 import { CharterToc } from '../CharterToc';
 import { CharterSection } from '../CharterSection';
-import type { CharterBlock, CharterSectionData } from '../../types';
+import type { CharterBlock, CharterRule, CharterSectionData } from '../../types';
 import type { CharterBodyProps } from './types';
 import styles from './CharterBody.module.scss';
+
+function ruleText(rule: CharterRule): string {
+  return [rule.code, rule.text, rule.penalty ?? '', ...(rule.children ?? []).map(ruleText)].join(
+    ' ',
+  );
+}
 
 function blockText(block: CharterBlock): string {
   switch (block.kind) {
@@ -16,6 +22,8 @@ function blockText(block: CharterBlock): string {
       return block.items.join(' ');
     case 'note':
       return [block.title ?? '', block.text ?? '', ...(block.items ?? [])].join(' ');
+    case 'rules':
+      return block.items.map(ruleText).join(' ');
     default:
       return '';
   }
@@ -29,9 +37,10 @@ function sectionMatches(section: CharterSectionData, query: string): boolean {
   return haystack.includes(query);
 }
 
-export function CharterBody({ sections }: CharterBodyProps) {
+export function CharterBody({ sections, searchPlaceholder }: CharterBodyProps) {
   const [query, setQuery] = useState('');
   const normalized = query.trim().toLowerCase();
+  const placeholder = searchPlaceholder ?? 'Поиск по документу…';
 
   const visible = useMemo(
     () => sections.filter((section) => sectionMatches(section, normalized)),
@@ -56,9 +65,9 @@ export function CharterBody({ sections }: CharterBodyProps) {
           type="text"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Поиск по уставу…"
+          placeholder={placeholder}
           className={styles.input}
-          aria-label="Поиск по уставу"
+          aria-label="Поиск по документу"
         />
         {query && (
           <button
