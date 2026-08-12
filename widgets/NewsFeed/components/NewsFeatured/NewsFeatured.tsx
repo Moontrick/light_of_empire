@@ -16,7 +16,7 @@ export function NewsFeatured({ item }: NewsFeaturedProps) {
           className={styles.image}
           priority
         />
-        <span className={styles.flag}>Главная новость</span>
+        {/* <span className={styles.flag}>Главная новость</span> */}
       </div>
 
       <div className={styles.content}>

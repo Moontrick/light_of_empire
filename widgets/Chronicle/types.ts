@@ -17,11 +17,25 @@ export type ChronicleContentBlock =
 export interface ChronicleEntryData {
   id: string;
   author: string;
-  date: string;
-  title?: string;
+  era: string;
+  campaignDay: number;
+  title: string;
+  // ISO-дата реальной публикации: в вёрстку не выводится, уходит только
+  // в атрибут <time dateTime> для поисковиков и читалок.
+  publishedAt?: string;
   blocks: ChronicleContentBlock[];
   video?: ChronicleVideo;
 }
+
+export interface ChronicleMilestoneData {
+  id: string;
+  location: string;
+  text: string;
+}
+
+export type ChronicleNode =
+  | ({ kind: 'entry' } & ChronicleEntryData)
+  | ({ kind: 'milestone' } & ChronicleMilestoneData);
 
 export interface ChronicleIntroSection {
   title: string;
@@ -33,5 +47,5 @@ export interface ChronicleIntroSection {
 export interface ChronicleContent {
   hero: { eyebrow: string; title: string; intro: string };
   intro: ChronicleIntroSection[];
-  entries: ChronicleEntryData[];
+  nodes: ChronicleNode[];
 }

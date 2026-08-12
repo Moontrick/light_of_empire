@@ -1,5 +1,7 @@
 import type { ChronicleContent } from './types';
 
+const ERA = '20 ПП66';
+
 export const chronicleContent: ChronicleContent = {
   hero: {
     eyebrow: 'The Light of Empire',
@@ -36,12 +38,33 @@ export const chronicleContent: ChronicleContent = {
       },
     },
   ],
-  entries: [
+  nodes: [
     {
+      kind: 'milestone',
+      id: 'death-star-destroyed',
+      location: 'Явин · сектор Гордиан · Внешнее кольцо',
+      text: 'Звезда Смерти уничтожена одним точным выстрелом. Империя пошатнулась, и страх, что держал Галактику, начал спадать.',
+    },
+    {
+      kind: 'milestone',
+      id: 'imperial-strike-ordered',
+      location: 'Корусант · Ядро Галактики',
+      text: 'По приказу Императора Шива Палпатина начата операция "Имперский удар". Главнокомандующим вооружёнными силами назначен Гранд-Генерал Кассио Тагге.',
+    },
+    {
+      kind: 'milestone',
+      id: 'ash-squadron-formed',
+      location: 'Верфи Фондора · сектор Тапани · Колонии',
+      text: 'Месяц спустя после гибели Звезды Смерти сформирована 34-я Ударная эскадра "Пепел". Экипажи набраны из ветеранов Войны клонов, развёртывание у верфей завершается.',
+    },
+    {
+      kind: 'entry',
       id: 'battle-of-fondor',
       author: 'Гранд-Генерал Тагг',
-      date: '10.08.2026 20:24',
-      title: 'Начало',
+      era: ERA,
+      campaignDay: 1,
+      publishedAt: '2026-08-10T20:24',
+      title: 'Сражение у верфей Фондора',
       blocks: [
         {
           kind: 'paragraph',
@@ -139,9 +162,31 @@ export const chronicleContent: ChronicleContent = {
       },
     },
     {
+      kind: 'milestone',
+      id: 'outer-rim-order',
+      location: 'Внешнее кольцо',
+      text: 'Приказ Гранд-Генерала Тагга по итогам Фондора: войскам Галактической Империи сосредоточиться на установлении порядка во всём Внешнем кольце.',
+    },
+    {
+      kind: 'milestone',
+      id: 'perinn-assignment',
+      location: 'Сектор Перинн · квадрат J-4 · Внешнее кольцо',
+      text: 'Эскадре "Пепел" приказано идти к Сон-Туула — сердцу преступной банды Туула, откуда пираты бьют по транспортным маршрутам Империи.',
+    },
+    {
+      kind: 'milestone',
+      id: 'son-tuula-orbit',
+      location: 'Орбита Сон-Туула',
+      text: 'Эскадра вступает в бой с кораблями противника на орбите. Под прикрытием флота штурмовой корпус скрытно идёт на поверхность.',
+    },
+    {
+      kind: 'entry',
       id: 'son-tuula-landing',
       author: 'Rhaegar',
-      date: '10.08.2026 22:40',
+      era: ERA,
+      campaignDay: 3,
+      publishedAt: '2026-08-10T22:40',
+      title: 'Высадка на Сон-Туула',
       blocks: [
         {
           kind: 'paragraph',
@@ -175,9 +220,19 @@ export const chronicleContent: ChronicleContent = {
       ],
     },
     {
+      kind: 'milestone',
+      id: 'j4-base-secured',
+      location: 'Сон-Туула · база сектора J-4',
+      text: 'Комплекс зачищен и вновь закреплён за Империей. Лидер банды убит в бою — взять его живым и допросить не удалось.',
+    },
+    {
+      kind: 'entry',
       id: 'son-tuula-caves',
       author: 'Rhaegar',
-      date: '11.08.2026 19:10',
+      era: ERA,
+      campaignDay: 4,
+      publishedAt: '2026-08-11T19:10',
+      title: 'Пещеры Сон-Туула',
       blocks: [
         {
           kind: 'paragraph',
@@ -205,6 +260,12 @@ export const chronicleContent: ChronicleContent = {
           },
         },
       ],
+    },
+    {
+      kind: 'milestone',
+      id: 'swamp-coordinates',
+      location: 'Сон-Туула · болота',
+      text: 'С голопередатчика погибших офицеров сняты координаты места, где их удерживали пираты. Следующая цель кампании определена.',
     },
   ],
 };

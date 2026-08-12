@@ -1,10 +1,10 @@
 import { chronicleContent } from './content';
-import { ChronicleEntry } from './components/ChronicleEntry';
 import { ChronicleIntroSection } from './components/ChronicleIntroSection';
+import { ChronicleTimeline } from './components/ChronicleTimeline';
 import styles from './Chronicle.module.scss';
 
 export function Chronicle() {
-  const { hero, intro, entries } = chronicleContent;
+  const { hero, intro, nodes } = chronicleContent;
 
   return (
     <div className={styles.root}>
@@ -23,11 +23,7 @@ export function Chronicle() {
           ))}
         </section>
 
-        <ul className={styles.timeline}>
-          {entries.map((entry) => (
-            <ChronicleEntry key={entry.id} entry={entry} />
-          ))}
-        </ul>
+        <ChronicleTimeline nodes={nodes} />
       </main>
     </div>
   );

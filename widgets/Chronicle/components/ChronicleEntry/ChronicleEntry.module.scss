@@ -7,16 +7,18 @@
   padding-bottom: 0;
 }
 
+// Центруем отрицательным left, а не translateX(-50%): transform занят
+// анимацией framer-motion.
 .marker {
   position: absolute;
-  top: 6px;
-  left: 0;
-  width: 11px;
-  height: 11px;
+  top: 4px;
+  left: -6.5px;
+  width: 13px;
+  height: 13px;
   background: var(--uv-bg);
   border: 2px solid var(--uv-accent);
   border-radius: 50%;
-  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px var(--uv-red-soft), 0 0 12px var(--uv-red-glow);
 }
 
 .content {

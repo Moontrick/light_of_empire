@@ -1,0 +1,60 @@
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.caption {
+  color: var(--uv-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.6px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+}
+
+// Моноширинный шрифт недоступен: globals.scss задаёт font-family с !important
+// на всём проекте. Разделяем символы разрядкой, чтобы адрес читался как адрес.
+.value {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  color: var(--uv-text-strong);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--uv-border);
+}
+
+.copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--uv-border);
+  cursor: pointer;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.copy:hover {
+  color: var(--uv-text-strong);
+  border-color: var(--uv-border-accent);
+}
+
+.copy:focus-visible {
+  outline: 2px solid var(--uv-red-bright);
+  outline-offset: 2px;
+}

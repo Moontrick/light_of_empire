@@ -1,0 +1,39 @@
+.root {
+  position: relative;
+  margin-top: 24px;
+  padding-top: 8px;
+  border-top: 1px solid var(--uv-border);
+}
+
+.track {
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  left: 11px;
+  width: 2px;
+  background: var(--uv-border);
+}
+
+.progress {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--uv-accent), var(--uv-red-deep));
+  transform-origin: top center;
+}
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 12px;
+  list-style: none;
+}
+
+@media (max-width: 640px) {
+  .track {
+    left: 5px;
+  }
+
+  .timeline {
+    padding-left: 6px;
+  }
+}

@@ -72,24 +72,6 @@
   padding: 40px 0 8px;
 }
 
-.timeline {
-  position: relative;
-  margin: 24px 0 0;
-  padding: 8px 0 0 12px;
-  list-style: none;
-  border-top: 1px solid var(--uv-border);
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  bottom: 0;
-  left: 12px;
-  width: 2px;
-  background: var(--uv-border);
-}
-
 @media (max-width: 640px) {
   .hero {
     padding: 60px 18px 44px;

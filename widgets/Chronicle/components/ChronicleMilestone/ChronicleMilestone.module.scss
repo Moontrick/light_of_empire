@@ -1,0 +1,48 @@
+.item {
+  position: relative;
+  padding: 0 0 28px 32px;
+}
+
+// Центруем отрицательным left, а не translateX(-50%): transform занят
+// анимацией framer-motion.
+.marker {
+  position: absolute;
+  top: 7px;
+  left: -3.5px;
+  width: 7px;
+  height: 7px;
+  background: var(--uv-bg);
+  border: 1px solid var(--uv-accent);
+  border-radius: 50%;
+}
+
+.content {
+  max-width: 640px;
+}
+
+.location {
+  margin: 0 0 4px;
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.text {
+  margin: 0;
+  color: var(--uv-text-muted);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .item {
+    padding-left: 22px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}

@@ -1,29 +1,34 @@
+// Боковые отступы 22px повторяют HUD-рамку героя (inset: 74px 22px 22px),
+// чтобы вертикальные направляющие шли по странице сплошной линией.
 .status {
   position: relative;
-  padding: 64px 24px;
+  padding: 22px 22px 64px;
   background: var(--uv-bg);
   border-bottom: 1px solid var(--uv-border);
 }
 
 .inner {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 48px;
+  display: grid;
+  // Кадр забирает всю свободную ширину, панель данных не расползается:
+  // длинные строки читаются плохо, а пустота справа выглядела дырой.
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 520px);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--uv-border);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+  padding: 44px;
 }
 
 .info {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-width: 220px;
 }
 
 .head {
@@ -66,6 +71,12 @@
 
 .count {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.countRow {
+  display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 4px 10px;
@@ -78,12 +89,7 @@
   line-height: 1;
 }
 
-.countDivider {
-  color: var(--uv-text-muted);
-  font-size: 28px;
-  font-weight: 600;
-}
-
+.countDivider,
 .countMax {
   color: var(--uv-text-muted);
   font-size: 28px;
@@ -94,7 +100,13 @@
   flex-basis: 100%;
   color: var(--uv-text-muted);
   font-size: 13px;
-  letter-spacing: 0.4px;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
 }
 
 .action {
@@ -129,11 +141,19 @@
   transform: translateX(4px);
 }
 
+.sync {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+}
+
 @media (max-width: 900px) {
   .inner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 36px 28px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .panel {
+    justify-content: flex-start;
+    padding: 32px 28px;
   }
 
   .countValue {
@@ -143,11 +163,12 @@
 
 @media (max-width: 640px) {
   .status {
-    padding: 48px 18px;
+    padding: 18px 18px 48px;
   }
 
-  .inner {
-    padding: 28px 20px;
+  .panel {
+    padding: 26px 20px;
+    gap: 22px;
   }
 
   .countValue {
@@ -157,5 +178,12 @@
   .action {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action,
+  .arrow {
+    transition: none;
   }
 }

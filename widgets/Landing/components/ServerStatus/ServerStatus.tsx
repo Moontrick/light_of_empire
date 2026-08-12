@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import { Skeleton } from 'antd';
 import { HudCorners } from '@ui/HudCorners';
 import { useServerStatusView } from './hooks/useServerStatusView';
+import { ServerPreview } from './components/ServerPreview';
+import { ServerMeter } from './components/ServerMeter';
+import { ServerAddress } from './components/ServerAddress';
 import {
   STATUS_CONNECT_LABEL,
   STATUS_LABEL_FAILED,
@@ -11,6 +14,8 @@ import {
   STATUS_LABEL_ONLINE,
   STATUS_MAP_PREFIX,
   STATUS_PLAYERS_CAPTION,
+  STATUS_POLL_CAPTION,
+  STATUS_UPDATED_PREFIX,
 } from './constants';
 import styles from './ServerStatus.module.scss';
 
@@ -28,42 +33,61 @@ export function ServerStatus() {
       <div className={styles.inner}>
         <HudCorners />
 
-        {view.isFirstLoad ? (
-          <Skeleton active title={{ width: '30%' }} paragraph={{ rows: 3, width: ['60%', '80%', '40%'] }} />
-        ) : (
-          <>
-            <div className={styles.info}>
-              <div className={styles.head}>
-                <span
-                  className={classNames(styles.dot, { [styles.dotOnline]: view.isOnline && !view.hasFailed })}
-                  aria-hidden
-                />
-                <span className={styles.label}>{statusLabel}</span>
+        <ServerPreview />
+
+        <div className={styles.panel}>
+          {view.isFirstLoad ? (
+            <Skeleton
+              active
+              title={{ width: '40%' }}
+              paragraph={{ rows: 4, width: ['70%', '55%', '85%', '45%'] }}
+            />
+          ) : (
+            <>
+              <div className={styles.info}>
+                <div className={styles.head}>
+                  <span
+                    className={classNames(styles.dot, {
+                      [styles.dotOnline]: view.isOnline && !view.hasFailed,
+                    })}
+                    aria-hidden
+                  />
+                  <span className={styles.label}>{statusLabel}</span>
+                </div>
+
+                <span className={styles.name}>{view.serverName}</span>
+                {view.map && (
+                  <span className={styles.map}>
+                    {STATUS_MAP_PREFIX} {view.map}
+                  </span>
+                )}
               </div>
 
-              <span className={styles.name}>{view.serverName}</span>
-              {view.map && (
-                <span className={styles.map}>
-                  {STATUS_MAP_PREFIX} {view.map}
-                </span>
-              )}
-            </div>
+              <div className={styles.count}>
+                <div className={styles.countRow}>
+                  <span className={styles.countValue}>{view.players}</span>
+                  <span className={styles.countDivider}>/</span>
+                  <span className={styles.countMax}>{view.maxPlayers}</span>
+                  <span className={styles.countCaption}>{STATUS_PLAYERS_CAPTION}</span>
+                </div>
 
-            <div className={styles.count}>
-              <span className={styles.countValue}>{view.players}</span>
-              <span className={styles.countDivider}>/</span>
-              <span className={styles.countMax}>{view.maxPlayers}</span>
-              <span className={styles.countCaption}>{STATUS_PLAYERS_CAPTION}</span>
-            </div>
+                <ServerMeter
+                  players={view.players}
+                  maxPlayers={view.maxPlayers}
+                  fillPercent={view.fillPercent}
+                />
+              </div>
 
-            <a href={view.connectHref} className={styles.action}>
-              <span>{STATUS_CONNECT_LABEL}</span>
-              <span className={styles.arrow} aria-hidden>
-                →
-              </span>
-            </a>
-          </>
-        )}
+              <ServerAddress address={view.address} />
+
+              <div className={styles.footer}>
+                <a href={view.connectHref} className={styles.action}>
+                  <span>{STATUS_CONNECT_LABEL}</span>
+                </a>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </section>
   );
