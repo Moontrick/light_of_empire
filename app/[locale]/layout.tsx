@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { cormorant } from '@utils/fonts';
 import '@/shared/styles/globals.scss';
@@ -10,10 +10,10 @@ import type { LayoutProps } from './types';
 
 export const metadata = baseMetadata;
 export const viewport = baseViewport;
-export const dynamic = 'force-dynamic';
 
 export default async function LocaleLayout({ params, children }: LayoutProps) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   const messages = await getMessages();
   return (
