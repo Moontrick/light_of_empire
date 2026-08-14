@@ -1,17 +1,28 @@
 .featured {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  display: block;
   padding: 56px 0;
   color: var(--uv-text);
   text-decoration: none;
   border-top: 1px solid var(--uv-border);
 }
 
+.card {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border);
+  transition: border-color 0.18s ease;
+}
+
+.featured:hover .card {
+  border-color: var(--uv-red);
+}
+
 .media {
   position: relative;
-  aspect-ratio: 16 / 10;
+  min-height: 320px;
   overflow: hidden;
-  border: 1px solid var(--uv-border);
+  border-right: 1px solid var(--uv-border);
 }
 
 .image {
@@ -25,33 +36,12 @@
   filter: grayscale(0) contrast(1.05);
 }
 
-.flag {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  padding: 6px 12px;
-  color: var(--uv-text-strong);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
-  text-transform: uppercase;
-  background: var(--uv-red);
-}
-
 .content {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 44px 40px;
-  background: var(--uv-bg-elevated);
-  border: 1px solid var(--uv-border);
-  border-left: none;
-  transition: border-color 0.18s ease;
-}
-
-.featured:hover .content {
-  border-color: var(--uv-red);
 }
 
 .meta {
@@ -67,7 +57,6 @@
 
 .tag {
   padding: 4px 10px;
-  color: var(--uv-text-strong);
   font-weight: 600;
   background: var(--uv-red-soft);
   color: var(--uv-red-bright);
@@ -115,13 +104,18 @@
 }
 
 @media (max-width: 900px) {
-  .featured {
+  .card {
     grid-template-columns: 1fr;
   }
 
+  .media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--uv-border);
+  }
+
   .content {
-    border-left: 1px solid var(--uv-border);
-    border-top: none;
     padding: 32px 26px;
   }
 }

@@ -1,10 +1,10 @@
 import { getNews } from '@/shared/news';
-import { NewsFeatured } from './components/NewsFeatured';
-import { NewsRow } from './components/NewsRow';
+import { NewsTimelineGroup } from './components/NewsTimelineGroup';
+import { groupNewsByDate } from './lib/groupNewsByDate';
 import styles from './NewsFeed.module.scss';
 
 export function NewsFeed() {
-  const news = getNews();
+  const groups = groupNewsByDate(getNews());
 
   return (
     <main className={styles.root}>
@@ -21,14 +21,10 @@ export function NewsFeed() {
         </p>
       </header>
 
-      <div className={styles.list}>
-        {news.map((item, index) =>
-          index % 3 === 0 ? (
-            <NewsFeatured key={item.slug} item={item} />
-          ) : (
-            <NewsRow key={item.slug} item={item} index={index + 1} />
-          ),
-        )}
+      <div className={styles.timeline}>
+        {groups.map((group) => (
+          <NewsTimelineGroup key={group.isoDate} group={group} />
+        ))}
       </div>
     </main>
   );

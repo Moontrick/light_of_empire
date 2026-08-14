@@ -2,7 +2,7 @@
 // чтобы вертикальные направляющие шли по странице сплошной линией.
 .status {
   position: relative;
-  padding: 22px 22px 64px;
+  padding: 22px 22px 22px;
   background: var(--uv-bg);
   border-bottom: 1px solid var(--uv-border);
 }
@@ -133,17 +133,10 @@
   box-shadow: 0 12px 36px var(--uv-red-glow);
 }
 
-.arrow {
-  transition: transform 0.18s ease;
-}
-
-.action:hover .arrow {
-  transform: translateX(4px);
-}
-
-.sync {
-  color: var(--uv-text-muted);
-  font-size: 12px;
+.rosterRow {
+  grid-column: 1 / -1;
+  padding: 24px 20px 28px;
+  border-top: 1px solid var(--uv-border);
 }
 
 @media (max-width: 900px) {
@@ -154,6 +147,10 @@
   .panel {
     justify-content: flex-start;
     padding: 32px 28px;
+  }
+
+  .rosterRow {
+    padding: 24px 28px;
   }
 
   .countValue {
@@ -171,6 +168,10 @@
     gap: 22px;
   }
 
+  .rosterRow {
+    padding: 20px;
+  }
+
   .countValue {
     font-size: 40px;
   }
@@ -182,8 +183,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .action,
-  .arrow {
+  .action {
     transition: none;
   }
 }

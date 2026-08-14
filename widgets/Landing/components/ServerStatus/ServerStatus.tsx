@@ -7,6 +7,7 @@ import { useServerStatusView } from './hooks/useServerStatusView';
 import { ServerPreview } from './components/ServerPreview';
 import { ServerMeter } from './components/ServerMeter';
 import { ServerAddress } from './components/ServerAddress';
+import { ServerRoster } from './components/ServerRoster';
 import {
   STATUS_CONNECT_LABEL,
   STATUS_LABEL_FAILED,
@@ -14,8 +15,6 @@ import {
   STATUS_LABEL_ONLINE,
   STATUS_MAP_PREFIX,
   STATUS_PLAYERS_CAPTION,
-  STATUS_POLL_CAPTION,
-  STATUS_UPDATED_PREFIX,
 } from './constants';
 import styles from './ServerStatus.module.scss';
 
@@ -88,6 +87,12 @@ export function ServerStatus() {
             </>
           )}
         </div>
+
+        {!view.isFirstLoad && view.isOnline && !view.hasFailed && (
+          <div className={styles.rosterRow}>
+            <ServerRoster roster={view.roster} />
+          </div>
+        )}
       </div>
     </section>
   );

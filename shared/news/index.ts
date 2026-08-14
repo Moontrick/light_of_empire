@@ -1,4 +1,4 @@
-export { NEWS, getNews, getNewsBySlug } from './news';
+export { NEWS, getNews, getLatestNews, getNewsBySlug } from './news';
 export type {
   NewsItem,
   NewsBlock,

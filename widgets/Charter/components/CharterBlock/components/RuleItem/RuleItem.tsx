@@ -2,10 +2,14 @@ import type { RuleItemProps } from './types';
 import styles from './RuleItem.module.scss';
 
 export function RuleItem({ rule }: RuleItemProps) {
+  const codeClassName = rule.category
+    ? `${styles.code} ${styles[`cat${rule.category}`]}`
+    : styles.code;
+
   return (
     <li className={styles.rule}>
       <p className={styles.body}>
-        <span className={styles.code}>{rule.code}</span>
+        <span className={codeClassName}>{rule.code}</span>
         <span className={styles.text}>{rule.text}</span>
       </p>
 

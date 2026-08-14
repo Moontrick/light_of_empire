@@ -19,6 +19,47 @@
   font-weight: 600;
 }
 
+.cat1,
+.cat2,
+.cat3,
+.cat4,
+.cat5,
+.cat6,
+.cat7 {
+  align-self: flex-start;
+  min-width: 0;
+  padding: 0 8px;
+  color: var(--uv-cat-text);
+}
+
+.cat1 {
+  background: var(--uv-cat-1);
+}
+
+.cat2 {
+  background: var(--uv-cat-2);
+}
+
+.cat3 {
+  background: var(--uv-cat-3);
+}
+
+.cat4 {
+  background: var(--uv-cat-4);
+}
+
+.cat5 {
+  background: var(--uv-cat-5);
+}
+
+.cat6 {
+  background: var(--uv-cat-6);
+}
+
+.cat7 {
+  background: var(--uv-cat-7);
+}
+
 .text {
   flex: 1;
 }

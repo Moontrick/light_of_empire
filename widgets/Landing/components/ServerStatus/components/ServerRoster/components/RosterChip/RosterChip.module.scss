@@ -1,0 +1,44 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--uv-border);
+  border-left: 2px solid var(--uv-border);
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.chip:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--uv-border-accent);
+}
+
+.top {
+  border-left-color: var(--uv-red);
+}
+
+// Позывные бывают длинными и без пробелов — режем многоточием,
+// иначе одна плашка растянет всю строку.
+.name {
+  overflow: hidden;
+  color: var(--uv-text-strong);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.time {
+  flex-shrink: 0;
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip {
+    transition: none;
+  }
+}

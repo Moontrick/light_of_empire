@@ -36,15 +36,11 @@
   line-height: 1.7;
 }
 
-.list {
+.timeline {
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 24px 120px;
   border-bottom: 1px solid var(--uv-border);
-}
-
-.list > :first-child {
-  border-top: none;
 }
 
 @media (max-width: 640px) {
@@ -56,7 +52,7 @@
     font-size: 15px;
   }
 
-  .list {
+  .timeline {
     padding: 0 18px 84px;
   }
 }

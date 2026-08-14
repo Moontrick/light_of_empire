@@ -2,6 +2,24 @@ import type { NewsItem } from './types';
 
 export const NEWS: NewsItem[] = [
   {
+    slug: 'coming-soon',
+    tag: 'Разработка',
+    date: '14.08.2026',
+    isoDate: '2026-08-14',
+    title: 'Coming soon',
+    excerpt:
+      'Идёт работа над системой, которая финализирует механику кастомизации персонажей — вместе с ней на сервере появится окончательный список профессий, званий, формирований и специализаций.',
+    image: '/images/news/editor.png',
+    readingTime: '1 мин',
+    lead: 'Прямо сейчас ведутся работы по весьма важной системе, которая финализирует основной этап работ по механике кастомизации персонажей и позволит всем представителям всех формирований правильно отыгрывать РП на сервере.',
+    body: [
+      {
+        type: 'paragraph',
+        text: 'С этим обновлением мы так же финализируем список профессий/званий/формирований/специализаций и окончательно поместим его на сервер.',
+      },
+    ],
+  },
+  {
     slug: 'teh-raboty',
     tag: 'Тех. работы',
     date: '12.08.2026',
@@ -224,6 +242,12 @@ export const NEWS: NewsItem[] = [
 
 export function getNews(): NewsItem[] {
   return NEWS;
+}
+
+export function getLatestNews(count: number): NewsItem[] {
+  return [...NEWS]
+    .sort((a, b) => b.isoDate.localeCompare(a.isoDate))
+    .slice(0, count);
 }
 
 export function getNewsBySlug(slug: string): NewsItem | undefined {

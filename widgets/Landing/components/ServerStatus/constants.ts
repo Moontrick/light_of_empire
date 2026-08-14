@@ -18,3 +18,10 @@ export const STATUS_COPY_FAILURE = 'Не удалось скопировать �
 
 export const STATUS_UPDATED_PREFIX = 'Обновлено';
 export const STATUS_POLL_CAPTION = 'опрос каждые 60 с';
+
+export const STATUS_ROSTER_CAPTION = 'Личный состав в сети';
+export const STATUS_ROSTER_EMPTY = 'Сейчас на сервере никого нет';
+export const STATUS_ROSTER_MORE = 'Показать всех';
+export const STATUS_ROSTER_LESS = 'Свернуть';
+
+export const ROSTER_VISIBLE_LIMIT = 14;

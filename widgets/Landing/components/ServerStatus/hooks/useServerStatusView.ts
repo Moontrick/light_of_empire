@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useServerStatus } from '@/shared/hooks/useServerStatus';
 import { SERVER_ADDRESS } from '@/shared/constants';
 import { STATUS_FALLBACK_NAME } from '../constants';
@@ -28,6 +29,13 @@ export function useServerStatusView(): ServerStatusViewModel {
   const hasFailed = !status && !loading && Boolean(error);
   const players = status?.players ?? 0;
   const maxPlayers = status?.maxPlayers ?? 0;
+  const playerList = status?.playerList;
+
+  // sort мутирует массив, поэтому копируем: playerList приходит из состояния хука.
+  const roster = useMemo(
+    () => [...(playerList ?? [])].sort((a, b) => b.timeSeconds - a.timeSeconds),
+    [playerList]
+  );
 
   return {
     isFirstLoad,
@@ -38,6 +46,7 @@ export function useServerStatusView(): ServerStatusViewModel {
     players,
     maxPlayers,
     fillPercent: toFillPercent(players, maxPlayers),
+    roster,
     address: SERVER_ADDRESS,
     updatedAtLabel: toUpdatedAtLabel(status?.updatedAt),
     connectHref: `steam://connect/${status?.connect || SERVER_ADDRESS}`,

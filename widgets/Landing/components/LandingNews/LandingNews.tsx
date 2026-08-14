@@ -1,12 +1,12 @@
 import { Link } from '@/shared/i18n/navigation';
 import { NewsCard } from '@ui/NewsCard';
-import { NEWS } from '@/shared/news';
+import { getLatestNews } from '@/shared/news';
 import styles from './LandingNews.module.scss';
 
 const LANDING_NEWS_COUNT = 3;
 
 export function LandingNews() {
-  const items = NEWS.slice(0, LANDING_NEWS_COUNT);
+  const items = getLatestNews(LANDING_NEWS_COUNT);
 
   return (
     <section className={styles.news}>
