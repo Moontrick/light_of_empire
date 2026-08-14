@@ -11,7 +11,7 @@ export default function GlobalLoading() {
       backgroundColor: 'var(--uv-bg)',
     }}>
       <Spin 
-        indicator={<LoadingOutlined style={{ fontSize: 48, color: '--uv-red' }} spin />} 
+        indicator={<LoadingOutlined style={{ fontSize: 48, color: 'var(--uv-red)' }} spin />} 
         size="large"
       />
     </div>
