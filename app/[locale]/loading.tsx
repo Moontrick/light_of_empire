@@ -7,10 +7,11 @@ export default function GlobalLoading() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      minHeight: '100vh'
+      minHeight: '100vh',
+      backgroundColor: 'var(--uv-bg)',
     }}>
       <Spin 
-        indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} 
+        indicator={<LoadingOutlined style={{ fontSize: 48, color: '--uv-red' }} spin />} 
         size="large"
       />
     </div>
