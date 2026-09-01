@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 24px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  border-left: 2px solid var(--uv-red);
+}
+
+.name {
+  margin: 0;
+  color: var(--uv-text-strong);
+  font-size: 24px;
+  font-weight: var(--ls-fw-semibold);
+  letter-spacing: 1.5px;
+  overflow-wrap: anywhere;
+}
+
+.description {
+  flex: 1;
+  margin: 0;
+  color: var(--uv-text);
+  font-size: 18px;
+  line-height: var(--ls-lh-relaxed);
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.empty {
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}

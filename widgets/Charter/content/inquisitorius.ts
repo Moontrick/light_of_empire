@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const inquisitoriusContent: CharterContent = {
   hero: {
@@ -9,7 +9,7 @@ export const inquisitoriusContent: CharterContent = {
   },
   sections: [
     {
-      id: 'subordination',
+      slug: 'subordination',
       title: 'Подчинение',
       blocks: [
         {
@@ -23,7 +23,7 @@ export const inquisitoriusContent: CharterContent = {
       ],
     },
     {
-      id: 'structure',
+      slug: 'structure',
       title: 'Структура',
       blocks: [
         {
@@ -37,7 +37,7 @@ export const inquisitoriusContent: CharterContent = {
       ],
     },
     {
-      id: 'rights',
+      slug: 'rights',
       title: 'Права',
       blocks: [
         {
@@ -54,7 +54,7 @@ export const inquisitoriusContent: CharterContent = {
       ],
     },
     {
-      id: 'duties',
+      slug: 'duties',
       title: 'Обязанности',
       blocks: [
         {

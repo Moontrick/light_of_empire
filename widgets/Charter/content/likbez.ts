@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const likbezContent: CharterContent = {
   hero: {
@@ -10,7 +10,7 @@ export const likbezContent: CharterContent = {
   searchPlaceholder: 'Поиск по ликбезам…',
   sections: [
     {
-      id: 'callsigns',
+      slug: 'callsigns',
       title: 'Позывные и ники',
       blocks: [
         {
@@ -32,7 +32,7 @@ export const likbezContent: CharterContent = {
       ],
     },
     {
-      id: 'rollback',
+      slug: 'rollback',
       title: 'Откат действий',
       blocks: [
         {
@@ -46,7 +46,7 @@ export const likbezContent: CharterContent = {
       ],
     },
     {
-      id: 'handcuffs',
+      slug: 'handcuffs',
       title: 'Наручники',
       blocks: [
         {
@@ -60,7 +60,7 @@ export const likbezContent: CharterContent = {
       ],
     },
     {
-      id: 'rp-death',
+      slug: 'rp-death',
       title: 'РП смерть',
       blocks: [
         {
@@ -78,7 +78,7 @@ export const likbezContent: CharterContent = {
       ],
     },
     {
-      id: 'soundpad',
+      slug: 'soundpad',
       title: 'Саундпад и посторонние звуки',
       blocks: [
         {
@@ -88,7 +88,7 @@ export const likbezContent: CharterContent = {
       ],
     },
     {
-      id: 'rp-interaction',
+      slug: 'rp-interaction',
       title: 'Поддержание РП и /roll',
       blocks: [
         {
@@ -110,7 +110,7 @@ export const likbezContent: CharterContent = {
       ],
     },
     {
-      id: 'rp-interruption',
+      slug: 'rp-interruption',
       title: 'Прерывание РП события',
       blocks: [
         {
@@ -124,7 +124,7 @@ export const likbezContent: CharterContent = {
       ],
     },
     {
-      id: 'discord',
+      slug: 'discord',
       title: 'Дискорд и РП',
       blocks: [
         {

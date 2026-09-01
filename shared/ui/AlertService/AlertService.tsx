@@ -1,34 +1,33 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { ConfigProvider, notification } from 'antd';
+import { DARK_FORM_THEME } from '@utils/antdTheme';
 import { alertHandler } from '../../utils/alertHandler';
-import { Alert } from '../Alert';
-import styles from './AlertService.module.scss';
+import type { AlertMessage } from '../../utils/alertHandler/type';
+
+const ALERT_DURATION_SECONDS = 7;
+const STACK_THRESHOLD = 3;
 
 export function AlertService() {
-  const [alerts, setAlerts] = useState(alertHandler.getAlerts());
-
-  function handleDeleteAlert(id: string) {
-    alertHandler.removeAlertById(id);
-  }
+  const [api, contextHolder] = notification.useNotification({
+    stack: { threshold: STACK_THRESHOLD },
+  });
 
   useEffect(() => {
-    const updateAlerts = () => setAlerts([...alertHandler.getAlerts()]);
-    alertHandler.subscribe(updateAlerts);
-    return () => alertHandler.unsubscribe(updateAlerts);
-  }, []);
+    const show = (alert: AlertMessage) => {
+      api[alert.status]({
+        key: alert.id,
+        title: alert.message,
+        description: alert.subTitle,
+        placement: 'topRight',
+        duration: ALERT_DURATION_SECONDS,
+      });
+    };
 
-  return (
-    <div className={styles.alerts}>
-      {alerts.map((item) => (
-        <Alert
-          key={item.id}
-          status={item.status}
-          title={item.message ?? item.defaultText}
-          subTitle={item.subTitle}
-          onClose={() => handleDeleteAlert(item.id)}
-        />
-      ))}
-    </div>
-  );
+    alertHandler.subscribe(show);
+    return () => alertHandler.unsubscribe(show);
+  }, [api]);
+
+  return <ConfigProvider theme={DARK_FORM_THEME}>{contextHolder}</ConfigProvider>;
 }

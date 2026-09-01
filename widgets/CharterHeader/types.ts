@@ -1,6 +1,6 @@
 export interface NavNode {
   label: string;
-  href: string;
+  href?: string;
   active?: boolean;
   children?: NavNode[];
 }

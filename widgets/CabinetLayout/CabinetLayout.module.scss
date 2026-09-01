@@ -1,0 +1,35 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(15, 15, 16, 0.86), rgba(15, 15, 16, 0.94)),
+    url('/images/hero-space.jpg') center / cover no-repeat fixed;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 48px 64px;
+}
+
+.mainInner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.wide {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    flex-direction: column;
+  }
+
+  .main {
+    padding: 24px 12px 64px;
+  }
+}

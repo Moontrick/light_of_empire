@@ -1,5 +1,5 @@
-import type { NewsItem } from '@/shared/news';
+import type { NewsPost } from '@/shared/types';
 
 export interface NewsCardProps {
-  item: NewsItem;
+  item: NewsPost;
 }

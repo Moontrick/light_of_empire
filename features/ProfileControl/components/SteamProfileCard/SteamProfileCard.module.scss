@@ -1,0 +1,17 @@
+.error {
+  margin: 0 0 12px;
+  color: var(--uv-text-muted);
+  font-size: 15px;
+  font-style: italic;
+}
+
+.fallbackLink {
+  color: var(--uv-link);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.fallbackLink:hover {
+  color: var(--uv-red-bright);
+}

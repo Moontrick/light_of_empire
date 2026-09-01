@@ -9,9 +9,8 @@ export enum AlertStatus {
 
 export type AlertMessage = {
   id: string;
-  message: string | null;
+  message: string;
   status: `${AlertStatus}`;
-  defaultText: string;
   subTitle?: ReactNode;
 };
 
@@ -22,4 +21,4 @@ export type AddAlert = {
   subTitle?: ReactNode;
 };
 
-export type AlertChangeListener = () => void;
+export type AlertListener = (alert: AlertMessage) => void;

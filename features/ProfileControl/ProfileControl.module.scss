@@ -1,0 +1,29 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 960px) 340px;
+  gap: 24px;
+  align-items: start;
+  justify-content: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.side {
+  position: sticky;
+  top: 24px;
+}
+
+@media (max-width: 1240px) {
+  .layout {
+    grid-template-columns: minmax(0, 960px);
+  }
+
+  .side {
+    position: static;
+  }
+}

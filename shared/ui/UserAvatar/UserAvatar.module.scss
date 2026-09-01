@@ -1,0 +1,11 @@
+.avatar {
+  border-radius: 50%;
+  border: 1px solid var(--uv-border);
+  object-fit: cover;
+  background: var(--uv-bg-elevated);
+}
+
+.lg {
+  border-color: var(--uv-border-accent);
+  box-shadow: 0 0 24px var(--uv-red-glow);
+}

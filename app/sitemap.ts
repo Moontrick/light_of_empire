@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 import { SITE } from '@/shared/seo';
-import { getNews } from '@/shared/news';
 
 const ROUTES: { path: string; priority: number; changeFrequency: 'monthly' | 'weekly' }[] = [
   { path: '', priority: 1, changeFrequency: 'weekly' },
@@ -39,18 +38,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  const newsEntries: MetadataRoute.Sitemap = getNews().map((item) => ({
-    url: `${SITE.url}/news/${item.slug}`,
-    lastModified: new Date(item.isoDate),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-    alternates: {
-      languages: {
-        en: `${SITE.url}/news/${item.slug}`,
-        ru: `${SITE.url}/ru/news/${item.slug}`,
-      },
-    },
-  }));
-
-  return [...staticEntries, ...newsEntries];
+  return staticEntries;
 }

@@ -105,3 +105,21 @@
   background: var(--uv-accent);
   transform: rotate(45deg);
 }
+
+.imageBlock {
+  margin: 36px 0;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  border-radius: var(--uv-radius);
+}
+
+.caption {
+  margin-top: 10px;
+  color: var(--uv-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}

@@ -1,33 +1,14 @@
-import type { NewsItem } from '@/shared/news';
+import type { NewsPost } from '@/shared/types';
+import { formatNewsDate } from '@/shared/utils/formatNewsDate';
 
 export interface NewsDateGroup {
   isoDate: string;
   label: string;
   startIndex: number;
-  items: NewsItem[];
+  items: NewsPost[];
 }
 
-const MONTHS = [
-  'января',
-  'февраля',
-  'марта',
-  'апреля',
-  'мая',
-  'июня',
-  'июля',
-  'августа',
-  'сентября',
-  'октября',
-  'ноября',
-  'декабря',
-];
-
-function formatDateLabel(isoDate: string): string {
-  const [year, month, day] = isoDate.split('-');
-  return `${Number(day)} ${MONTHS[Number(month) - 1]} ${year}`;
-}
-
-export function groupNewsByDate(news: NewsItem[]): NewsDateGroup[] {
+export function groupNewsByDate(news: NewsPost[]): NewsDateGroup[] {
   const sorted = [...news].sort((a, b) => b.isoDate.localeCompare(a.isoDate));
 
   return sorted.reduce<NewsDateGroup[]>((groups, item, index) => {
@@ -38,7 +19,7 @@ export function groupNewsByDate(news: NewsItem[]): NewsDateGroup[] {
     } else {
       groups.push({
         isoDate: item.isoDate,
-        label: formatDateLabel(item.isoDate),
+        label: formatNewsDate(item.isoDate),
         startIndex: index,
         items: [item],
       });

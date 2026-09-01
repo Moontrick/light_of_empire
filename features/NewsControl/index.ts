@@ -1,0 +1,1 @@
+export { NewsControl } from './NewsControl';

@@ -1,0 +1,1 @@
+export { SteamProfileInfo } from './SteamProfileInfo';

@@ -1,4 +1,4 @@
-import type { CharterContent } from './types';
+import type { CharterContent } from '@/shared/types';
 
 export const charterContent: CharterContent = {
   hero: {
@@ -9,7 +9,7 @@ export const charterContent: CharterContent = {
   },
   sections: [
     {
-      id: 'intro',
+      slug: 'intro',
       title: 'Вводная информация',
       blocks: [
         {
@@ -31,7 +31,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'recruit-course',
+      slug: 'recruit-course',
       title: 'Курс молодого бойца',
       blocks: [
         {
@@ -52,7 +52,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'golden-rules',
+      slug: 'golden-rules',
       title: 'Золотые правила',
       blocks: [
         {
@@ -73,7 +73,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'formation-conduct',
+      slug: 'formation-conduct',
       title: 'Правила поведения в строю',
       blocks: [
         {
@@ -90,7 +90,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'etiquette',
+      slug: 'etiquette',
       title: 'Воинский этикет',
       blocks: [
         {
@@ -107,7 +107,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'lexicon',
+      slug: 'lexicon',
       title: 'Военный лексикон',
       blocks: [
         { kind: 'text', text: 'Военная лексика, которую должен соблюдать каждый военнослужащий:' },
@@ -127,7 +127,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'weapons',
+      slug: 'weapons',
       title: 'Регламент ношения оружия',
       blocks: [
         {
@@ -143,7 +143,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'duties',
+      slug: 'duties',
       title: 'Обязанности и права всех единиц ИА',
       blocks: [
         { kind: 'subheading', text: 'Обязанности' },
@@ -174,7 +174,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'guard-duty',
+      slug: 'guard-duty',
       title: 'Постовая служба',
       blocks: [
         {
@@ -196,7 +196,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'codes',
+      slug: 'codes',
       title: 'Коды на военном объекте',
       blocks: [
         { kind: 'text', text: 'Код состоит из уровня угрозы и класса угрозы.' },
@@ -233,7 +233,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'arsenal',
+      slug: 'arsenal',
       title: 'Правила арсенала',
       blocks: [
         {
@@ -247,7 +247,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'safety',
+      slug: 'safety',
       title: 'Техника безопасности',
       blocks: [
         {
@@ -264,7 +264,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'command',
+      slug: 'command',
       title: 'Командование формирования',
       blocks: [
         {
@@ -297,7 +297,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'promotion',
+      slug: 'promotion',
       title: 'Система повышения',
       blocks: [
         {
@@ -310,7 +310,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'ranks',
+      slug: 'ranks',
       title: 'Звания ИА',
       blocks: [
         { kind: 'subheading', text: 'Рядовой состав' },
@@ -336,7 +336,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'specializations',
+      slug: 'specializations',
       title: 'Специализации',
       blocks: [
         {
@@ -347,7 +347,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'discipline',
+      slug: 'discipline',
       title: 'Система дисциплинарных взысканий',
       blocks: [
         { kind: 'subheading', text: 'Проступки (КПЗ 1–2 срока или иное взыскание)' },
@@ -390,7 +390,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'objects',
+      slug: 'objects',
       title: 'Военные объекты',
       blocks: [
         {
@@ -426,7 +426,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'tribunal',
+      slug: 'tribunal',
       title: 'Трибунал',
       blocks: [
         { kind: 'subheading', text: 'Правила судопроизводства' },
@@ -459,7 +459,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'operations',
+      slug: 'operations',
       title: 'Боевые операции',
       blocks: [
         {
@@ -482,7 +482,7 @@ export const charterContent: CharterContent = {
       ],
     },
     {
-      id: 'abbreviations',
+      slug: 'abbreviations',
       title: 'Аббревиатуры',
       blocks: [
         {

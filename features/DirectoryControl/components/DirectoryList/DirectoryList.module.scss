@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.skeletonCard {
+  padding: 20px 24px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  border-left: 2px solid var(--uv-red);
+}

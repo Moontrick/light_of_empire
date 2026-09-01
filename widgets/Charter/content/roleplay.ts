@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const roleplayContent: CharterContent = {
   hero: {
@@ -10,7 +10,7 @@ export const roleplayContent: CharterContent = {
   searchPlaceholder: 'Поиск по руководству…',
   sections: [
     {
-      id: 'me',
+      slug: 'me',
       title: '/me — отыгровка действия',
       blocks: [
         {
@@ -33,7 +33,7 @@ export const roleplayContent: CharterContent = {
       ],
     },
     {
-      id: 'roll',
+      slug: 'roll',
       title: '/roll — проверка на успех',
       blocks: [
         {
@@ -66,7 +66,7 @@ export const roleplayContent: CharterContent = {
       ],
     },
     {
-      id: 'do',
+      slug: 'do',
       title: '/do — обстановка вокруг',
       blocks: [
         {
@@ -89,7 +89,7 @@ export const roleplayContent: CharterContent = {
       ],
     },
     {
-      id: 'advert',
+      slug: 'advert',
       title: '/advert — глобальное сообщение',
       blocks: [
         {
@@ -104,7 +104,7 @@ export const roleplayContent: CharterContent = {
       ],
     },
     {
-      id: 'galaxy-map',
+      slug: 'galaxy-map',
       title: 'Карта галактики',
       blocks: [
         {

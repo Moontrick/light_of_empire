@@ -1,0 +1,1 @@
+export { DocHero } from './DocHero';

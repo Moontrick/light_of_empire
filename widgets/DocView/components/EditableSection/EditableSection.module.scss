@@ -1,0 +1,34 @@
+.wrap {
+  border: 1px dashed transparent;
+  transition: border-color 0.15s ease;
+}
+
+.wrap:hover {
+  border-color: var(--uv-border);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px 0;
+}
+
+.editButton {
+  height: 36px;
+  padding: 0 14px;
+  color: var(--uv-text);
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  border-radius: var(--uv-radius);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.editButton:hover {
+  color: var(--uv-text-strong);
+  background: var(--uv-bg-hover);
+  border-color: var(--uv-red);
+}

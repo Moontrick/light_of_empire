@@ -1,0 +1,40 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.name {
+  font-weight: var(--ls-fw-semibold);
+}
+
+.slug {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: var(--ls-fs-sm);
+}
+
+.status {
+  min-width: 140px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.open {
+  font-size: var(--ls-fs-sm);
+  text-decoration: underline;
+}

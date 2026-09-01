@@ -1,6 +1,6 @@
 import type { NavNode } from './types';
 
-export const SITE_TITLE = 'LIGHT OF EMPIRE';
+export { SITE_TITLE } from '@/shared/constants';
 
 export const MOBILE_QUERY = '(max-width: 900px)';
 
@@ -26,44 +26,4 @@ export const NAV_ITEMS: NavNode[] = [
   { label: 'Устав ИА', href: '/ustav' },
   { label: 'Новости', href: '/news' },
   { label: 'Хроника', href: '/chronicle' },
-  { label: 'Уголовный кодекс', href: '/criminal-code' },
-  {
-    label: 'Структуры',
-    href: '/structures',
-    children: [
-      { label: 'Высшее командование', href: '/high-command' },
-      { label: 'ИББ', href: '/isb' },
-      { label: 'Военная полиция', href: '/military-police' },
-      { label: 'Инквизиторий', href: '/inquisitorius' },
-      { label: 'Корпус тёмных штурмовиков', href: '/shadow-troopers' },
-    ],
-  },
-  {
-    label: 'Дополнительно',
-    href: '/extra',
-    children: [
-     
-      { label: 'Ликбезы', href: '/likbez' },
-      { label: 'Отыгровки', href: '/roleplay' },
-      { label: 'РП правила', href: '/rp-rules' },
-      { label: 'Правила Discord', href: '/discord-rules' },
-      // { label: 'Вооружение', href: '#' },
-      // {
-      //   label: 'Техника',
-      //   href: '#',
-      //   children: [
-      //     { label: 'Имперская техника', href: '#' },
-      //     { label: 'Техника противника', href: '#' },
-      //   ],
-      // },
-      // {
-      //   label: 'Дроиды',
-      //   href: '#',
-      //   children: [
-      //     { label: 'Имперские дроиды', href: '#' },
-      //     { label: 'Дроиды противника', href: '#' },
-      //   ],
-      // },
-    ],
-  },
 ];

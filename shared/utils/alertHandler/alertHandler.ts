@@ -1,16 +1,12 @@
 import { getError } from '../getError';
 import { uuid } from '../uuid';
-import { AddAlert, AlertChangeListener, AlertMessage } from './type';
+import { AddAlert, AlertListener, AlertMessage } from './type';
 
+// Показ и таймеры — на antd notification в AlertService;
+// здесь только доставка событий из любого кода в подписчика
 class AlertHandler {
-  private alerts: AlertMessage[] = [];
-  private alertTimers: Map<string, NodeJS.Timeout> = new Map();
-  private delay = 7000;
-  private listeners: AlertChangeListener[] = [];
-
-  public getAlerts() {
-    return this.alerts;
-  }
+  private listeners: AlertListener[] = [];
+  private pending: AlertMessage[] = [];
 
   public addAlert({
     alert,
@@ -18,50 +14,31 @@ class AlertHandler {
     defaultText = 'Ошибка сервера',
     subTitle,
   }: AddAlert) {
-    const id = uuid();
-    const message = getError(alert);
+    const item: AlertMessage = {
+      id: uuid(),
+      message: getError(alert) ?? defaultText,
+      status,
+      subTitle,
+    };
 
-    this.alerts = [
-      ...this.alerts,
-      { id, message, status, defaultText, subTitle },
-    ];
-    this.notifyListeners();
-
-    const timerId = setTimeout(() => {
-      this.removeAlertById(id);
-    }, this.delay);
-    this.alertTimers.set(id, timerId);
-  }
-
-  public removeAlertById(id: string) {
-    this.alerts = this.alerts.filter((alert) => alert.id !== id);
-    const timerId = this.alertTimers.get(id);
-    if (timerId) {
-      clearTimeout(timerId);
-      this.alertTimers.delete(id);
+    // До монтирования AlertService копим алерты, чтобы не потерять их
+    if (this.listeners.length === 0) {
+      this.pending.push(item);
+      return;
     }
-    this.notifyListeners();
+
+    this.listeners.forEach((listener) => listener(item));
   }
 
-  public clearAlerts() {
-    this.alerts = [];
-    this.alertTimers.forEach((timerId) => clearTimeout(timerId));
-    this.alertTimers.clear();
-    this.notifyListeners();
-  }
-
-  public subscribe(listener: AlertChangeListener) {
+  public subscribe(listener: AlertListener) {
     this.listeners.push(listener);
+    this.pending.forEach((item) => listener(item));
+    this.pending = [];
   }
 
-  public unsubscribe(listener: AlertChangeListener) {
-    this.listeners = this.listeners.filter((l) => l !== listener);
-  }
-
-  private notifyListeners() {
-    this.listeners.forEach((listener) => listener());
+  public unsubscribe(listener: AlertListener) {
+    this.listeners = this.listeners.filter((item) => item !== listener);
   }
 }
 
 export const alertHandler = new AlertHandler();
-export type AlertHandlerType = typeof alertHandler;

@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const criminalCodeContent: CharterContent = {
   hero: {
@@ -10,7 +10,7 @@ export const criminalCodeContent: CharterContent = {
   searchPlaceholder: 'Поиск по кодексу…',
   sections: [
     {
-      id: 'article-1',
+      slug: 'article-1',
       title: 'Статья 1. Причинение вреда здоровью',
       blocks: [
         {
@@ -35,7 +35,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-2',
+      slug: 'article-2',
       title: 'Статья 2. Нарушение общественного порядка',
       blocks: [
         {
@@ -84,7 +84,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-3',
+      slug: 'article-3',
       title: 'Статья 3. Документы',
       blocks: [
         {
@@ -114,7 +114,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-4',
+      slug: 'article-4',
       title: 'Статья 4. Взяточничество',
       blocks: [
         {
@@ -124,7 +124,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-5',
+      slug: 'article-5',
       title: 'Статья 5. Нарушение Устава',
       blocks: [
         {
@@ -134,7 +134,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-6',
+      slug: 'article-6',
       title: 'Статья 6. Мошенничество',
       blocks: [
         {
@@ -163,7 +163,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-7',
+      slug: 'article-7',
       title: 'Статья 7. Контрабанда',
       blocks: [
         {
@@ -181,7 +181,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-8',
+      slug: 'article-8',
       title: 'Статья 8. Заработок',
       blocks: [
         {
@@ -194,7 +194,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-9',
+      slug: 'article-9',
       title: 'Статья 9. Подрыв безопасности сектора',
       blocks: [
         {
@@ -242,7 +242,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'article-10',
+      slug: 'article-10',
       title: 'Статья 10. Торговля',
       blocks: [
         {
@@ -252,7 +252,7 @@ export const criminalCodeContent: CharterContent = {
       ],
     },
     {
-      id: 'penalties',
+      slug: 'penalties',
       title: 'Категории наказаний',
       blocks: [
         {

@@ -1,0 +1,28 @@
+.error {
+  min-height: calc(100vh - var(--uv-header-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 48px 16px;
+  background: var(--uv-bg);
+  color: var(--uv-text-muted);
+  text-align: center;
+}
+
+.retry {
+  padding: 10px 24px;
+  color: var(--uv-text-strong);
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  border-radius: var(--uv-radius);
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.retry:hover {
+  border-color: var(--uv-red);
+  background: rgba(255, 255, 255, 0.05);
+}

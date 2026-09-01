@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const highCommandContent: CharterContent = {
   hero: {
@@ -9,7 +9,7 @@ export const highCommandContent: CharterContent = {
   },
   sections: [
     {
-      id: 'structure',
+      slug: 'structure',
       title: 'Структура',
       blocks: [
         {
@@ -47,7 +47,7 @@ export const highCommandContent: CharterContent = {
       ],
     },
     {
-      id: 'duties',
+      slug: 'duties',
       title: 'Обязанности',
       blocks: [
         {
@@ -64,7 +64,7 @@ export const highCommandContent: CharterContent = {
       ],
     },
     {
-      id: 'rights',
+      slug: 'rights',
       title: 'Права',
       blocks: [
         {

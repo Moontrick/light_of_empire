@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const militaryPoliceContent: CharterContent = {
   hero: {
@@ -9,7 +9,7 @@ export const militaryPoliceContent: CharterContent = {
   },
   sections: [
     {
-      id: 'departments',
+      slug: 'departments',
       title: 'Отделы',
       blocks: [
         {
@@ -24,7 +24,7 @@ export const militaryPoliceContent: CharterContent = {
       ],
     },
     {
-      id: 'duties',
+      slug: 'duties',
       title: 'Обязанности',
       blocks: [
         {
@@ -42,7 +42,7 @@ export const militaryPoliceContent: CharterContent = {
       ],
     },
     {
-      id: 'rights',
+      slug: 'rights',
       title: 'Права',
       blocks: [
         {
@@ -59,7 +59,7 @@ export const militaryPoliceContent: CharterContent = {
       ],
     },
     {
-      id: 'detention',
+      slug: 'detention',
       title: 'Порядок задержания',
       blocks: [
         {

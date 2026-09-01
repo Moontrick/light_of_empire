@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Link } from '@/shared/i18n/navigation';
 import type { NewsRowProps } from './types';
 import styles from './NewsRow.module.scss';
@@ -20,13 +19,11 @@ export function NewsRow({ item, index }: NewsRowProps) {
       </div>
 
       <div className={styles.thumb}>
-        <Image
-          src={item.image}
-          alt={item.title}
-          fill
-          sizes="220px"
-          className={styles.image}
-        />
+        {item.imageUrl ? (
+          <img src={item.imageUrl} alt={item.title} className={styles.image} />
+        ) : (
+          <span className={styles.thumbFallback} aria-hidden />
+        )}
       </div>
 
       <span className={styles.arrow} aria-hidden>

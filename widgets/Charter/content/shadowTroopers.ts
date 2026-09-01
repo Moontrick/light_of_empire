@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const shadowTroopersContent: CharterContent = {
   hero: {
@@ -9,7 +9,7 @@ export const shadowTroopersContent: CharterContent = {
   },
   sections: [
     {
-      id: 'profile',
+      slug: 'profile',
       title: 'Характер действий',
       blocks: [
         {
@@ -24,7 +24,7 @@ export const shadowTroopersContent: CharterContent = {
       ],
     },
     {
-      id: 'structure',
+      slug: 'structure',
       title: 'Структура',
       blocks: [
         {
@@ -43,7 +43,7 @@ export const shadowTroopersContent: CharterContent = {
       ],
     },
     {
-      id: 'rights',
+      slug: 'rights',
       title: 'Права',
       blocks: [
         {
@@ -60,7 +60,7 @@ export const shadowTroopersContent: CharterContent = {
       ],
     },
     {
-      id: 'duties',
+      slug: 'duties',
       title: 'Обязанности',
       blocks: [
         {

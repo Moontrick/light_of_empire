@@ -7,7 +7,7 @@ import styles from './NavItem.module.scss';
 
 export function NavItem({ node, depth, activePath, onNavigate }: NavItemProps) {
   const hasChildren = Boolean(node.children?.length);
-  const isInternal = node.href.startsWith('/');
+  const isInternal = node.href?.startsWith('/') ?? false;
   const isActive = node.active || (isInternal && activePath === node.href);
 
   const linkClassName = classNames(styles.link, {
@@ -24,7 +24,9 @@ export function NavItem({ node, depth, activePath, onNavigate }: NavItemProps) {
 
   return (
     <li className={classNames(styles.item, styles[`depth${depth}`])}>
-      {isInternal ? (
+      {!node.href ? (
+        <span className={linkClassName}>{content}</span>
+      ) : isInternal ? (
         <Link href={node.href} className={linkClassName} onClick={onNavigate}>
           {content}
         </Link>
@@ -38,7 +40,7 @@ export function NavItem({ node, depth, activePath, onNavigate }: NavItemProps) {
         <ul className={classNames(styles.submenu, styles[`submenuDepth${depth}`])}>
           {node.children!.map((child) => (
             <NavItem
-              key={child.label}
+              key={child.href ?? child.label}
               node={child}
               depth={depth + 1}
               activePath={activePath}

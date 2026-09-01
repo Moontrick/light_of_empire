@@ -1,0 +1,16 @@
+.tag {
+  display: inline-block;
+  max-width: 100%;
+  padding: 2px 10px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  color: var(--uv-text);
+  font-size: 14px;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+}
+
+.lg {
+  padding: 4px 14px;
+  font-size: 20px;
+}

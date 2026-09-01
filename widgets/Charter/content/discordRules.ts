@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const discordRulesContent: CharterContent = {
   hero: {
@@ -10,7 +10,7 @@ export const discordRulesContent: CharterContent = {
   searchPlaceholder: 'Поиск по правилам…',
   sections: [
     {
-      id: 'nickname',
+      slug: 'nickname',
       title: 'Требования к нику',
       blocks: [
         {
@@ -33,7 +33,7 @@ export const discordRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'prohibited-content',
+      slug: 'prohibited-content',
       title: 'Запрещённый контент и поведение',
       blocks: [
         {
@@ -80,7 +80,7 @@ export const discordRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'administration',
+      slug: 'administration',
       title: 'Взаимодействие с администрацией и жалобы',
       blocks: [
         {
@@ -103,7 +103,7 @@ export const discordRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'external-resources',
+      slug: 'external-resources',
       title: 'Сторонние ресурсы и реклама',
       blocks: [
         {
@@ -126,7 +126,7 @@ export const discordRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'technical',
+      slug: 'technical',
       title: 'Техническое',
       blocks: [
         {

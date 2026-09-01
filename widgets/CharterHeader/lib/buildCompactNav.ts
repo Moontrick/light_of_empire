@@ -14,7 +14,7 @@ function subtreeHeight(node: NavNode): number {
 // Если у пункта высота поддерева больше допустимой, сам пункт как обёртку не
 // сохраняем — поднимаем его детей на уровень выше (рекурсивно, на случай ещё
 // более глубокой вложенности), сохраняя порядок.
-function flattenToHeight(nodes: NavNode[], maxHeight: number): NavNode[] {
+export function flattenToHeight(nodes: NavNode[], maxHeight: number): NavNode[] {
   return nodes.flatMap((node) => {
     if (subtreeHeight(node) <= maxHeight) return [node];
 

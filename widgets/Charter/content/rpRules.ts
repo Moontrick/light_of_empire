@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const rpRulesContent: CharterContent = {
   hero: {
@@ -10,7 +10,7 @@ export const rpRulesContent: CharterContent = {
   searchPlaceholder: 'Поиск по правилам…',
   sections: [
     {
-      id: 'navigation',
+      slug: 'navigation',
       title: 'Навигация',
       blocks: [
         {
@@ -28,7 +28,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'main',
+      slug: 'main',
       title: 'Основные положения',
       blocks: [
         {
@@ -94,7 +94,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'roleplay',
+      slug: 'roleplay',
       title: 'Правила отыгровок',
       blocks: [
         {
@@ -144,7 +144,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'chat',
+      slug: 'chat',
       title: 'Правила чата',
       blocks: [
         {
@@ -215,7 +215,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'staff-contact',
+      slug: 'staff-contact',
       title: 'Общение с Персоналом',
       blocks: [
         {
@@ -250,7 +250,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'events',
+      slug: 'events',
       title: 'Правила проведения ивентов',
       blocks: [
         {
@@ -307,7 +307,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'admin',
+      slug: 'admin',
       title: 'Правила для состава администрации',
       blocks: [
         {
@@ -373,7 +373,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'high-admin',
+      slug: 'high-admin',
       title: 'Правила для Высшей Администрации',
       blocks: [
         {
@@ -406,7 +406,7 @@ export const rpRulesContent: CharterContent = {
       ],
     },
     {
-      id: 'staff-reference',
+      slug: 'staff-reference',
       title: 'Справка об Персонале Проекта',
       blocks: [
         {

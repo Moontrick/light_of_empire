@@ -1,0 +1,28 @@
+.card {
+  border: 1px solid var(--uv-border);
+  background: var(--uv-bg-elevated);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--uv-border);
+}
+
+.title {
+  font-size: var(--ls-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--uv-text-muted);
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+}
+
+.body {
+  padding: 10px;
+}

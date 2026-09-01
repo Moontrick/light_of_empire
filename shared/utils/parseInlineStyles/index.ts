@@ -1,0 +1,1 @@
+export { parseInlineStyles } from './parseInlineStyles';

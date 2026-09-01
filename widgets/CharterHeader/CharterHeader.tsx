@@ -5,15 +5,16 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/shared/i18n/navigation';
 import { NavItem } from './components/NavItem';
 import { MobileNav } from './components/MobileNav';
+import { AuthActions } from './components/AuthActions';
 import { ServerBadge } from './components/ServerBadge';
 import { useCharterHeader } from './hooks/useCharterHeader';
-import { NAV_ITEMS, SITE_TITLE } from './constants';
+import { SITE_TITLE } from './constants';
 import type { CharterHeaderProps } from './types';
 import styles from './CharterHeader.module.scss';
 
 export function CharterHeader({ transparent = false }: CharterHeaderProps) {
   const t = useTranslations('charter');
-  const { open, toggle, close, activePath, navItems } = useCharterHeader();
+  const { open, toggle, close, activePath, navItems, mobileItems } = useCharterHeader();
 
   return (
     <header
@@ -30,12 +31,14 @@ export function CharterHeader({ transparent = false }: CharterHeaderProps) {
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             {navItems.map((node) => (
-              <NavItem key={node.label} node={node} depth={0} activePath={activePath} />
+              <NavItem key={node.href ?? node.label} node={node} depth={0} activePath={activePath} />
             ))}
           </ul>
         </nav>
 
         {/* <ServerBadge /> */}
+
+        <AuthActions />
 
         <button
           type="button"
@@ -50,7 +53,7 @@ export function CharterHeader({ transparent = false }: CharterHeaderProps) {
         </button>
       </div>
 
-      <MobileNav open={open} items={NAV_ITEMS} activePath={activePath} onNavigate={close} />
+      <MobileNav open={open} items={mobileItems} activePath={activePath} onNavigate={close} />
     </header>
   );
 }

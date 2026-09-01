@@ -8,7 +8,7 @@ import styles from './MobileNavItem.module.scss';
 
 export function MobileNavItem({ node, depth, activePath, onNavigate }: MobileNavItemProps) {
   const hasChildren = Boolean(node.children?.length);
-  const isInternal = node.href.startsWith('/');
+  const isInternal = node.href?.startsWith('/') ?? false;
   const isActive = node.active || (isInternal && activePath === node.href);
   const [expanded, setExpanded] = useState(false);
 
@@ -32,7 +32,7 @@ export function MobileNavItem({ node, depth, activePath, onNavigate }: MobileNav
         <ul className={classNames(styles.submenu, { [styles.submenuOpen]: expanded })}>
           {node.children!.map((child) => (
             <MobileNavItem
-              key={child.label}
+              key={child.href ?? child.label}
               node={child}
               depth={depth + 1}
               activePath={activePath}
@@ -46,7 +46,9 @@ export function MobileNavItem({ node, depth, activePath, onNavigate }: MobileNav
 
   return (
     <li className={styles.item}>
-      {isInternal ? (
+      {!node.href ? (
+        <span className={rowClassName}>{node.label}</span>
+      ) : isInternal ? (
         <Link href={node.href} className={rowClassName} onClick={onNavigate}>
           {node.label}
         </Link>

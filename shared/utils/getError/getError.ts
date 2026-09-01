@@ -1,14 +1,5 @@
 import { AxiosError } from 'axios';
-
-type ApiErrorBody = {
-  statusCode?: number;
-  error?: string;
-  message?: string | { message?: string | string[] };
-  errors?: string[];
-  detail?: string;
-  path?: string;
-  timestamp?: string;
-};
+import type { ApiErrorBody } from '@/shared/types';
 
 export function getError(error?: unknown): string | null {
   if (error && typeof error === 'object') {

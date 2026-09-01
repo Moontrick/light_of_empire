@@ -1,4 +1,4 @@
-import type { NewsBlock } from '@/shared/news';
+import type { NewsBlock } from '@/shared/types';
 
 export interface NewsContentProps {
   blocks: NewsBlock[];

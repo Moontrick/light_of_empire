@@ -48,6 +48,15 @@ export function NewsContent({ blocks }: NewsContentProps) {
           );
         }
 
+        if (block.type === 'image') {
+          return (
+            <figure key={key} className={styles.imageBlock}>
+              <img src={block.src} alt={block.alt ?? ''} className={styles.image} />
+              {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
+            </figure>
+          );
+        }
+
         return (
           <p key={key} className={styles.paragraph}>
             {block.text}

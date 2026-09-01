@@ -1,1 +1,0 @@
-export { CharterHero } from './CharterHero';

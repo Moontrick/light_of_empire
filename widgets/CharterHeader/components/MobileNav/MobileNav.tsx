@@ -1,6 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
+import { AuthActions } from '../AuthActions';
 import { MobileNavItem } from './components/MobileNavItem';
 import type { MobileNavProps } from '../../types';
 import styles from './MobileNav.module.scss';
@@ -11,7 +12,7 @@ export function MobileNav({ open, items, activePath, onNavigate }: MobileNavProp
       <ul className={styles.list}>
         {items.map((node) => (
           <MobileNavItem
-            key={node.label}
+            key={node.href ?? node.label}
             node={node}
             depth={0}
             activePath={activePath}
@@ -19,6 +20,7 @@ export function MobileNav({ open, items, activePath, onNavigate }: MobileNavProp
           />
         ))}
       </ul>
+      <AuthActions variant="mobile" onNavigate={onNavigate} />
     </nav>
   );
 }

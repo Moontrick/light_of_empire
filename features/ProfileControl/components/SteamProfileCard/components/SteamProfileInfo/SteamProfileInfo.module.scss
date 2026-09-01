@@ -1,0 +1,92 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.name {
+  color: var(--uv-text-strong);
+  font-size: 20px;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+}
+
+.state {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.stateOnline {
+  color: var(--uv-link);
+}
+
+.stateInGame {
+  color: var(--uv-cat-4);
+}
+
+.stateOffline {
+  color: var(--uv-text-muted);
+}
+
+.idRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+}
+
+.idLabel {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.idValue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--uv-text);
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.idValue:hover {
+  color: var(--uv-red-bright);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--uv-link);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--uv-red-bright);
+}

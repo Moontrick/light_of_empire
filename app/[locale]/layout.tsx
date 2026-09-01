@@ -4,6 +4,8 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { cormorant } from '@utils/fonts';
 import '@/shared/styles/globals.scss';
 import { AlertService } from '@/shared/ui/AlertService';
+import { AuthProvider } from '@/components/AuthProvider';
+import { SiteFooterGate } from '@/components/SiteFooterGate';
 import { CharterFooter } from '@widgets/CharterFooter';
 import { baseMetadata, baseViewport } from '@/shared/seo';
 import type { LayoutProps } from './types';
@@ -21,8 +23,11 @@ export default async function LocaleLayout({ params, children }: LayoutProps) {
       <body className={cormorant.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AntdRegistry>
+            <AuthProvider />
             {children}
-            <CharterFooter />
+            <SiteFooterGate>
+              <CharterFooter />
+            </SiteFooterGate>
             <AlertService />
           </AntdRegistry>
         </NextIntlClientProvider>

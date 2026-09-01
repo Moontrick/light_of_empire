@@ -1,0 +1,1 @@
+export { SiteFooterGate } from './SiteFooterGate';

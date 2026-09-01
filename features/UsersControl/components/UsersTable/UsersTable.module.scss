@@ -1,0 +1,61 @@
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userMeta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.userLogin {
+  color: var(--uv-text-strong);
+}
+
+.userEmail {
+  color: var(--uv-text-muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.roleSelect {
+  min-width: 160px;
+}
+
+.roleCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.editRole {
+  display: inline-flex;
+  padding: 2px;
+  background: none;
+  border: none;
+  color: var(--uv-text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.editRole:hover {
+  color: var(--uv-red-bright);
+}
+
+.contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+a.contact {
+  color: var(--uv-link);
+  text-decoration: none;
+}
+
+a.contact:hover {
+  color: var(--uv-red-bright);
+}

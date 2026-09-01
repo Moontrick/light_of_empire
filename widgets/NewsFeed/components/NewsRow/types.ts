@@ -1,6 +1,6 @@
-import type { NewsItem } from '@/shared/news';
+import type { NewsPost } from '@/shared/types';
 
 export interface NewsRowProps {
-  item: NewsItem;
+  item: NewsPost;
   index: number;
 }

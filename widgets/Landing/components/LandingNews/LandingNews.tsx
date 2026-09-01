@@ -1,12 +1,15 @@
+'use client';
+
+import { Skeleton } from 'antd';
 import { Link } from '@/shared/i18n/navigation';
 import { NewsCard } from '@ui/NewsCard';
-import { getLatestNews } from '@/shared/news';
+import { useLandingNews } from './hooks/useLandingNews';
 import styles from './LandingNews.module.scss';
 
-const LANDING_NEWS_COUNT = 3;
-
 export function LandingNews() {
-  const items = getLatestNews(LANDING_NEWS_COUNT);
+  const { items, loading } = useLandingNews();
+
+  if (!loading && items.length === 0) return null;
 
   return (
     <section className={styles.news}>
@@ -24,11 +27,19 @@ export function LandingNews() {
           </Link>
         </div>
 
-        <div className={styles.grid}>
-          {items.map((item) => (
-            <NewsCard key={item.slug} item={item} />
-          ))}
-        </div>
+        {loading ? (
+          <div className={styles.grid}>
+            <Skeleton active paragraph={{ rows: 4 }} />
+            <Skeleton active paragraph={{ rows: 4 }} />
+            <Skeleton active paragraph={{ rows: 4 }} />
+          </div>
+        ) : (
+          <div className={styles.grid}>
+            {items.map((item) => (
+              <NewsCard key={item.slug} item={item} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

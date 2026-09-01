@@ -1,0 +1,1 @@
+export { DocBody } from './DocBody';

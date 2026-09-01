@@ -1,0 +1,15 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 28px 0;
+  padding: 24px;
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border-accent);
+  border-radius: var(--uv-radius);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

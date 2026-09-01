@@ -1,0 +1,37 @@
+.bar {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  padding: 10px 20px;
+  color: var(--uv-text-strong);
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border);
+  border-radius: var(--uv-radius);
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  // Бар висит поверх контента — тень отделяет его от текста страницы
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.button:hover {
+  border-color: var(--uv-red);
+  background: var(--uv-bg-hover);
+}
+
+.buttonActive {
+  background: var(--uv-red);
+  border-color: var(--uv-red);
+}
+
+.buttonActive:hover {
+  background: var(--uv-red-bright);
+  border-color: var(--uv-red-bright);
+}

@@ -1,0 +1,75 @@
+.rule {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--uv-border);
+  background: var(--uv-bg-soft);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.code {
+  width: 120px;
+  flex: none;
+}
+
+.category {
+  flex: 1;
+  min-width: 160px;
+}
+
+// Та же цветовая маркировка категорий, что у кода правила в просмотре (RuleItem)
+.catOption {
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  color: var(--uv-cat-text);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cat1 {
+  background: var(--uv-cat-1);
+}
+
+.cat2 {
+  background: var(--uv-cat-2);
+}
+
+.cat3 {
+  background: var(--uv-cat-3);
+}
+
+.cat4 {
+  background: var(--uv-cat-4);
+}
+
+.cat5 {
+  background: var(--uv-cat-5);
+}
+
+.cat6 {
+  background: var(--uv-cat-6);
+}
+
+.cat7 {
+  background: var(--uv-cat-7);
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 16px;
+  padding-left: 12px;
+  border-left: 1px solid var(--uv-border);
+}

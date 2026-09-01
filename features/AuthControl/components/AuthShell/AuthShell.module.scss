@@ -1,0 +1,70 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--uv-header-height));
+  padding: 64px 16px 96px;
+  background:
+    linear-gradient(rgba(15, 15, 16, 0.82), rgba(15, 15, 16, 0.92)),
+    url('/images/hero-space.jpg') center / cover no-repeat fixed;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  padding: 44px 40px 36px;
+  background: rgba(26, 26, 26, 0.92);
+  border: 1px solid var(--uv-border);
+  backdrop-filter: blur(4px);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin: 0 0 10px;
+  color: var(--uv-text-strong);
+  font-size: 32px;
+  font-weight: var(--ls-fw-semibold);
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0 0 32px;
+  color: var(--uv-text-muted);
+  font-size: 17px;
+  text-align: center;
+}
+
+.footer {
+  margin: 28px 0 0;
+  color: var(--uv-text-muted);
+  text-align: center;
+}
+
+.footer a {
+  color: var(--uv-accent-soft);
+  text-decoration: none;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.footer a:hover {
+  color: var(--uv-red-bright);
+  text-shadow: 0 0 16px var(--uv-red-glow);
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 32px 12px 64px;
+  }
+
+  .card {
+    padding: 32px 20px 28px;
+  }
+}

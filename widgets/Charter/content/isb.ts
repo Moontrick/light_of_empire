@@ -1,4 +1,4 @@
-import type { CharterContent } from '../types';
+import type { CharterContent } from '@/shared/types';
 
 export const isbContent: CharterContent = {
   hero: {
@@ -9,7 +9,7 @@ export const isbContent: CharterContent = {
   },
   sections: [
     {
-      id: 'leadership',
+      slug: 'leadership',
       title: 'Руководство',
       blocks: [
         {
@@ -23,7 +23,7 @@ export const isbContent: CharterContent = {
       ],
     },
     {
-      id: 'judicial',
+      slug: 'judicial',
       title: 'Судебный отдел',
       blocks: [
         {
@@ -53,7 +53,7 @@ export const isbContent: CharterContent = {
       ],
     },
     {
-      id: 'security',
+      slug: 'security',
       title: 'Отдел безопасности',
       blocks: [
         {

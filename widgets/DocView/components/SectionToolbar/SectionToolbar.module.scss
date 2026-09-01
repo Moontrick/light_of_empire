@@ -1,0 +1,16 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+// Кнопки antd size=small ниже соседней «✎ Редактировать» — выравниваем высоту
+.action {
+  height: 36px;
+  min-width: 36px;
+  font-size: var(--ls-fs-lg);
+}
+
+.delete {
+  height: 36px;
+}

@@ -1,0 +1,18 @@
+.titleLink {
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--uv-link);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.titleLink:hover {
+  color: var(--uv-red-bright);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

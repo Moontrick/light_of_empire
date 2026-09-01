@@ -1,0 +1,92 @@
+.identityRow {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.loginRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.login {
+  overflow: hidden;
+  color: var(--uv-text-strong);
+  font-size: 30px;
+  letter-spacing: 2px;
+  line-height: var(--ls-lh-tight);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email {
+  color: var(--uv-text-muted);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 24px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  border-left: 2px solid var(--uv-red);
+}
+
+.tileLabel {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tileValue {
+  color: var(--uv-text-strong);
+  font-size: 24px;
+  line-height: var(--ls-lh-tight);
+  overflow-wrap: anywhere;
+}
+
+.tileEmpty {
+  color: var(--uv-text-muted);
+  font-style: italic;
+}
+
+.hint {
+  display: block;
+  margin-top: 14px;
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .identityRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+}

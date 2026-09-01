@@ -1,20 +1,20 @@
-import { charterContent } from './data';
-import { CharterHero } from './components/CharterHero';
-import { CharterBody } from './components/CharterBody';
-import { CharterFooter } from './components/CharterFooter';
+import { DocBody, DocFooter, DocHero } from '@widgets/DocView';
+import { CharterRemote } from './components/CharterRemote';
 import type { CharterProps } from './types';
 import styles from './Charter.module.scss';
 
-export function Charter({ content = charterContent }: CharterProps) {
+export function Charter({ content }: CharterProps) {
+  if (!content) return <CharterRemote />;
+
   const { hero, sections, footer, searchPlaceholder } = content;
 
   return (
     <div className={styles.root}>
-      <CharterHero eyebrow={hero.eyebrow} title={hero.title} intro={hero.intro} />
+      <DocHero eyebrow={hero.eyebrow} title={hero.title} intro={hero.intro} />
       <main className={styles.content}>
-        <CharterBody sections={sections} searchPlaceholder={searchPlaceholder} />
+        <DocBody sections={sections} searchPlaceholder={searchPlaceholder} />
       </main>
-      <CharterFooter text={footer} />
+      <DocFooter text={footer} />
     </div>
   );
 }

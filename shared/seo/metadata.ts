@@ -16,7 +16,7 @@ export const SITE = {
   description:
     'The Light of Empire — ролевой проект по вселенной Звёздных Войн. Эпоха Галактической Империи и Нового Порядка: Имперская Армия, ИББ, Инквизиторий и Корпус тёмных штурмовиков.',
   url: 'https://thelightofempire.com',
-  logo: '/Logo.jpg',
+  logo: '/Logo2.jpg',
   locale: 'ru_RU',
   author: 'Canto Projects',
 };

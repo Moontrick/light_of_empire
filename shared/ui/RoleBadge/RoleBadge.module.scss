@@ -1,0 +1,30 @@
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid currentColor;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+// Цвета — из категорийной палитры устава (--uv-cat-*)
+.MEMBER {
+  color: var(--uv-cat-7);
+}
+
+.ADMIN {
+  color: var(--uv-cat-6);
+}
+
+.FOUNDER {
+  color: var(--uv-cat-3);
+}
+
+.OWNER {
+  color: var(--uv-cat-2);
+}
+
+.SUPER_USER {
+  color: var(--uv-cat-1);
+}

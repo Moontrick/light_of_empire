@@ -1,0 +1,12 @@
+.text {
+  margin: 0 0 16px;
+}
+
+.url {
+  padding: 10px 12px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  color: var(--uv-link);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
