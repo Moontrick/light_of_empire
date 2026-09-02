@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ServerStatus } from '@/shared/api/gameServer';
 import type { UseServerStatusResult } from './types';
 
-const SERVER_STATUS_ENDPOINT = '/api/server-status';
+const SERVER_STATUS_ENDPOINT = '/internal/server-status';
 const POLL_INTERVAL_MS = 60_000;
 
 export function useServerStatus(): UseServerStatusResult {

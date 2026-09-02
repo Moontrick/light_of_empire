@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import type { SteamProfile } from '@/shared/api/steamProfile';
 import { alertHandler } from '@/shared/utils/alertHandler';
 
-const STEAM_PROFILE_ENDPOINT = '/api/steam-profile';
+const STEAM_PROFILE_ENDPOINT = '/internal/steam-profile';
 
 export function useSteamProfileCard(steamUrl: string) {
   const [profile, setProfile] = useState<SteamProfile | null>(null);
