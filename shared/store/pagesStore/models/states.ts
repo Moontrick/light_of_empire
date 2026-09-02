@@ -11,4 +11,5 @@ export const InitState: PagesState = {
   creatingSection: false,
   reordering: false,
   savingTree: false,
+  summaries: {},
 };

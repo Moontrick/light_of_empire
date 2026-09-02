@@ -3,6 +3,7 @@
 import { notFound } from 'next/navigation';
 import { DocEditorProvider, DocSkeleton, DocView } from '@widgets/DocView';
 import { PageStatusBadge } from './components/PageStatusBadge';
+import { ChildPagesHub } from './components/ChildPagesHub';
 import { usePageView } from './hooks/usePageView';
 import type { PageViewProps } from './types';
 import styles from './PageView.module.scss';
@@ -17,6 +18,7 @@ export function PageView({ slug }: PageViewProps) {
     showStatusBadge,
     fetchPage,
     editor,
+    childPages,
   } = usePageView(slug);
 
   if (isNotFound) notFound();
@@ -40,6 +42,7 @@ export function PageView({ slug }: PageViewProps) {
         doc={page}
         canEdit={canEdit}
         banner={showStatusBadge ? <PageStatusBadge status={page.status} /> : undefined}
+        afterHero={childPages.length > 0 ? <ChildPagesHub items={childPages} /> : undefined}
       />
     </DocEditorProvider>
   );

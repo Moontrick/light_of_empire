@@ -1,14 +1,16 @@
+'use client';
+
 import { Link } from '@/shared/i18n/navigation';
 import { HudCorners } from '@ui/HudCorners';
 import { FooterColumn } from './components/FooterColumn';
+import { FooterColumnSkeleton } from './components/FooterColumnSkeleton';
+import { useCharterFooter } from './hooks/useCharterFooter';
 import {
   CONNECT_URL,
   CONNECT_URL_IP,
-  FOOTER_COLUMNS,
   FOOTER_COPYRIGHT,
   FOOTER_NOTE,
   FOOTER_SOCIALS,
-  FOOTER_TAGLINE,
   FOOTER_TITLE,
   SERVER_ADDRESS,
   SERVER_ADDRESS_IP,
@@ -16,6 +18,9 @@ import {
 import styles from './CharterFooter.module.scss';
 
 export function CharterFooter() {
+  const { columns, loading } = useCharterFooter();
+  const [mainColumn, ...restColumns] = columns;
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
@@ -26,7 +31,6 @@ export function CharterFooter() {
             <Link href="/" className={styles.logo}>
               {FOOTER_TITLE}
             </Link>
-            {/* <p className={styles.tagline}>{FOOTER_TAGLINE}</p> */}
 
             <div className={styles.socials}>
               {FOOTER_SOCIALS.map(({ label, href, icon: Icon, external }) => (
@@ -52,7 +56,14 @@ export function CharterFooter() {
           </div>
 
           <nav className={styles.columns}>
-            {FOOTER_COLUMNS.map((column) => (
+            <FooterColumn column={mainColumn} />
+            {loading && (
+              <>
+                <FooterColumnSkeleton />
+                <FooterColumnSkeleton />
+              </>
+            )}
+            {restColumns.map((column) => (
               <FooterColumn key={column.title} column={column} />
             ))}
           </nav>

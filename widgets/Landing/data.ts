@@ -60,7 +60,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     description:
       'Надзор за лояльностью личного состава, выявление измены, саботажа и мятежа, проведение трибуналов.',
     ctaLabel: 'Подробнее',
-    ctaHref: '/isb',
+    ctaHref: '/imperskaya-sluzhba-bezopasnosti',
     image: '/images/isb.jpg',
     location: { name: 'Сектор', sub: 'Под наблюдением ИББ' },
   },
@@ -72,7 +72,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     description:
       'Одарённые Силой агенты лорда Вейдера, направленные на выявление и уничтожение выживших джедаев.',
     ctaLabel: 'Подробнее',
-    ctaHref: '/inquisitorius',
+    ctaHref: '/inkvizitoriy',
     image: '/images/inc.jpeg',
     location: { name: 'Засекречено', sub: 'Инквизиторий' },
   },

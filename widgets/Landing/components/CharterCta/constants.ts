@@ -8,7 +8,11 @@ export const CTA_TITLE = 'Документы и хроника Империи';
 export const CTA_TEXT =
   'Всё, что должен знать каждый военнослужащий — от структуры командования и правил отыгровки до летописи военного похода.';
 
-export const CTA_CARDS: CtaCardData[] = [
+export const CTA_DYNAMIC_COUNT = 2;
+export const CTA_DYNAMIC_LABEL = 'Открыть';
+export const CTA_DYNAMIC_EYEBROW = 'Документы';
+
+export const CTA_STATIC_CARDS: CtaCardData[] = [
   {
     id: 'ustav',
     eyebrow: 'Устав',
@@ -34,30 +38,15 @@ export const CTA_CARDS: CtaCardData[] = [
     href: '/news',
     ctaLabel: 'К новостям',
   },
-  {
-    id: 'structures',
-    eyebrow: 'Структуры',
-    title: 'Подразделения и службы',
-    text: 'Высшее командование, ИББ, военная полиция, Инквизиторий и Корпус тёмных штурмовиков — кто за что отвечает.',
-    href: '/structures',
-    ctaLabel: 'Смотреть',
-  },
-  {
-    id: 'rp-rules',
-    eyebrow: 'Правила',
-    title: 'Внутренние правила проекта',
-    text: 'Правила отыгровок, чата, проведения ивентов и работы администрации — обязательны к прочтению.',
-    href: '/rp-rules',
-    ctaLabel: 'Открыть правила',
-  },
-  {
-    id: 'discord',
-    eyebrow: 'Сообщество',
-    title: 'Discord проекта',
-    text: 'Основной канал связи: набор в подразделения, новости, общение и координация личного состава.',
-    href: DISCORD_URL,
-    ctaLabel: 'Discord',
-    external: true,
-    discord: true,
-  },
 ];
+
+export const CTA_DISCORD_CARD: CtaCardData = {
+  id: 'discord',
+  eyebrow: 'Сообщество',
+  title: 'Discord проекта',
+  text: 'Основной канал связи: набор в подразделения, новости, общение и координация личного состава.',
+  href: DISCORD_URL,
+  ctaLabel: 'Discord',
+  external: true,
+  discord: true,
+};

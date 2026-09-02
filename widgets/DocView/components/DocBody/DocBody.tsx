@@ -50,6 +50,9 @@ export function DocBody({ sections, searchPlaceholder, renderSection, pinnedSlug
     [sections, normalized, pinnedSlug],
   );
 
+  // Хаб-страница без секций: в просмотре не показываем поиск и заглушку, в редакторе они нужны
+  if (sections.length === 0 && !renderSection) return null;
+
   return (
     <div className={styles.body}>
       <div className={styles.searchWrap}>

@@ -9,27 +9,27 @@ export const extraContent: HubContent = {
     {
       title: 'Структуры',
       description: 'Высшее командование, ИББ, военная полиция, Инквизиторий и Корпус тёмных штурмовиков.',
-      href: '/structures',
+      href: '/struktury',
     },
     {
       title: 'Ликбезы',
       description: 'Памятки бойцу: позывные, откат действий, РП смерть и поддержание отыгровки.',
-      href: '/likbez',
+      href: '/likbezy',
     },
     {
       title: 'Отыгровки',
       description: 'Команды /me, /roll, /do и /advert с примерами использования на сервере.',
-      href: '/roleplay',
+      href: '/otygrovki',
     },
     {
       title: 'РП правила',
       description: 'Внутренние правила проекта: отыгровки, чат, ивенты и работа администрации.',
-      href: '/rp-rules',
+      href: '/vnutrennie-pravila-proekta',
     },
     {
       title: 'Правила Discord',
       description: 'Нормы поведения и требования на Discord-сервере проекта.',
-      href: '/discord-rules',
+      href: '/pravila-discord-servera',
     },
     {
       title: 'Вооружение',

@@ -28,44 +28,22 @@ export const FOOTER_SOCIALS: FooterSocial[] = [
   { label: 'Коллекция Steam', href: STEAM_COLLECTION_URL, icon: IconSteam, external: true },
 ];
 
-export const FOOTER_COLUMNS: FooterColumnData[] = [
-  {
-    title: 'Основное',
-    links: [
-      { label: 'Главная', href: '/' },
-      { label: 'Устав ИА', href: '/ustav' },
-      { label: 'Новости', href: '/news' },
-      { label: 'Хроника', href: '/chronicle' },
-      { label: 'Дополнительно', href: '/extra' },
-    ],
-  },
-  {
-    title: 'Документы',
-    links: [
-      { label: 'Устав ИА', href: '/ustav' },
-      { label: 'Уголовный кодекс', href: '/criminal-code' },
-      { label: 'Ликбезы', href: '/likbez' },
-      { label: 'Отыгровки', href: '/roleplay' },
-      { label: 'РП правила', href: '/rp-rules' },
-      { label: 'Правила Discord', href: '/discord-rules' },
-    ],
-  },
-  {
-    title: 'Структуры',
-    links: [
-      { label: 'Высшее командование', href: '/high-command' },
-      { label: 'ИББ', href: '/isb' },
-      { label: 'Военная полиция', href: '/military-police' },
-      { label: 'Инквизиторий', href: '/inquisitorius' },
-      { label: 'Тёмные штурмовики', href: '/shadow-troopers' },
-    ],
-  },
-  {
-    title: 'Сообщество',
-    links: [
-      { label: 'Discord', href: DISCORD_URL, external: true },
-      { label: 'ВКонтакте', href: VK_URL, external: true },
-      { label: 'Коллекция Steam', href: STEAM_COLLECTION_URL, external: true },
-    ],
-  },
-];
+export const FOOTER_MAIN_COLUMN: FooterColumnData = {
+  title: 'Основное',
+  links: [
+    { label: 'Главная', href: '/' },
+    { label: 'Устав ИА', href: '/ustav' },
+    { label: 'Новости', href: '/news' },
+    { label: 'Хроника', href: '/chronicle' },
+    { label: 'Дополнительно', href: '/extra' },
+  ],
+};
+
+export const FOOTER_COMMUNITY_COLUMN: FooterColumnData = {
+  title: 'Сообщество',
+  links: [
+    { label: 'Discord', href: DISCORD_URL, external: true },
+    { label: 'ВКонтакте', href: VK_URL, external: true },
+    { label: 'Коллекция Steam', href: STEAM_COLLECTION_URL, external: true },
+  ],
+};

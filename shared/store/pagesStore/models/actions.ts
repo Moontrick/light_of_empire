@@ -10,12 +10,13 @@ import {
 } from '@/shared/api/pages';
 import { alertHandler } from '@/shared/utils/alertHandler';
 import { getApiErrorMessage } from '@/shared/utils/getApiErrorMessage';
-import type { PagesState } from '../types';
+import type { PageSummary, PagesState } from '../types';
 import { mapPageDto, mapPageSectionDto } from './mappers';
 
 export interface PagesActions {
   fetchTree: () => Promise<void>;
   fetchPage: (slug: string) => Promise<void>;
+  fetchSummaries: (slugs: string[]) => Promise<void>;
   savePageWrapper: (dto: UpdatePageDto) => Promise<boolean>;
   createSection: (dto: CreatePageSectionDto) => Promise<boolean>;
   updateSection: (id: number, dto: UpdatePageSectionDto) => Promise<boolean>;
@@ -74,6 +75,26 @@ export const createPagesActions: StateCreator<
       set({ pageStatus: 'error' });
       showError(error);
     }
+  },
+
+  fetchSummaries: async (slugs) => {
+    const known = get().summaries;
+    const missing = slugs.filter((slug) => !(slug in known));
+    if (missing.length === 0) return;
+
+    const loaded = await Promise.all(
+      missing.map(async (slug): Promise<[string, PageSummary | null]> => {
+        try {
+          const { data } = await pagesApi.getPage(slug);
+          return [slug, { eyebrow: data.hero_eyebrow, title: data.hero_title, intro: data.hero_intro }];
+        } catch {
+          // Карточка без описания на лендинге — не повод для алерта
+          return [slug, null];
+        }
+      }),
+    );
+
+    set({ summaries: { ...get().summaries, ...Object.fromEntries(loaded) } });
   },
 
   savePageWrapper: async (dto) => {

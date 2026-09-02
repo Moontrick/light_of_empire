@@ -5,6 +5,12 @@ export type PagesTreeStatus = 'idle' | 'loading' | 'ready' | 'error';
 
 export type PageViewStatus = 'idle' | 'loading' | 'ready' | 'notFound' | 'error';
 
+export interface PageSummary {
+  eyebrow: string;
+  title: string;
+  intro: string;
+}
+
 export interface PageDocument extends DocContent {
   id: number;
   slug: string;
@@ -23,4 +29,6 @@ export interface PagesState {
   creatingSection: boolean;
   reordering: boolean;
   savingTree: boolean;
+  // slug → hero страницы для карточек; null — не загрузилась; нет ключа — ещё не запрашивали
+  summaries: Record<string, PageSummary | null>;
 }

@@ -45,4 +45,6 @@ export interface DocViewProps {
   doc: DocContent;
   canEdit: boolean;
   banner?: ReactNode;
+  // Блок между hero и телом документа (например, хаб дочерних страниц)
+  afterHero?: ReactNode;
 }

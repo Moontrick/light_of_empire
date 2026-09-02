@@ -33,7 +33,7 @@ export function RuleEditor({ value, onChange, onDelete, depth, canDelete = true 
           onChange={(category?: PenaltyCategory) => onChange({ ...value, category })}
           options={Object.entries(CATEGORY_LABELS).map(([key, label]) => ({
             value: Number(key),
-            label: <span className={`${styles.catOption} ${styles[`cat${key}`]}`}/>,
+            label: <span title={label} className={`${styles.catOption} ${styles[`cat${key}`]}`} />,
           }))}
         />
         {canDelete && (

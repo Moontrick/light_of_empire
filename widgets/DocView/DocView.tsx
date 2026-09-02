@@ -14,7 +14,7 @@ import { useDocView } from './hooks/useDocView';
 import type { DocViewProps } from './types';
 import styles from './DocView.module.scss';
 
-export function DocView({ doc, canEdit, banner }: DocViewProps) {
+export function DocView({ doc, canEdit, banner, afterHero }: DocViewProps) {
   const {
     editMode,
     toggleEditMode,
@@ -33,6 +33,7 @@ export function DocView({ doc, canEdit, banner }: DocViewProps) {
     <div className={styles.root}>
       {banner}
       <DocHero eyebrow={doc.hero.eyebrow} title={doc.hero.title} intro={doc.hero.intro} />
+      {afterHero}
       <main className={styles.content}>
         <DocBody
           sections={doc.sections}

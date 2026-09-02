@@ -1,0 +1,1 @@
+export { FooterColumnSkeleton } from './FooterColumnSkeleton';

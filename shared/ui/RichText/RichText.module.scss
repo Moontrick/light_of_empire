@@ -21,3 +21,8 @@
 .strong {
   color: var(--uv-text-strong);
 }
+
+// Глобальный сброс * { font-weight: 400 } перебивает браузерное strong { bolder } — вес задаём явно
+.bold {
+  font-weight: var(--ls-fw-bold);
+}

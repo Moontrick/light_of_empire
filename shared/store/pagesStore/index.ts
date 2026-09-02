@@ -8,4 +8,4 @@ export const usePagesStore = create<PagesState & PagesActions>()((set, get, stor
   ...createPagesActions(set, get, store),
 }));
 
-export type { PageDocument, PagesState, PagesTreeStatus, PageViewStatus } from './types';
+export type { PageDocument, PageSummary, PagesState, PagesTreeStatus, PageViewStatus } from './types';

@@ -1,0 +1,1 @@
+export { CtaCardSkeleton } from './CtaCardSkeleton';

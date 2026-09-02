@@ -11,7 +11,11 @@ function renderNodes(nodes: MarkupNode[]): ReactNode {
     case 'break':
       return <br key={index} />;
     case 'bold':
-      return <strong key={index}>{renderNodes(node.children)}</strong>;
+      return (
+        <strong key={index} className={styles.bold}>
+          {renderNodes(node.children)}
+        </strong>
+      );
     case 'italic':
       return <em key={index}>{renderNodes(node.children)}</em>;
     case 'underline':
