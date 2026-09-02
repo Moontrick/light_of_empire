@@ -30,7 +30,7 @@ export function useCharterRemote() {
   }, [fetchCharter]);
 
   // Бэк дополнительно проверяет роль сам — здесь только видимость UI
-  const canEdit = hasRoleAtLeast(user?.role, UserRole.OWNER);
+  const canEdit = hasRoleAtLeast(user?.role, UserRole.CURATOR);
 
   const editor = useMemo<DocEditorContextValue>(
     () => ({
