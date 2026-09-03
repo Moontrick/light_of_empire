@@ -23,6 +23,7 @@ export function mapNewsListItemDto(dto: NewsListItemDto): NewsPost {
     publishedAt: dto.published_at,
     createdAt: dto.created_at,
     changedAt: dto.changed_at,
+    isSendToDiscord: dto.is_send_to_discord ?? false,
   };
 }
 

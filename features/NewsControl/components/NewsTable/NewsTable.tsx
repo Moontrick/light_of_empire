@@ -6,6 +6,7 @@ import type { TableProps } from 'antd';
 import type { NewsPost } from '@/shared/types';
 import { NewsStatus } from '@/shared/types';
 import { formatNewsDate } from '@/shared/utils/formatNewsDate';
+import { NewsDiscordActions } from '@ui/NewsDiscordActions';
 import { NEWS_STATUS_LABELS } from '../../constants';
 import type { NewsTableProps } from './types';
 import styles from './NewsTable.module.scss';
@@ -23,10 +24,13 @@ export function NewsTable({
   limit,
   total,
   mutatingId,
+  canSendToDiscord,
   onPageChange,
   onEdit,
   onPublish,
   onArchive,
+  onSendToDiscord,
+  onCancelDiscordSend,
 }: NewsTableProps) {
   const columns: TableProps<NewsPost>['columns'] = useMemo(
     () => [
@@ -49,6 +53,12 @@ export function NewsTable({
         render: (status: NewsStatus) => (
           <Tag color={STATUS_TAG_COLOR[status]}>{NEWS_STATUS_LABELS[status]}</Tag>
         ),
+      },
+      {
+        title: 'Discord',
+        dataIndex: 'isSendToDiscord',
+        render: (sent: boolean) =>
+          sent ? <Tag color="blue">Отправлена</Tag> : <Tag>Не отправлена</Tag>,
       },
       {
         title: 'Публикация',
@@ -92,11 +102,20 @@ export function NewsTable({
                 </Button>
               </Popconfirm>
             )}
+            {canSendToDiscord && (
+              <NewsDiscordActions
+                size="small"
+                sent={item.isSendToDiscord}
+                loading={mutatingId === item.id}
+                onSend={() => void onSendToDiscord(item.id)}
+                onCancel={() => void onCancelDiscordSend(item.id)}
+              />
+            )}
           </div>
         ),
       },
     ],
-    [mutatingId, onEdit, onPublish, onArchive],
+    [mutatingId, canSendToDiscord, onEdit, onPublish, onArchive, onSendToDiscord, onCancelDiscordSend],
   );
 
   return (
@@ -105,7 +124,7 @@ export function NewsTable({
       columns={columns}
       dataSource={items}
       loading={loading}
-      scroll={{ x: 900 }}
+      scroll={{ x: 1100 }}
       pagination={{
         current: page,
         pageSize: limit,

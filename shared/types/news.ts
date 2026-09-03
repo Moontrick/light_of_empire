@@ -65,6 +65,7 @@ export interface NewsPost {
   publishedAt: string | null;
   createdAt: string;
   changedAt: string;
+  isSendToDiscord: boolean;
 }
 
 export interface NewsPostDetail extends NewsPost {

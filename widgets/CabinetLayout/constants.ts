@@ -16,6 +16,7 @@ export const CABINET_NAV_SECTIONS: CabinetNavSection[] = [
       { label: 'Пользователи', href: '/admin/users' },
       { label: 'Новости', href: '/admin/news' },
       { label: 'Структура', href: '/admin/structure' },
+      { label: 'Настройки бота', href: '/admin/discord-bot', minRole: UserRole.OWNER },
     ],
   },
 ];

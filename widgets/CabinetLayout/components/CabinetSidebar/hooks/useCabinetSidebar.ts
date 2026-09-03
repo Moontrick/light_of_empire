@@ -15,7 +15,12 @@ export function useCabinetSidebar() {
     () =>
       CABINET_NAV_SECTIONS.filter(
         (section) => !section.minRole || hasRoleAtLeast(user?.role, section.minRole),
-      ),
+      ).map((section) => ({
+        ...section,
+        items: section.items.filter(
+          (item) => !item.minRole || hasRoleAtLeast(user?.role, item.minRole),
+        ),
+      })),
     [user?.role],
   );
 

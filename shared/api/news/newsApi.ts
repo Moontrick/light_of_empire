@@ -23,6 +23,11 @@ export const newsApi = {
 
   archiveNews: (id: number) =>
     baseService.delete<StatusResponse>(NEWS_ROUTES.ARCHIVE(id)),
+
+  sendToDiscord: (id: number) => baseService.put(NEWS_ROUTES.SEND_TO_DISCORD(id)),
+
+  changeSendToDiscordStatus: (id: number) =>
+    baseService.put(NEWS_ROUTES.CHANGE_SEND_TO_DISCORD_STATUS(id)),
 };
 
 export function getNewsCoverUrl(imageUrl: string | null): string | null {

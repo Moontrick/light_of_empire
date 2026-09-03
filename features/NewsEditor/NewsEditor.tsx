@@ -6,6 +6,7 @@ import { HudCard } from '@ui/HudCard';
 import { NewsBlocksEditor } from '@ui/NewsBlocksEditor';
 import { NewsStatus } from '@/shared/types';
 import { CoverPicker } from './components/CoverPicker';
+import { DiscordPanel } from './components/DiscordPanel';
 import { useNewsEditor } from './hooks/useNewsEditor';
 import type { NewsEditorProps } from './types';
 import styles from './NewsEditor.module.scss';
@@ -18,6 +19,8 @@ export function NewsEditor({ slug }: NewsEditorProps) {
     editable, loading, notFound,
     saving, canSave, save, goBack,
     draftButtonLabel, publishButtonLabel,
+    canSendToDiscord, isSendToDiscord, discordMutating,
+    sendEditableToDiscord, cancelEditableDiscordSend,
   } = useNewsEditor(slug);
 
   return (
@@ -83,6 +86,16 @@ export function NewsEditor({ slug }: NewsEditorProps) {
             />
 
             <NewsBlocksEditor value={blocks} onChange={setBlocks} />
+
+            {canSendToDiscord && (
+              <DiscordPanel
+                sent={isSendToDiscord}
+                loading={discordMutating}
+                disabled={saving}
+                onSend={() => void sendEditableToDiscord()}
+                onCancel={() => void cancelEditableDiscordSend()}
+              />
+            )}
 
             <div className={styles.actions}>
               <Button onClick={() => void save(NewsStatus.DRAFT)} loading={saving} disabled={!canSave || saving}>

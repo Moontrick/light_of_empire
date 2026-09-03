@@ -13,6 +13,7 @@ export interface NewsListItemDto {
   published_at: string | null;
   created_at: string;
   changed_at: string;
+  is_send_to_discord?: boolean;
 }
 
 export interface NewsListResponseDto {

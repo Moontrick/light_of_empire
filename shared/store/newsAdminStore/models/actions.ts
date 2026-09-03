@@ -17,6 +17,8 @@ export interface NewsAdminActions {
   updateNews: (id: number, dto: UpdateNewsDto) => Promise<boolean>;
   publishNews: (id: number) => Promise<boolean>;
   archiveNews: (id: number) => Promise<boolean>;
+  sendToDiscord: (id: number) => Promise<boolean>;
+  changeDiscordStatus: (id: number) => Promise<boolean>;
 }
 
 const MUTATION_ERRORS: Record<number, string> = {
@@ -128,6 +130,35 @@ export const createNewsAdminActions: StateCreator<
       await newsApi.archiveNews(id);
       alertHandler.addAlert({ status: 'success', defaultText: 'Новость перенесена в архив' });
       await get().fetchList();
+      return true;
+    } catch (error) {
+      showError(error);
+      return false;
+    } finally {
+      set({ mutatingId: null });
+    }
+  },
+
+  // Список не перезапрашиваем: из редактора это лишний запрос, таблица обновляет себя сама
+  sendToDiscord: async (id) => {
+    set({ mutatingId: id });
+    try {
+      await newsApi.sendToDiscord(id);
+      alertHandler.addAlert({ status: 'success', defaultText: 'Новость отправлена в Discord' });
+      return true;
+    } catch (error) {
+      showError(error);
+      return false;
+    } finally {
+      set({ mutatingId: null });
+    }
+  },
+
+  changeDiscordStatus: async (id) => {
+    set({ mutatingId: id });
+    try {
+      await newsApi.changeSendToDiscordStatus(id);
+      alertHandler.addAlert({ status: 'success', defaultText: 'Отметка об отправке в Discord снята' });
       return true;
     } catch (error) {
       showError(error);

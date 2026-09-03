@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from '@/shared/i18n/navigation';
 import type { CreateNewsDto } from '@/shared/api/news';
+import { useAuthStore } from '@store/authStore';
 import { useNewsAdminStore } from '@/shared/store/newsAdminStore';
-import { NewsStatus } from '@/shared/types';
+import { hasRoleAtLeast, NewsStatus, UserRole } from '@/shared/types';
 import type { NewsBlock } from '@/shared/types';
 import { imageFileToDataUrl } from '@/shared/utils/imageFileToDataUrl';
 import { alertHandler } from '@/shared/utils/alertHandler';
@@ -15,8 +16,10 @@ type CoverValue = { kind: 'keep' } | { kind: 'set'; dataUrl: string } | { kind: 
 export function useNewsEditor(slug: string | undefined) {
   const {
     editable, editableStatus, fetchEditable, resetEditable,
-    createNews, updateNews, saving,
+    createNews, updateNews, saving, mutatingId,
+    sendToDiscord, changeDiscordStatus,
   } = useNewsAdminStore();
+  const user = useAuthStore((state) => state.user);
   const router = useRouter();
 
   const [title, setTitle] = useState('');
@@ -27,6 +30,8 @@ export function useNewsEditor(slug: string | undefined) {
   const [blocks, setBlocks] = useState<NewsBlock[]>([]);
   const [cover, setCover] = useState<CoverValue>({ kind: 'keep' });
   const [coverProcessing, setCoverProcessing] = useState(false);
+  // Флаг держим отдельно от editable: его обновление сбросило бы несохранённые правки формы
+  const [isSendToDiscord, setIsSendToDiscord] = useState(false);
 
   useEffect(() => {
     if (slug) void fetchEditable(slug);
@@ -42,6 +47,7 @@ export function useNewsEditor(slug: string | undefined) {
     setLead(editable.lead ?? '');
     setBlocks(editable.body);
     setCover({ kind: 'keep' });
+    setIsSendToDiscord(editable.isSendToDiscord);
   }, [editable]);
 
   const goBack = () => router.push('/admin/news');
@@ -69,6 +75,22 @@ export function useNewsEditor(slug: string | undefined) {
 
   const clearCover = () => setCover({ kind: 'clear' });
 
+  // Бэк разрешает отправку с роли CURATOR — здесь только видимость панели
+  const canSendToDiscord = Boolean(editable) && hasRoleAtLeast(user?.role, UserRole.CURATOR);
+  const discordMutating = Boolean(editable) && mutatingId === editable?.id;
+
+  const sendEditableToDiscord = async () => {
+    if (!editable) return;
+    const ok = await sendToDiscord(editable.id);
+    if (ok) setIsSendToDiscord(true);
+  };
+
+  const cancelEditableDiscordSend = async () => {
+    if (!editable) return;
+    const ok = await changeDiscordStatus(editable.id);
+    if (ok) setIsSendToDiscord(false);
+  };
+
   const buildDto = (status: NewsStatus): CreateNewsDto => ({
     title: title.trim(),
     tag: tag.trim(),
@@ -95,5 +117,7 @@ export function useNewsEditor(slug: string | undefined) {
     editable, loading, notFound: editableStatus === 'notFound',
     saving, canSave, save, goBack,
     draftButtonLabel, publishButtonLabel,
+    canSendToDiscord, isSendToDiscord, discordMutating,
+    sendEditableToDiscord, cancelEditableDiscordSend,
   };
 }

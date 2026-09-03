@@ -18,10 +18,13 @@ export function NewsControl() {
     listStatus,
     statusFilter,
     mutatingId,
+    canSendToDiscord,
     setStatusFilter,
     fetchList,
     publishNews,
     archiveNews,
+    sendNewsToDiscord,
+    cancelNewsDiscordSend,
     goCreate,
     goEdit,
   } = useNewsControl();
@@ -51,10 +54,13 @@ export function NewsControl() {
           limit={limit}
           total={total}
           mutatingId={mutatingId}
+          canSendToDiscord={canSendToDiscord}
           onPageChange={fetchList}
           onEdit={goEdit}
           onPublish={publishNews}
           onArchive={archiveNews}
+          onSendToDiscord={sendNewsToDiscord}
+          onCancelDiscordSend={cancelNewsDiscordSend}
         />
       </HudCard>
     </ConfigProvider>
