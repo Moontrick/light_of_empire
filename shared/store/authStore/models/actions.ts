@@ -11,6 +11,7 @@ export interface AuthActions {
   fetchMe: () => Promise<void>;
   logout: () => Promise<void>;
   reset: () => void;
+  setBalance: (balance: number) => void;
 }
 
 export const createAuthActions: StateCreator<
@@ -64,5 +65,10 @@ export const createAuthActions: StateCreator<
   reset: () => {
     clearAccessToken();
     set({ user: null, status: 'guest' });
+  },
+
+  setBalance: (balance) => {
+    const { user } = get();
+    if (user) set({ user: { ...user, balance } });
   },
 });

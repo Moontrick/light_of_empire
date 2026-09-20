@@ -6,8 +6,8 @@ import type { TableProps } from 'antd';
 import type { NewsPost } from '@/shared/types';
 import { NewsStatus } from '@/shared/types';
 import { formatNewsDate } from '@/shared/utils/formatNewsDate';
-import { NewsDiscordActions } from '@ui/NewsDiscordActions';
-import { NEWS_STATUS_LABELS } from '../../constants';
+import { DiscordSendActions } from '@ui/DiscordSendActions';
+import { NEWS_STATUS_LABELS } from '@/shared/constants';
 import type { NewsTableProps } from './types';
 import styles from './NewsTable.module.scss';
 
@@ -103,7 +103,7 @@ export function NewsTable({
               </Popconfirm>
             )}
             {canSendToDiscord && (
-              <NewsDiscordActions
+              <DiscordSendActions
                 size="small"
                 sent={item.isSendToDiscord}
                 loading={mutatingId === item.id}

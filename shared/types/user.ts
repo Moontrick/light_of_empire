@@ -50,4 +50,5 @@ export interface UserProfile {
   steam_url: string | null;
   formation: Formation | null;
   role: UserRole;
+  balance: number;
 }

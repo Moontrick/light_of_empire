@@ -1,0 +1,32 @@
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.noteText {
+  margin: 0;
+  color: var(--uv-text-muted);
+  font-size: 14px;
+}
+
+.primaryLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 30px;
+  color: var(--uv-text-strong);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--uv-red);
+  background: var(--uv-red);
+  transition: background-color 0.18s ease;
+}
+
+.primaryLink:hover {
+  background: var(--uv-red-bright);
+}

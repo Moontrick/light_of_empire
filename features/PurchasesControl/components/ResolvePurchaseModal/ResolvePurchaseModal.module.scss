@@ -1,0 +1,14 @@
+.steamRow {
+  margin: 0 0 20px;
+  color: var(--uv-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.steam {
+  color: var(--uv-link);
+  text-decoration: none;
+}
+
+.steam:hover {
+  color: var(--uv-red-bright);
+}

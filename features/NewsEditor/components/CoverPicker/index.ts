@@ -1,1 +1,0 @@
-export { CoverPicker } from './CoverPicker';

@@ -4,9 +4,9 @@ import { Button, ConfigProvider, Select } from 'antd';
 import { DARK_FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import type { NewsStatus } from '@/shared/types';
+import { NEWS_STATUS_FILTER_OPTIONS } from '@/shared/constants';
 import { NewsTable } from './components/NewsTable';
 import { useNewsControl } from './hooks/useNewsControl';
-import { NEWS_STATUS_FILTER_OPTIONS } from './constants';
 import styles from './NewsControl.module.scss';
 
 export function NewsControl() {

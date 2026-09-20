@@ -1,0 +1,39 @@
+.amount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  // lining-nums обязателен: одиночный tabular-nums сбрасывает глобальные выровненные цифры Cormorant
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.neutral {
+  color: var(--uv-text-strong);
+}
+
+.plus {
+  color: var(--uv-cat-4);
+}
+
+.minus {
+  color: var(--uv-accent-soft);
+}
+
+.sm {
+  font-size: 14px;
+}
+
+.md {
+  font-size: 16px;
+}
+
+.lg {
+  font-size: 32px;
+  line-height: var(--ls-lh-tight);
+}

@@ -1,0 +1,1 @@
+export { CombatOperationArticle } from './CombatOperationArticle';

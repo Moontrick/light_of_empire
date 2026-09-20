@@ -1,0 +1,74 @@
+.group {
+  position: relative;
+  padding: 40px 0 8px 48px;
+}
+
+.group::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  width: 1px;
+  background: var(--uv-border);
+}
+
+.group:last-child::before {
+  bottom: auto;
+  height: 52px;
+}
+
+.marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: -48px;
+}
+
+.markerDot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  background: var(--uv-red);
+  box-shadow: 0 0 12px var(--uv-red-glow);
+  transform: rotate(45deg);
+}
+
+.date {
+  color: var(--uv-text-strong);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.items {
+  margin-top: 20px;
+  padding: 0 36px;
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border);
+}
+
+.items > :first-child {
+  border-top: none;
+}
+
+@media (max-width: 640px) {
+  .group {
+    padding: 32px 0 4px 26px;
+  }
+
+  .marker {
+    margin-left: -26px;
+  }
+
+  .date {
+    font-size: 13px;
+  }
+
+  .items {
+    margin-top: 16px;
+    padding: 0 18px;
+  }
+}

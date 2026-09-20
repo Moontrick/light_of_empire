@@ -13,7 +13,9 @@ export type CharterBlock =
   | { kind: 'list'; ordered?: boolean; items: string[] }
   | { kind: 'subheading'; text: string }
   | { kind: 'note'; title?: string; text?: string; items?: string[] }
-  | { kind: 'rules'; items: CharterRule[] };
+  | { kind: 'rules'; items: CharterRule[] }
+  // src — data-URL (у устава и страниц нет хранилища картинок); лимит blocks секции — 256 КБ
+  | { kind: 'image'; src: string; alt?: string; caption?: string };
 
 // slug — стабильный якорь секции (#slug); числовой id есть только у данных с бэка
 export interface CharterSectionData {

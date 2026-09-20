@@ -1,0 +1,27 @@
+.userCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userMeta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.userLogin {
+  color: var(--uv-text-strong);
+}
+
+.userEmail {
+  color: var(--uv-text-muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

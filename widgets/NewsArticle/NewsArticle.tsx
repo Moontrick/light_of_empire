@@ -3,7 +3,7 @@
 import { Button, Skeleton } from 'antd';
 import { Link } from '@/shared/i18n/navigation';
 import { useNewsArticle } from './hooks/useNewsArticle';
-import { NewsContent } from './components/NewsContent';
+import { NewsContent } from '@ui/NewsContent';
 import type { NewsArticleProps } from './types';
 import styles from './NewsArticle.module.scss';
 

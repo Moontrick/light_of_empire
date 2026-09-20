@@ -27,8 +27,14 @@ const MUTATION_ERRORS: Record<number, string> = {
   409: 'Такой slug уже занят',
 };
 
-function showError(error: unknown) {
-  alertHandler.addAlert({ defaultText: getApiErrorMessage(error, MUTATION_ERRORS) });
+const DISCORD_ERRORS: Record<number, string> = {
+  403: 'Недостаточно прав',
+  404: 'Новость не найдена — обновите страницу',
+  409: 'Отправить нельзя: новость не опубликована, уже отправлена или не задан канал новостей',
+};
+
+function showError(error: unknown, messages: Record<number, string> = MUTATION_ERRORS) {
+  alertHandler.addAlert({ defaultText: getApiErrorMessage(error, messages) });
 }
 
 export const createNewsAdminActions: StateCreator<
@@ -147,7 +153,7 @@ export const createNewsAdminActions: StateCreator<
       alertHandler.addAlert({ status: 'success', defaultText: 'Новость отправлена в Discord' });
       return true;
     } catch (error) {
-      showError(error);
+      showError(error, DISCORD_ERRORS);
       return false;
     } finally {
       set({ mutatingId: null });
@@ -161,7 +167,7 @@ export const createNewsAdminActions: StateCreator<
       alertHandler.addAlert({ status: 'success', defaultText: 'Отметка об отправке в Discord снята' });
       return true;
     } catch (error) {
-      showError(error);
+      showError(error, DISCORD_ERRORS);
       return false;
     } finally {
       set({ mutatingId: null });

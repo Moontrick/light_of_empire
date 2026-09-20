@@ -9,6 +9,7 @@ import type { UserListItem } from '@/shared/api/users';
 import type { Position } from '@/shared/types';
 import { getRolesBelow, hasRoleAtLeast, ROLE_WEIGHT, UserRole } from '@/shared/types';
 import { ROLE_LABELS } from '@/shared/constants';
+import { CreditsAmount } from '@ui/CreditsAmount';
 import { DirectoryTag } from '@ui/DirectoryTag';
 import { RoleBadge } from '@ui/RoleBadge';
 import { UserAvatar } from '@ui/UserAvatar';
@@ -112,6 +113,12 @@ export function useUsersTable({
         key: 'formation',
         render: (_, user) =>
           user.formation ? <DirectoryTag entry={user.formation} /> : '—',
+      },
+      {
+        title: 'Кредиты',
+        dataIndex: 'balance',
+        width: 130,
+        render: (balance: number) => <CreditsAmount value={balance} size="sm" />,
       },
       {
         title: 'Discord',

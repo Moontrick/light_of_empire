@@ -1,0 +1,1 @@
+export { ResolvePurchaseModal } from './ResolvePurchaseModal';

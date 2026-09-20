@@ -1,6 +1,7 @@
 import { isAxiosError } from 'axios';
 import { StateCreator } from 'zustand';
 import { newsApi } from '@/shared/api/news';
+import { NewsStatus } from '@/shared/types';
 import { alertHandler } from '@/shared/utils/alertHandler';
 import { getApiErrorMessage } from '@/shared/utils/getApiErrorMessage';
 import type { NewsState } from '../types';
@@ -22,7 +23,11 @@ export const createNewsActions: StateCreator<
   fetchFeed: async () => {
     set({ feedStatus: 'loading' });
     try {
-      const { data } = await newsApi.getNewsList({ page: 1, limit: NEWS_PAGE_LIMIT });
+      const { data } = await newsApi.getNewsList({
+        page: 1,
+        limit: NEWS_PAGE_LIMIT,
+        status: NewsStatus.PUBLISHED,
+      });
       set({
         posts: data.items.map(mapNewsListItemDto),
         total: data.total,
@@ -40,7 +45,11 @@ export const createNewsActions: StateCreator<
     const { page, posts } = get();
     set({ feedStatus: 'loadingMore' });
     try {
-      const { data } = await newsApi.getNewsList({ page: page + 1, limit: NEWS_PAGE_LIMIT });
+      const { data } = await newsApi.getNewsList({
+        page: page + 1,
+        limit: NEWS_PAGE_LIMIT,
+        status: NewsStatus.PUBLISHED,
+      });
       set({
         posts: [...posts, ...data.items.map(mapNewsListItemDto)],
         total: data.total,

@@ -15,7 +15,9 @@ const STATIC_ROUTES: SitemapRoute[] = [
   { path: '', priority: 1, changeFrequency: 'weekly' },
   { path: '/ustav', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/news', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/combat-operations', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/chronicle', priority: 0.8, changeFrequency: 'weekly' },
+  { path: '/donations', priority: 0.7, changeFrequency: 'weekly' },
   { path: '/extra', priority: 0.6, changeFrequency: 'monthly' },
 ];
 

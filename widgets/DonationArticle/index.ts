@@ -1,0 +1,1 @@
+export { DonationArticle } from './DonationArticle';

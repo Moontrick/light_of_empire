@@ -13,3 +13,11 @@ export type ApiErrorBody = {
   path?: string;
   timestamp?: string;
 };
+
+// Общий формат постраничных списков (валюта, покупки)
+export interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+}

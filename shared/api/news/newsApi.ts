@@ -29,8 +29,3 @@ export const newsApi = {
   changeSendToDiscordStatus: (id: number) =>
     baseService.put(NEWS_ROUTES.CHANGE_SEND_TO_DISCORD_STATUS(id)),
 };
-
-export function getNewsCoverUrl(imageUrl: string | null): string | null {
-  if (!imageUrl) return null;
-  return `${process.env.NEXT_PUBLIC_BACK_PROD || ''}${imageUrl}`;
-}

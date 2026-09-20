@@ -116,3 +116,21 @@
   padding: 0;
   list-style: none;
 }
+
+.imageBlock {
+  margin: 8px 0 24px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  border-radius: var(--uv-radius);
+}
+
+.caption {
+  margin-top: 10px;
+  color: var(--uv-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}

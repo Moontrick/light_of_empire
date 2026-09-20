@@ -34,6 +34,8 @@ export const FOOTER_MAIN_COLUMN: FooterColumnData = {
     { label: 'Главная', href: '/' },
     { label: 'Устав ИА', href: '/ustav' },
     { label: 'Новости', href: '/news' },
+    { label: 'Боевые операции', href: '/combat-operations' },
+    { label: 'Донат', href: '/donations' },
     { label: 'Хроника', href: '/chronicle' },
     { label: 'Дополнительно', href: '/extra' },
   ],

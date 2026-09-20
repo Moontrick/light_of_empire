@@ -1,0 +1,26 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.type {
+  min-width: 180px;
+}
+
+.range {
+  min-width: 280px;
+}
+
+.user {
+  min-width: 200px;
+}
+
+@media (max-width: 600px) {
+  .type,
+  .range,
+  .user {
+    width: 100%;
+  }
+}

@@ -24,6 +24,8 @@ function blockText(block: CharterBlock): string {
     return [block.title ?? '', block.text ?? '', ...(block.items ?? [])].join(' ');
   case 'rules':
     return block.items.map(ruleText).join(' ');
+  case 'image':
+    return [block.alt ?? '', block.caption ?? ''].join(' ');
   default:
     return '';
   }

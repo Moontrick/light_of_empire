@@ -75,6 +75,15 @@ export function DocBlock({ block }: DocBlockProps) {
       </ul>
     );
 
+  case 'image':
+    if (!block.src) return null;
+    return (
+      <figure className={styles.imageBlock}>
+        <img src={block.src} alt={block.alt ?? ''} className={styles.image} />
+        {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
+      </figure>
+    );
+
   default:
     return null;
   }

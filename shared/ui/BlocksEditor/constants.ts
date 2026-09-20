@@ -6,6 +6,7 @@ export const BLOCK_LABELS: Record<CharterBlock['kind'], string> = {
   list: 'Список',
   note: 'Заметка',
   rules: 'Правила',
+  image: 'Картинка',
 };
 
 export const BLOCK_KINDS = Object.keys(BLOCK_LABELS) as CharterBlock['kind'][];
@@ -22,6 +23,8 @@ export function createEmptyBlock(kind: CharterBlock['kind']): CharterBlock {
     return { kind: 'note', text: '' };
   case 'rules':
     return { kind: 'rules', items: [{ code: '', text: '' }] };
+  case 'image':
+    return { kind: 'image', src: '' };
   }
 }
 

@@ -1,0 +1,1 @@
+export { MyPurchases } from './MyPurchases';

@@ -1,0 +1,26 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.status {
+  min-width: 180px;
+}
+
+.entity {
+  min-width: 220px;
+}
+
+.range {
+  min-width: 280px;
+}
+
+@media (max-width: 600px) {
+  .status,
+  .entity,
+  .range {
+    width: 100%;
+  }
+}

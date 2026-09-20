@@ -110,11 +110,16 @@ export function useNewsEditor(slug: string | undefined) {
     if (ok) goBack();
   };
 
+  const retry = () => {
+    if (slug) void fetchEditable(slug);
+  };
+
   return {
     title, setTitle, tag, setTag, excerpt, setExcerpt,
     customSlug, setCustomSlug, lead, setLead, blocks, setBlocks,
     coverPreviewUrl, coverProcessing, pickCover, clearCover,
     editable, loading, notFound: editableStatus === 'notFound',
+    loadError: editableStatus === 'error', retry,
     saving, canSave, save, goBack,
     draftButtonLabel, publishButtonLabel,
     canSendToDiscord, isSendToDiscord, discordMutating,

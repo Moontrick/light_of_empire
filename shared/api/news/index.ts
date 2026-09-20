@@ -1,4 +1,4 @@
-export { newsApi, getNewsCoverUrl } from './newsApi';
+export { newsApi } from './newsApi';
 export { NEWS_ROUTES } from './routes';
 export type {
   CreateNewsDto,

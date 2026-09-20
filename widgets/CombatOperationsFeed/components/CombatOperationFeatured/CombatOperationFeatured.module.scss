@@ -1,0 +1,131 @@
+.featured {
+  display: block;
+  padding: 56px 0;
+  color: var(--uv-text);
+  text-decoration: none;
+  border-top: 1px solid var(--uv-border);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border);
+  transition: border-color 0.18s ease;
+}
+
+.featured:hover .card {
+  border-color: var(--uv-red);
+}
+
+.media {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border-right: 1px solid var(--uv-border);
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.35) contrast(1.05);
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.featured:hover .image {
+  transform: scale(1.04);
+  filter: grayscale(0) contrast(1.05);
+}
+
+.mediaFallback {
+  position: absolute;
+  inset: 0;
+  background: var(--uv-bg-header);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px 40px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.tag {
+  padding: 4px 10px;
+  font-weight: 600;
+  background: var(--uv-red-soft);
+  color: var(--uv-red-bright);
+}
+
+.title {
+  margin: 0 0 18px;
+  color: var(--uv-text-strong);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.lead {
+  margin: 0 0 28px;
+  color: var(--uv-text-muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--uv-red-bright);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.arrow {
+  transition: transform 0.18s ease;
+}
+
+.featured:hover .arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--uv-border);
+  }
+
+  .content {
+    padding: 32px 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .featured {
+    padding: 40px 0;
+  }
+}

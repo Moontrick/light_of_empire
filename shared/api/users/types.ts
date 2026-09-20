@@ -20,6 +20,7 @@ export interface UserListItem {
   steam_url: string | null;
   formation: Formation | null;
   role: UserRole;
+  balance: number;
   created_at: string;
 }
 

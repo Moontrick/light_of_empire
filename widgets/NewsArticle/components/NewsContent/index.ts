@@ -1,1 +1,0 @@
-export { NewsContent } from './NewsContent';

@@ -1,11 +1,11 @@
-import { getNewsCoverUrl } from '@/shared/api/news';
+import { getCoverUrl } from '@/shared/utils/getCoverUrl';
 import type { NewsDetailDto, NewsListItemDto } from '@/shared/api/news';
 import type { NewsPost, NewsPostDetail } from '@/shared/types';
 import { formatNewsDate } from '@/shared/utils/formatNewsDate';
 
 export function mapNewsListItemDto(dto: NewsListItemDto): NewsPost {
   const isoDate = (dto.published_at ?? dto.created_at).slice(0, 10);
-  const coverUrl = getNewsCoverUrl(dto.image_url);
+  const coverUrl = getCoverUrl(dto.image_url);
   const imageUrl = coverUrl ? `${coverUrl}?v=${encodeURIComponent(dto.changed_at)}` : coverUrl;
 
   return {

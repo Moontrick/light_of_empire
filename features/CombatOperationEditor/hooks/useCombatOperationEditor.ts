@@ -1,0 +1,122 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from '@/shared/i18n/navigation';
+import type { CreateCombatOperationDto } from '@/shared/api/combatOperations';
+import { useAuthStore } from '@store/authStore';
+import { useCombatOperationsAdminStore } from '@/shared/store/combatOperationsAdminStore';
+import { hasRoleAtLeast, NewsStatus, UserRole } from '@/shared/types';
+import type { NewsBlock } from '@/shared/types';
+import { imageFileToDataUrl } from '@/shared/utils/imageFileToDataUrl';
+import { alertHandler } from '@/shared/utils/alertHandler';
+
+// Обложка: keep — не менять, набор data-URL — заменить, null — очистить
+type CoverValue = { kind: 'keep' } | { kind: 'set'; dataUrl: string } | { kind: 'clear' };
+
+export function useCombatOperationEditor(slug: string | undefined) {
+  const {
+    editable, editableStatus, fetchEditable, resetEditable,
+    create, update, saving, mutatingId,
+    sendToDiscord, changeDiscordStatus,
+  } = useCombatOperationsAdminStore();
+  const user = useAuthStore((state) => state.user);
+  const router = useRouter();
+
+  const [title, setTitle] = useState('');
+  const [tag, setTag] = useState('');
+  const [customSlug, setCustomSlug] = useState('');
+  const [blocks, setBlocks] = useState<NewsBlock[]>([]);
+  const [cover, setCover] = useState<CoverValue>({ kind: 'keep' });
+  const [coverProcessing, setCoverProcessing] = useState(false);
+  // Флаг держим отдельно от editable: его обновление сбросило бы несохранённые правки формы
+  const [isSendToDiscord, setIsSendToDiscord] = useState(false);
+
+  useEffect(() => {
+    if (slug) void fetchEditable(slug);
+    return () => resetEditable();
+  }, [slug, fetchEditable, resetEditable]);
+
+  useEffect(() => {
+    if (!editable) return;
+    setTitle(editable.title);
+    setTag(editable.tag);
+    setCustomSlug(editable.slug);
+    setBlocks(editable.body);
+    setCover({ kind: 'keep' });
+    setIsSendToDiscord(editable.isSendToDiscord);
+  }, [editable]);
+
+  const goBack = () => router.push('/admin/combat-operations');
+
+  const canSave = Boolean(title.trim() && tag.trim());
+  const loading = Boolean(slug) && (editableStatus === 'idle' || editableStatus === 'loading');
+  const isPublished = editable?.status === NewsStatus.PUBLISHED;
+  const draftButtonLabel = isPublished ? 'Снять с публикации в черновик' : 'Сохранить черновик';
+  const publishButtonLabel = isPublished ? 'Сохранить и опубликовать' : 'Опубликовать';
+
+  const coverPreviewUrl =
+    cover.kind === 'set' ? cover.dataUrl : cover.kind === 'clear' ? null : editable?.imageUrl ?? null;
+
+  const pickCover = async (file: File) => {
+    setCoverProcessing(true);
+    try {
+      const dataUrl = await imageFileToDataUrl(file);
+      setCover({ kind: 'set', dataUrl });
+    } catch {
+      alertHandler.addAlert({ defaultText: 'Не удалось обработать изображение' });
+    } finally {
+      setCoverProcessing(false);
+    }
+  };
+
+  const clearCover = () => setCover({ kind: 'clear' });
+
+  // Бэк разрешает отправку с роли CURATOR — здесь только видимость панели
+  const canSendToDiscord = Boolean(editable) && hasRoleAtLeast(user?.role, UserRole.CURATOR);
+  const discordMutating = Boolean(editable) && mutatingId === editable?.id;
+
+  const sendEditableToDiscord = async () => {
+    if (!editable) return;
+    const ok = await sendToDiscord(editable.id);
+    if (ok) setIsSendToDiscord(true);
+  };
+
+  const cancelEditableDiscordSend = async () => {
+    if (!editable) return;
+    const ok = await changeDiscordStatus(editable.id);
+    if (ok) setIsSendToDiscord(false);
+  };
+
+  const buildDto = (status: NewsStatus): CreateCombatOperationDto => ({
+    title: title.trim(),
+    tag: tag.trim(),
+    ...(customSlug.trim() && customSlug.trim() !== editable?.slug ? { slug: customSlug.trim() } : {}),
+    body: blocks,
+    status,
+    ...(cover.kind === 'set' ? { image: cover.dataUrl } : {}),
+    ...(cover.kind === 'clear' ? { image: null } : {}),
+  });
+
+  const save = async (status: NewsStatus) => {
+    const ok = editable
+      ? await update(editable.id, buildDto(status))
+      : await create(buildDto(status));
+    if (ok) goBack();
+  };
+
+  const retry = () => {
+    if (slug) void fetchEditable(slug);
+  };
+
+  return {
+    title, setTitle, tag, setTag,
+    customSlug, setCustomSlug, blocks, setBlocks,
+    coverPreviewUrl, coverProcessing, pickCover, clearCover,
+    editable, loading, notFound: editableStatus === 'notFound',
+    loadError: editableStatus === 'error', retry,
+    saving, canSave, save, goBack,
+    draftButtonLabel, publishButtonLabel,
+    canSendToDiscord, isSendToDiscord, discordMutating,
+    sendEditableToDiscord, cancelEditableDiscordSend,
+  };
+}

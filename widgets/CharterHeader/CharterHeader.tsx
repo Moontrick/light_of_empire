@@ -8,13 +8,14 @@ import { MobileNav } from './components/MobileNav';
 import { AuthActions } from './components/AuthActions';
 import { ServerBadge } from './components/ServerBadge';
 import { useCharterHeader } from './hooks/useCharterHeader';
-import { SITE_TITLE } from './constants';
+import { MORE_GHOST_NODE, SITE_TITLE } from './constants';
 import type { CharterHeaderProps } from './types';
 import styles from './CharterHeader.module.scss';
 
 export function CharterHeader({ transparent = false }: CharterHeaderProps) {
   const t = useTranslations('charter');
-  const { open, toggle, close, activePath, navItems, mobileItems } = useCharterHeader();
+  const { open, toggle, close, activePath, navItems, mobileItems, navRef, ghostRef } =
+    useCharterHeader();
 
   return (
     <header
@@ -28,11 +29,18 @@ export function CharterHeader({ transparent = false }: CharterHeaderProps) {
           {SITE_TITLE}
         </Link>
 
-        <nav className={styles.nav}>
+        <nav className={styles.nav} ref={navRef}>
           <ul className={styles.navList}>
             {navItems.map((node) => (
               <NavItem key={node.href ?? node.label} node={node} depth={0} activePath={activePath} />
             ))}
+          </ul>
+          {/* Тень со всеми пунктами — только для измерения ширины (useNavOverflow) */}
+          <ul className={classNames(styles.navList, styles.ghost)} ref={ghostRef} aria-hidden>
+            {mobileItems.map((node) => (
+              <NavItem key={node.href ?? node.label} node={node} depth={0} />
+            ))}
+            <NavItem node={MORE_GHOST_NODE} depth={0} />
           </ul>
         </nav>
 

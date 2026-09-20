@@ -1,0 +1,77 @@
+.zone {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  overflow: hidden;
+  color: var(--uv-text-muted);
+  background: var(--uv-bg-soft);
+  border: 1px dashed var(--uv-border);
+  border-radius: var(--uv-radius);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.zone:hover,
+.zone:focus-visible,
+.dragging {
+  border-color: var(--uv-red-bright);
+  background: var(--uv-bg-hover);
+}
+
+.inactive {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.withPreview {
+  min-height: 0;
+  border-style: solid;
+}
+
+.preview {
+  display: block;
+  max-width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+// Поверх превью подсказка появляется только при наведении или перетаскивании
+.withPreview .overlay {
+  position: absolute;
+  inset: 0;
+  justify-content: center;
+  color: var(--uv-text-strong);
+  background: var(--uv-red-glow);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.withPreview:hover .overlay,
+.withPreview:focus-visible .overlay,
+.withPreview.dragging .overlay {
+  opacity: 1;
+}
+
+.icon {
+  font-size: 22px;
+}
+
+.hint {
+  font-size: 13px;
+}
+
+.fileInput {
+  display: none;
+}

@@ -1,0 +1,148 @@
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 20px;
+  padding: 18px 22px 18px 18px;
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border);
+  border-left: 3px solid var(--uv-text-muted);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  border-color: var(--uv-red);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+}
+
+// Полоса слева повторяет цвет статуса (палитра категорий устава)
+.PENDING {
+  border-left-color: var(--uv-cat-3);
+}
+
+.ISSUED {
+  border-left-color: var(--uv-cat-4);
+}
+
+.REJECTED {
+  border-left-color: var(--uv-accent-soft);
+}
+
+.media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--uv-bg-header);
+  border: 1px solid var(--uv-border);
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.media:hover .cover {
+  transform: scale(1.05);
+}
+
+.coverFallback {
+  position: absolute;
+  inset: 0;
+  background: var(--uv-bg-header);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  color: var(--uv-text-strong);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.title:hover {
+  color: var(--uv-red-bright);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--uv-text-muted);
+  font-size: 14px;
+}
+
+.metaDivider {
+  width: 4px;
+  height: 4px;
+  background: var(--uv-red);
+  transform: rotate(45deg);
+}
+
+.metaText {
+  white-space: nowrap;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  color: var(--uv-text);
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.noteLabel {
+  color: var(--uv-text-muted);
+  font-size: 11px;
+  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.resolution {
+  padding: 10px 14px;
+  background: var(--uv-bg-soft);
+  border-left: 2px solid var(--uv-border);
+}
+
+.pendingHint {
+  color: var(--uv-text-muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .card {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .head {
+    flex-direction: column;
+  }
+}

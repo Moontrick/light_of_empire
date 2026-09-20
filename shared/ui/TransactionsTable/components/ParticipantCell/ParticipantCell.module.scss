@@ -1,0 +1,15 @@
+.cell {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.login {
+  color: var(--uv-text-strong);
+}
+
+.email {
+  color: var(--uv-text-muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}

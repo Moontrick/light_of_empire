@@ -1,0 +1,12 @@
+.current {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  color: var(--uv-text-muted);
+}
+
+// Класс лежит на корне .ant-input-number, у antd своя ширина — перебиваем специфичностью
+.amount:global(.ant-input-number) {
+  width: 100%;
+}

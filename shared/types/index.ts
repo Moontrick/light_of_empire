@@ -4,3 +4,6 @@ export * from './SvgTypes';
 export * from './charter';
 export * from './doc';
 export * from './news';
+export * from './combatOperation';
+export * from './currency';
+export * from './donation';

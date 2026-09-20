@@ -1,0 +1,1 @@
+export { getCoverUrl } from './getCoverUrl';

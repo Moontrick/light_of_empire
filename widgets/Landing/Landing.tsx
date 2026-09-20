@@ -2,6 +2,7 @@ import { LandingHero } from './components/LandingHero';
 import { ServerStatus } from './components/ServerStatus';
 import { CharterCta } from './components/CharterCta';
 import { LandingNews } from './components/LandingNews';
+import { LandingCombatOperations } from './components/LandingCombatOperations';
 import styles from './Landing.module.scss';
 
 export function Landing() {
@@ -11,6 +12,7 @@ export function Landing() {
       <ServerStatus />
       <CharterCta />
       <LandingNews />
+      <LandingCombatOperations />
     </main>
   );
 }

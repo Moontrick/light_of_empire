@@ -5,8 +5,8 @@ import { DARK_FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { NewsBlocksEditor } from '@ui/NewsBlocksEditor';
 import { NewsStatus } from '@/shared/types';
-import { CoverPicker } from './components/CoverPicker';
-import { DiscordPanel } from './components/DiscordPanel';
+import { CoverPicker } from '@ui/CoverPicker';
+import { DiscordPanel } from '@ui/DiscordPanel';
 import { useNewsEditor } from './hooks/useNewsEditor';
 import type { NewsEditorProps } from './types';
 import styles from './NewsEditor.module.scss';
@@ -16,7 +16,7 @@ export function NewsEditor({ slug }: NewsEditorProps) {
     title, setTitle, tag, setTag, excerpt, setExcerpt,
     customSlug, setCustomSlug, lead, setLead, blocks, setBlocks,
     coverPreviewUrl, coverProcessing, pickCover, clearCover,
-    editable, loading, notFound,
+    editable, loading, notFound, loadError, retry,
     saving, canSave, save, goBack,
     draftButtonLabel, publishButtonLabel,
     canSendToDiscord, isSendToDiscord, discordMutating,
@@ -35,7 +35,15 @@ export function NewsEditor({ slug }: NewsEditorProps) {
           </div>
         )}
 
-        {!loading && !notFound && (
+        {!loading && loadError && (
+          <div className={styles.notFound}>
+            <p>Не удалось загрузить новость</p>
+            <Button onClick={retry}>Повторить</Button>
+            <Button onClick={goBack}>К списку</Button>
+          </div>
+        )}
+
+        {!loading && !notFound && !loadError && (
           <div className={styles.form}>
             <Input
               value={title}

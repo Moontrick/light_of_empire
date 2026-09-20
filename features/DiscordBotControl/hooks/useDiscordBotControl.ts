@@ -3,7 +3,7 @@ import { discordBotApi, DiscordSettingCode } from '@/shared/api/discordBot';
 import type { DiscordSettingDto } from '@/shared/api/discordBot';
 import { alertHandler } from '@/shared/utils/alertHandler';
 import { getApiErrorMessage } from '@/shared/utils/getApiErrorMessage';
-import { CHANNEL_ERRORS, SETTINGS_ERRORS } from '../constants';
+import { CHANNEL_ERRORS, CHANNEL_SETTING_LABELS, SETTINGS_ERRORS } from '../constants';
 import type { ChannelConfirmTarget } from '../types';
 
 export function useDiscordBotControl() {
@@ -49,13 +49,13 @@ export function useDiscordBotControl() {
     }
   };
 
-  // Смена канала новостей — необратимое для бота действие: сначала показываем,
-  // куда именно будут уходить новости, и только после подтверждения пишем настройку
-  const requestChannelChange = async (channelId: string) => {
-    setSavingCode(DiscordSettingCode.NEWS_CHANNEL_ID);
+  // Смена канала — необратимое для бота действие: сначала показываем,
+  // куда именно будут уходить публикации, и только после подтверждения пишем настройку
+  const requestChannelChange = async (code: DiscordSettingCode, channelId: string) => {
+    setSavingCode(code);
     try {
       const { data: channelName } = await discordBotApi.getChannelName(channelId);
-      setChannelConfirm({ channelId, channelName });
+      setChannelConfirm({ code, channelId, channelName });
     } catch (error) {
       alertHandler.addAlert({ defaultText: getApiErrorMessage(error, CHANNEL_ERRORS) });
     } finally {
@@ -64,15 +64,13 @@ export function useDiscordBotControl() {
   };
 
   const saveSetting = (code: DiscordSettingCode, value: string) =>
-    code === DiscordSettingCode.NEWS_CHANNEL_ID
-      ? requestChannelChange(value)
-      : applyUpdate(code, value);
+    CHANNEL_SETTING_LABELS[code] ? requestChannelChange(code, value) : applyUpdate(code, value);
 
   const resetSetting = (code: DiscordSettingCode) => applyUpdate(code, null);
 
   const confirmChannelChange = async () => {
     if (!channelConfirm) return;
-    const ok = await applyUpdate(DiscordSettingCode.NEWS_CHANNEL_ID, channelConfirm.channelId);
+    const ok = await applyUpdate(channelConfirm.code, channelConfirm.channelId);
     if (ok) setChannelConfirm(null);
   };
 

@@ -1,0 +1,1 @@
+export { getTransactionTone } from './getTransactionTone';

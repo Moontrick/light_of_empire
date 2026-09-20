@@ -1,0 +1,1 @@
+export { TransactionTypeTag } from './TransactionTypeTag';

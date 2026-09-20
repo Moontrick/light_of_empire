@@ -6,20 +6,13 @@ import { usePathname } from '@/shared/i18n/navigation';
 import { usePagesStore } from '@store/pagesStore';
 import { buildCompactNav } from '../lib/buildCompactNav';
 import { buildPagesNav } from '../lib/buildPagesNav';
-import {
-  COMPACT_QUERY,
-  COMPACT_VISIBLE_COUNT,
-  MOBILE_QUERY,
-  MORE_HREF,
-  MORE_LABEL,
-  NAV_ITEMS,
-} from '../constants';
+import { MIN_VISIBLE_COUNT, MOBILE_QUERY, MORE_HREF, MORE_LABEL, NAV_ITEMS } from '../constants';
+import { useNavOverflow } from './useNavOverflow';
 
 export function useCharterHeader() {
   const [open, setOpen] = useState(false);
   const activePath = usePathname();
   const isMobile = useMediaQuery(MOBILE_QUERY);
-  const isCompact = useMediaQuery(COMPACT_QUERY);
 
   const tree = usePagesStore((state) => state.tree);
   const treeStatus = usePagesStore((state) => state.treeStatus);
@@ -37,12 +30,18 @@ export function useCharterHeader() {
     [tree, treeStatus],
   );
 
+  const { containerRef, ghostRef, visibleCount } = useNavOverflow({
+    itemCount: fullNav.length,
+    minVisible: MIN_VISIBLE_COUNT,
+    enabled: !isMobile,
+  });
+
   const navItems = useMemo(
     () =>
-      isCompact
-        ? buildCompactNav(fullNav, COMPACT_VISIBLE_COUNT, MORE_LABEL, MORE_HREF)
-        : fullNav,
-    [isCompact, fullNav],
+      visibleCount >= fullNav.length
+        ? fullNav
+        : buildCompactNav(fullNav, visibleCount, MORE_LABEL, MORE_HREF),
+    [visibleCount, fullNav],
   );
 
   const toggle = useCallback(() => setOpen((value) => !value), []);
@@ -70,5 +69,14 @@ export function useCharterHeader() {
     };
   }, [open]);
 
-  return { open, toggle, close, activePath, navItems, mobileItems: fullNav };
+  return {
+    open,
+    toggle,
+    close,
+    activePath,
+    navItems,
+    mobileItems: fullNav,
+    navRef: containerRef,
+    ghostRef,
+  };
 }

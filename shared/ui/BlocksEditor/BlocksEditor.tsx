@@ -9,6 +9,7 @@ import { SubheadingBlockEditor } from './components/SubheadingBlockEditor';
 import { ListBlockEditor } from './components/ListBlockEditor';
 import { NoteBlockEditor } from './components/NoteBlockEditor';
 import { RulesBlockEditor } from './components/RulesBlockEditor';
+import { ImageBlockEditor } from './components/ImageBlockEditor';
 import type { BlocksEditorProps } from './types';
 import styles from './BlocksEditor.module.scss';
 
@@ -30,6 +31,8 @@ function BlockBody({
     return <NoteBlockEditor value={block} onChange={onChange} />;
   case 'rules':
     return <RulesBlockEditor value={block} onChange={onChange} />;
+  case 'image':
+    return <ImageBlockEditor value={block} onChange={onChange} />;
   default:
     return null;
   }

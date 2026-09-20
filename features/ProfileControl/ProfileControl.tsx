@@ -6,6 +6,7 @@ import { DARK_FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { ProfileHeaderCard } from './components/ProfileHeaderCard';
 import { AccountForm } from './components/AccountForm';
+import { CreditsCard } from './components/CreditsCard';
 import { SecurityCard } from './components/SecurityCard';
 import { SteamProfileCard } from './components/SteamProfileCard';
 import { useProfileRefresh } from './hooks/useProfileRefresh';
@@ -28,6 +29,7 @@ export function ProfileControl() {
               user={user}
             />
           </HudCard>
+          <CreditsCard balance={user.balance} />
           <HudCard title="Безопасность">
             <SecurityCard />
           </HudCard>

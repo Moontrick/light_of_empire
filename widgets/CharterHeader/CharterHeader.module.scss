@@ -41,8 +41,14 @@
   text-shadow: 0 0 24px var(--uv-red-glow);
 }
 
+// flex: 1 + min-width: 0 — nav занимает всё между логотипом и аккаунтом,
+// его clientWidth и есть доступная ширина для useNavOverflow
 .nav {
+  position: relative;
   display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .navList {
@@ -52,6 +58,14 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .burger {

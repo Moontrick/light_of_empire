@@ -16,7 +16,7 @@ export function UsersTable({ users, loading, ...actions }: UsersTableProps) {
         columns={columns}
         dataSource={users}
         loading={loading}
-        scroll={{ x: 1100 }}
+        scroll={{ x: 1200 }}
         pagination={{ hideOnSinglePage: true }}
       />
       <ExternalLinkModal url={externalUrl} onClose={closeExternal} />

@@ -84,14 +84,13 @@ ul {
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
-  // !important — перебивает inline-шрифты Ant Design, чтобы весь UI был на Cormorant Garamond
   font-family: var(--ls-font) !important;
-  // По умолчанию у Cormorant минускульные цифры (пляшут по базовой линии) — включаем выровненные
   font-variant-numeric: lining-nums;
   letter-spacing: 0px !important;
   box-sizing: border-box;
