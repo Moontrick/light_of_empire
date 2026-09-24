@@ -1,0 +1,50 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, auto));
+  gap: 12px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  border-left: 2px solid var(--uv-red);
+}
+
+.label {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.value {
+  margin: 0;
+  color: var(--uv-text-strong);
+  font-size: 32px;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: var(--ls-lh-tight);
+}
+
+.skeleton {
+  // Заглушка числа: по высоте строки 32px
+  height: 38px;
+}
+
+@media (max-width: 1100px) {
+  .stats {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}

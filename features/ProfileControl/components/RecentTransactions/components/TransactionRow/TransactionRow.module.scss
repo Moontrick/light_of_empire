@@ -1,0 +1,57 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--uv-border);
+  transition: background-color 0.15s ease;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.message {
+  overflow: hidden;
+  color: var(--uv-text);
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  gap: 2px;
+}
+
+.date {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .aside {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+}

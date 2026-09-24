@@ -1,0 +1,38 @@
+.parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.part {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.part + .part {
+  padding-left: 32px;
+  border-left: 1px solid var(--uv-border);
+}
+
+.partTitle {
+  margin: 0 0 12px;
+  color: var(--uv-text-strong);
+  font-size: 15px;
+  font-weight: var(--ls-fw-semibold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  .parts {
+    grid-template-columns: 1fr;
+  }
+
+  .part + .part {
+    padding-top: 24px;
+    padding-left: 0;
+    border-top: 1px solid var(--uv-border);
+    border-left: none;
+  }
+}

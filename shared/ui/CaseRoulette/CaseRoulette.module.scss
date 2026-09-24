@@ -1,0 +1,128 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 12, 0.85), rgba(26, 26, 26, 0.7) 50%, rgba(10, 10, 12, 0.85)),
+    var(--uv-bg-header);
+  border: 1px solid var(--uv-border);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spinning {
+  border-color: var(--uv-border-accent);
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.6),
+    0 0 32px var(--uv-red-soft);
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  // Лента растворяется по краям, чтобы обрыв карточек не бросался в глаза
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.marker {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--uv-red-bright);
+  box-shadow:
+    0 0 10px var(--uv-red-glow),
+    0 0 28px var(--uv-red-glow);
+  pointer-events: none;
+}
+
+.pointer {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  filter: drop-shadow(0 0 6px var(--uv-red-glow));
+  pointer-events: none;
+}
+
+.pointerTop {
+  top: -1px;
+  border-top: 12px solid var(--uv-red-bright);
+}
+
+.pointerBottom {
+  bottom: -1px;
+  border-bottom: 12px solid var(--uv-red-bright);
+}
+
+.track {
+  display: flex;
+  gap: var(--case-gap);
+  width: max-content;
+}
+
+.slot {
+  position: relative;
+  flex: 0 0 var(--case-item-width);
+  width: var(--case-item-width);
+  height: var(--case-item-height);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.win {
+  z-index: 1;
+  transform: scale(1.08);
+  filter: brightness(1.2);
+  animation: winPulse 1.4s ease-in-out infinite;
+}
+
+.spin {
+  min-width: 260px;
+  height: 52px !important; // перебиваем controlHeight темы antd
+  padding: 0 32px !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  letter-spacing: 2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  box-shadow: 0 0 24px var(--uv-red-glow);
+
+  &:not(:disabled):hover {
+    box-shadow: 0 0 36px var(--uv-red-glow);
+  }
+}
+
+.spinPrice {
+  display: inline-flex;
+  margin-left: 14px;
+  padding-left: 14px;
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+@keyframes winPulse {
+  0%,
+  100% {
+    filter: brightness(1.2) drop-shadow(0 0 6px var(--uv-red-glow));
+  }
+
+  50% {
+    filter: brightness(1.45) drop-shadow(0 0 18px var(--uv-red-glow));
+  }
+}

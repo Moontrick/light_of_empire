@@ -1,0 +1,1 @@
+export { CabinetContent } from './CabinetContent';

@@ -5,6 +5,7 @@ import { cormorant } from '@utils/fonts';
 import '@/shared/styles/globals.scss';
 import { AlertService } from '@/shared/ui/AlertService';
 import { AuthProvider } from '@/components/AuthProvider';
+import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooterGate } from '@/components/SiteFooterGate';
 import { CharterFooter } from '@widgets/CharterFooter';
 import { baseMetadata, baseViewport } from '@/shared/seo';
@@ -24,6 +25,7 @@ export default async function LocaleLayout({ params, children }: LayoutProps) {
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AntdRegistry>
             <AuthProvider />
+            <SiteHeader />
             {children}
             <SiteFooterGate>
               <CharterFooter />

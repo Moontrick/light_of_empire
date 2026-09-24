@@ -1,69 +1,51 @@
 .sidebar {
   position: sticky;
-  top: 0;
+  top: var(--uv-header-height);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   width: 264px;
-  height: 100vh;
+  height: calc(100vh - var(--uv-header-height));
   overflow-y: auto;
   background: rgba(17, 17, 18, 0.95);
   border-right: 1px solid var(--uv-border);
   backdrop-filter: blur(8px);
 }
 
-.brand {
-  display: block;
-  padding: 22px 20px;
-  border-bottom: 1px solid var(--uv-border);
-  color: var(--uv-text-strong);
-  font-size: 17px;
-  letter-spacing: 3px;
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: color 0.15s ease, text-shadow 0.15s ease;
-}
-
-.brand:hover {
-  color: var(--uv-red-bright);
-  text-shadow: 0 0 24px var(--uv-red-glow);
-}
-
 .userCard {
+  min-height: 74px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--uv-border);
+}
+
+.userLink {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin: -18px -20px;
   padding: 18px 20px;
-  border-bottom: 1px solid var(--uv-border);
   text-decoration: none;
   transition: background-color 0.15s ease;
 }
 
-.userCard:hover {
+.userLink:hover {
   background: var(--uv-bg-hover);
 }
 
 .userMeta {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: flex-start;
+  gap: 4px;
   min-width: 0;
 }
 
 .userLogin {
+  max-width: 100%;
   overflow: hidden;
   color: var(--uv-text-strong);
   font-size: 16px;
   letter-spacing: 0.6px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.userEmail {
-  overflow: hidden;
-  color: var(--uv-text-muted);
-  font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -126,54 +108,16 @@
   background: var(--uv-red);
 }
 
-.footer {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 12px;
-  border-top: 1px solid var(--uv-border);
-}
-
-.footerItem {
-  padding: 10px 12px;
-  background: none;
-  border: none;
-  color: var(--uv-text-muted);
-  font-family: inherit;
-  font-size: 15px;
-  letter-spacing: 0.6px;
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-
-.footerItem:hover:not(:disabled) {
-  background: var(--uv-bg-hover);
-  color: var(--uv-text-strong);
-}
-
-.footerItem:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-.logout {
-  color: var(--uv-red-bright);
-}
-
-.logout:hover:not(:disabled) {
-  background: var(--uv-red-soft);
-  color: var(--uv-red-bright);
-  text-shadow: 0 0 16px var(--uv-red-glow);
-}
-
 @media (max-width: 900px) {
   .sidebar {
     position: static;
     width: 100%;
     height: auto;
     overflow: visible;
+  }
+
+  .userCard {
+    display: none;
   }
 
   .nav {
@@ -187,9 +131,5 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 4px;
-  }
-
-  .footer {
-    flex-direction: row;
   }
 }

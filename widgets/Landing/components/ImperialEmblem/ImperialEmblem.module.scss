@@ -7,19 +7,19 @@
 .ring {
   fill: none;
   stroke: rgba(255, 255, 255, 0.55);
-  stroke-width: 2;
+  strokeWidth: 2;
 }
 
 .ticks {
   fill: none;
   stroke: var(--uv-red);
-  stroke-width: 3;
+  strokeWidth: 3;
   stroke-dasharray: 2 7;
 }
 
 .spokes line {
   stroke: rgba(255, 255, 255, 0.45);
-  stroke-width: 2;
+  strokeWidth: 2;
 }
 
 .hub {

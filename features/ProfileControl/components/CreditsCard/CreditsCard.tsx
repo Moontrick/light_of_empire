@@ -1,28 +1,25 @@
-'use client';
-
-import { useState } from 'react';
 import { Button } from 'antd';
 import { CURRENCY_NAME } from '@/shared/constants';
 import { HudCard } from '@ui/HudCard';
 import { CreditsAmount } from '@ui/CreditsAmount';
-import { TransactionsModal } from './components/TransactionsModal';
 import type { CreditsCardProps } from './types';
 import styles from './CreditsCard.module.scss';
 
-export function CreditsCard({ balance }: CreditsCardProps) {
-  const [historyOpen, setHistoryOpen] = useState(false);
-
+export function CreditsCard({ balance, onOpenHistory, onGoShowcase }: CreditsCardProps) {
   return (
-    <HudCard
-      title={CURRENCY_NAME}
-      extra={<Button onClick={() => setHistoryOpen(true)}>История операций</Button>}
-    >
+    <HudCard title={CURRENCY_NAME}>
       <div className={styles.tile}>
         <span className={styles.tileLabel}>Баланс</span>
         <CreditsAmount value={balance} size="lg" />
       </div>
-      {/* <span className={styles.hint}>Кредиты начисляет командование</span> */}
-      <TransactionsModal open={historyOpen} onClose={() => setHistoryOpen(false)} />
+      <div className={styles.actions}>
+        <Button type="primary" block onClick={onGoShowcase}>
+          В витрину
+        </Button>
+        <Button block onClick={onOpenHistory}>
+          История операций
+        </Button>
+      </div>
     </HudCard>
   );
 }

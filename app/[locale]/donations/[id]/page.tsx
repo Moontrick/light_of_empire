@@ -1,5 +1,4 @@
 import { setRequestLocale } from 'next-intl/server';
-import { CharterHeader } from '@widgets/CharterHeader';
 import { DonationArticle } from '@widgets/DonationArticle';
 import { pageMetadata } from '@/shared/seo';
 
@@ -13,10 +12,5 @@ export default async function DonationArticlePage({ params }: DonationArticlePag
   const { locale, id } = await params;
   setRequestLocale(locale);
 
-  return (
-    <>
-      <CharterHeader />
-      <DonationArticle idParam={id} />
-    </>
-  );
+  return <DonationArticle idParam={id} />;
 }

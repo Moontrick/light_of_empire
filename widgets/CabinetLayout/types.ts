@@ -3,8 +3,6 @@ import type { UserRole } from '@/shared/types';
 
 export interface CabinetLayoutProps {
   children: ReactNode;
-  // Широкие экраны (таблицы) — без ограничения ширины контента
-  wide?: boolean;
 }
 
 export interface CabinetNavItem {

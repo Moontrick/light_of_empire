@@ -1,0 +1,11 @@
+.text {
+  flex: 1;
+  margin: 0 0 20px;
+  color: var(--uv-text-muted);
+}
+
+// Кнопки обеих частей выровнены по нижнему краю карточки
+.action {
+  align-self: flex-start;
+  margin-top: auto;
+}

@@ -1,4 +1,3 @@
-import { CharterHeader } from '@widgets/CharterHeader';
 import { NewsFeed } from '@widgets/NewsFeed';
 import { pageMetadata } from '@/shared/seo';
 
@@ -8,10 +7,5 @@ export const metadata = pageMetadata(
 );
 
 export default function NewsPage() {
-  return (
-    <>
-      <CharterHeader />
-      <NewsFeed />
-    </>
-  );
+  return <NewsFeed />;
 }

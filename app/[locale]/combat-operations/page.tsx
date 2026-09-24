@@ -1,4 +1,3 @@
-import { CharterHeader } from '@widgets/CharterHeader';
 import { CombatOperationsFeed } from '@widgets/CombatOperationsFeed';
 import { pageMetadata } from '@/shared/seo';
 
@@ -8,10 +7,5 @@ export const metadata = pageMetadata(
 );
 
 export default function CombatOperationsPage() {
-  return (
-    <>
-      <CharterHeader />
-      <CombatOperationsFeed />
-    </>
-  );
+  return <CombatOperationsFeed />;
 }

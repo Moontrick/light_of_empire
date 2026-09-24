@@ -22,6 +22,7 @@ export const CABINET_NAV_SECTIONS: CabinetNavSection[] = [
       { label: 'Боевые операции', href: '/admin/combat-operations' },
       { label: 'Структура', href: '/admin/structure' },
       { label: 'Настройки бота', href: '/admin/discord-bot', minRole: UserRole.OWNER },
+      { label: 'Казино', href: '/admin/casino', minRole: UserRole.OWNER },
     ],
   },
 ];

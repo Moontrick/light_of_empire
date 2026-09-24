@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  // Без align-items: center, иначе лента задаёт ширину и вылезает за родителя
+  width: 100%;
+  min-width: 0;
+}
+
+.shortage {
+  color: var(--uv-accent-soft);
+  font-size: 14px;
+  text-align: center;
+}

@@ -1,0 +1,101 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px 12px 12px;
+  background: var(--uv-bg-soft);
+  border: 1px solid var(--uv-border);
+  border-left: 3px solid var(--uv-text-muted);
+  transition: border-color 0.18s ease;
+}
+
+.row:hover {
+  border-color: var(--uv-red);
+}
+
+// Полоса слева повторяет цвет статуса (палитра категорий устава)
+.PENDING {
+  border-left-color: var(--uv-cat-3);
+}
+
+.ISSUED {
+  border-left-color: var(--uv-cat-4);
+}
+
+.REJECTED {
+  border-left-color: var(--uv-accent-soft);
+}
+
+.media {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 64px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--uv-bg-header);
+  border: 1px solid var(--uv-border);
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverFallback {
+  position: absolute;
+  inset: 0;
+  background: var(--uv-bg-header);
+}
+
+.meta {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.title {
+  overflow: hidden;
+  color: var(--uv-text-strong);
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.title:hover {
+  color: var(--uv-red-bright);
+}
+
+.date {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .aside {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

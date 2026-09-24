@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import { CharterHeader } from '@widgets/CharterHeader';
 import { PageView } from '@widgets/PageView';
 import { fetchPagesTree } from '@/shared/api/pages/server';
 import { findTreeNode } from '@/shared/utils/pagesTree';
@@ -22,10 +21,5 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  return (
-    <>
-      <CharterHeader />
-      <PageView slug={slug} />
-    </>
-  );
+  return <PageView slug={slug} />;
 }

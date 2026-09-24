@@ -1,4 +1,3 @@
-import { CharterHeader } from '@widgets/CharterHeader';
 import { DonationsShowcase } from '@widgets/DonationsShowcase';
 import { pageMetadata } from '@/shared/seo';
 
@@ -8,10 +7,5 @@ export const metadata = pageMetadata(
 );
 
 export default function DonationsPage() {
-  return (
-    <>
-      <CharterHeader />
-      <DonationsShowcase />
-    </>
-  );
+  return <DonationsShowcase />;
 }

@@ -1,9 +1,8 @@
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 960px) 340px;
+  grid-template-columns: minmax(0, 1fr) 340px;
   gap: 24px;
   align-items: start;
-  justify-content: center;
 }
 
 .main {
@@ -15,12 +14,15 @@
 
 .side {
   position: sticky;
-  top: 24px;
+  top: calc(var(--uv-header-height) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 @media (max-width: 1240px) {
   .layout {
-    grid-template-columns: minmax(0, 960px);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .side {

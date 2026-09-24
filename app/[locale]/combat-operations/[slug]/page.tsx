@@ -1,5 +1,4 @@
 import { setRequestLocale } from 'next-intl/server';
-import { CharterHeader } from '@widgets/CharterHeader';
 import { CombatOperationArticle } from '@widgets/CombatOperationArticle';
 import { pageMetadata } from '@/shared/seo';
 
@@ -15,10 +14,5 @@ export default async function CombatOperationArticlePage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  return (
-    <>
-      <CharterHeader />
-      <CombatOperationArticle slug={slug} />
-    </>
-  );
+  return <CombatOperationArticle slug={slug} />;
 }

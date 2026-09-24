@@ -1,0 +1,6 @@
+.root {
+  max-width: var(--uv-content-max);
+  min-height: calc(100vh - var(--uv-header-height));
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}

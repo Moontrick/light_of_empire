@@ -1,5 +1,4 @@
 import { setRequestLocale } from 'next-intl/server';
-import { CharterHeader } from '@widgets/CharterHeader';
 import { NewsArticle } from '@widgets/NewsArticle';
 import { pageMetadata } from '@/shared/seo';
 
@@ -13,10 +12,5 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  return (
-    <>
-      <CharterHeader />
-      <NewsArticle slug={slug} />
-    </>
-  );
+  return <NewsArticle slug={slug} />;
 }

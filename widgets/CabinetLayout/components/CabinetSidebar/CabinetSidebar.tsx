@@ -1,30 +1,30 @@
 'use client';
 
 import classNames from 'classnames';
+import { Skeleton } from 'antd';
 import { Link } from '@/shared/i18n/navigation';
 import { UserAvatar } from '@ui/UserAvatar';
-import { SITE_TITLE } from '@/shared/constants';
+import { RoleBadge } from '@ui/RoleBadge';
 import { useCabinetSidebar } from './hooks/useCabinetSidebar';
 import styles from './CabinetSidebar.module.scss';
 
 export function CabinetSidebar() {
-  const { user, sections, activePath, loggingOut, handleLogout } = useCabinetSidebar();
+  const { user, pending, sections } = useCabinetSidebar();
 
   return (
     <aside className={styles.sidebar}>
-      <Link href="/" className={styles.brand}>
-        {SITE_TITLE}
-      </Link>
-
-      {user && (
-        <Link href="/profile" className={styles.userCard}>
-          <UserAvatar size="sm" alt={user.login} />
-          <div className={styles.userMeta}>
-            <span className={styles.userLogin}>{user.login}</span>
-            <span className={styles.userEmail}>{user.email}</span>
-          </div>
-        </Link>
-      )}
+      <div className={styles.userCard}>
+        {pending && <Skeleton active avatar={{ size: 36 }} title={false} paragraph={{ rows: 2 }} />}
+        {!pending && user && (
+          <Link href="/profile" className={styles.userLink}>
+            <UserAvatar size="sm" alt={user.login} />
+            <div className={styles.userMeta}>
+              <span className={styles.userLogin}>{user.login}</span>
+              <RoleBadge role={user.role} />
+            </div>
+          </Link>
+        )}
+      </div>
 
       <nav className={styles.nav}>
         {sections.map((section) => (
@@ -35,9 +35,7 @@ export function CabinetSidebar() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={classNames(styles.item, {
-                      [styles.active]: activePath === item.href,
-                    })}
+                    className={classNames(styles.item, { [styles.active]: item.active })}
                   >
                     {item.label}
                   </Link>
@@ -47,20 +45,6 @@ export function CabinetSidebar() {
           </div>
         ))}
       </nav>
-
-      <div className={styles.footer}>
-        <Link href="/" className={styles.footerItem}>
-          На сайт
-        </Link>
-        <button
-          type="button"
-          className={classNames(styles.footerItem, styles.logout)}
-          onClick={handleLogout}
-          disabled={loggingOut}
-        >
-          Выйти
-        </button>
-      </div>
     </aside>
   );
 }

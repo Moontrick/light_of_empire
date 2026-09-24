@@ -1,0 +1,70 @@
+.item {
+  --case-item-accent: var(--uv-text-muted);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--uv-border);
+  border-radius: var(--uv-radius);
+  background:
+    radial-gradient(
+      ellipse 90% 60% at 50% 115%,
+      color-mix(in srgb, var(--case-item-accent) 45%, transparent),
+      transparent 70%
+    ),
+    var(--uv-bg-elevated);
+  color: var(--uv-text-strong);
+  font-size: var(--ls-fs-display);
+  font-weight: var(--ls-fw-bold);
+  font-variant-numeric: lining-nums tabular-nums;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: var(--case-item-accent);
+  }
+}
+
+.icon {
+  display: flex;
+  width: 55%;
+  height: 55%;
+  color: var(--case-item-accent);
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--case-item-accent) 60%, transparent));
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.rare {
+  border-color: color-mix(in srgb, var(--case-item-accent) 40%, var(--uv-border));
+}
+
+.epic {
+  border-color: color-mix(in srgb, var(--case-item-accent) 65%, var(--uv-border));
+
+  .icon {
+    filter: drop-shadow(0 0 12px var(--case-item-accent));
+  }
+}
+
+.legendary {
+  border-color: var(--case-item-accent);
+  box-shadow:
+    inset 0 0 24px color-mix(in srgb, var(--case-item-accent) 25%, transparent),
+    0 0 16px color-mix(in srgb, var(--case-item-accent) 45%, transparent);
+
+  .icon {
+    filter: drop-shadow(0 0 14px var(--case-item-accent));
+  }
+}
