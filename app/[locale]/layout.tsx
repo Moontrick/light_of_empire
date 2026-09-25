@@ -20,8 +20,8 @@ export default async function LocaleLayout({ params, children }: LayoutProps) {
 
   const messages = await getMessages();
   return (
-    <html lang={locale} className={cormorant.variable} suppressHydrationWarning>
-      <body className={cormorant.className}>
+    <html lang={locale} suppressHydrationWarning>
+      <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AntdRegistry>
             <AuthProvider />

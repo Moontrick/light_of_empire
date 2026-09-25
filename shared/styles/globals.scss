@@ -89,6 +89,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'ElectronicArtsText-Medium';
+  src: url('../../public/fonts/ElectronicArtsText-Light.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ElectronicArtsText-Bold';
+  src: url('../../public/fonts/ElectronicArtsText-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ElectronicArtsText-Regular';
+  src: url('../../public/fonts/ElectronicArtsText-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 * {
   font-family: var(--ls-font) !important;
   font-variant-numeric: lining-nums;

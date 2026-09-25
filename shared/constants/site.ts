@@ -1,1 +1,1 @@
-export const SITE_TITLE = 'LIGHT OF EMPIRE';
+export const SITE_TITLE = 'THE LIGHT OF EMPIRE';

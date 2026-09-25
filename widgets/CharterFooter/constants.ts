@@ -5,7 +5,7 @@ import { IconGarrys } from '@/public/icons/IconGarrys';
 import { CONNECT_URL } from '@/shared/constants';
 import type { FooterColumnData, FooterSocial } from './types';
 
-export const FOOTER_TITLE = 'LIGHT OF EMPIRE';
+export const FOOTER_TITLE = 'THE LIGHT OF EMPIRE';
 
 export const FOOTER_TAGLINE =
   'Галактическая Империя устанавливает Новый Порядок.';

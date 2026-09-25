@@ -163,7 +163,7 @@
   // Единый шрифт проекта — Cormorant Garamond (вариативный, --font-cormorant
   // задаётся через next/font/local в app/[locale]/layout.tsx).
   // Вес задаём через font-weight ($ls-fw-*), а не отдельными семействами.
-  --ls-font: var(--font-cormorant), "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --ls-font: "ElectronicArtsText-Bold", serif;
   --ls-font-regular: var(--ls-font);
   --ls-font-medium: var(--ls-font);
   --ls-font-semibold: var(--ls-font);
