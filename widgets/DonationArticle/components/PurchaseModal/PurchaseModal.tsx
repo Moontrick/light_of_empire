@@ -71,7 +71,7 @@ export function PurchaseModal(props: PurchaseModalProps) {
                 rows={3}
                 maxLength={PURCHASE_COMMENT_MAX}
                 showCount
-                placeholder="Например, ник в игре"
+                placeholder="Например, ник в игре, чтобы администрация связалась с вами после покупки"
               />
             </Form.Item>
 

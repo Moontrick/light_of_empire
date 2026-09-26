@@ -1,0 +1,16 @@
+export const SECTIONS = [
+  { id: 'general', title: '1. Общие положения' },
+  { id: 'terms', title: '2. Термины и определения' },
+  { id: 'subject', title: '3. Предмет соглашения' },
+  { id: 'registration', title: '4. Регистрация и аккаунт' },
+  { id: 'rights', title: '5. Права и обязанности сторон' },
+  { id: 'content', title: '6. Контент пользователя' },
+  { id: 'prohibited', title: '7. Запрещённые действия' },
+  { id: 'ip', title: '8. Интеллектуальная собственность' },
+  { id: 'liability', title: '9. Ответственность' },
+  { id: 'personal', title: '10. Персональные данные' },
+  { id: 'termination', title: '11. Срок и расторжение' },
+  { id: 'disputes', title: '12. Разрешение споров' },
+  { id: 'changes', title: '13. Изменения соглашения' },
+//   { id: 'contacts', title: '14. Контакты' },
+];

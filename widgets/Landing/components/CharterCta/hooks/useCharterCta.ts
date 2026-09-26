@@ -6,6 +6,10 @@ import { publishedNodes } from '@/shared/utils/pagesTree';
 import { CTA_DYNAMIC_COUNT, CTA_DYNAMIC_EYEBROW, CTA_DYNAMIC_LABEL } from '../constants';
 import type { CtaCardData } from '../types';
 
+const IMAGES: string[] = [
+  '/images/2d9aca9c6ce189ebb8b59a9088c033d4.jpg',
+  '/images/43e9a05974ecb9a83c9901cf0e40a634.png'
+];
 export function useCharterCta() {
   const tree = usePagesStore((state) => state.tree);
   const treeStatus = usePagesStore((state) => state.treeStatus);
@@ -36,7 +40,8 @@ export function useCharterCta() {
 
   const dynamicCards = useMemo<CtaCardData[]>(() => {
     if (!summariesReady) return [];
-    return nodes.map((node) => {
+    // console.log(nodes);
+    return nodes.map((node, index) => {
       const summary = summaries[node.slug] ?? null;
       return {
         id: node.slug,
@@ -45,6 +50,7 @@ export function useCharterCta() {
         text: summary?.intro ?? '',
         href: `/${node.slug}`,
         ctaLabel: CTA_DYNAMIC_LABEL,
+        image: IMAGES[index] ?? '',
       };
     });
   }, [nodes, summaries, summariesReady]);

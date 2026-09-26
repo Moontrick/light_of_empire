@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input } from 'antd';
 import { Link } from '@/shared/i18n/navigation';
 import type { RegisterDto } from '@/shared/api/auth';
 import { AuthShell } from '../AuthShell';
@@ -25,6 +25,9 @@ export function RegisterForm() {
         requiredMark={false}
         disabled={submitting}
         onFinish={onFinish}
+        initialValues={{
+          subscribeToNews: true,
+        }}
       >
         <Form.Item
           name="login"
@@ -57,6 +60,41 @@ export function RegisterForm() {
           ]}
         >
           <Input.Password autoComplete="new-password" />
+        </Form.Item>
+
+        <Form.Item
+          name="acceptPolicy"
+          valuePropName="checked"
+          rules={[
+            {
+              validator: (_, checked) =>
+                checked
+                  ? Promise.resolve()
+                  : Promise.reject(
+                    new Error('Необходимо принять пользовательское соглашение'),
+                  ),
+            },
+          ]}
+        >
+          <Checkbox>
+            Я принимаю{' '}
+            <Link href="/terms" target="_blank">
+              пользовательское соглашение
+            </Link>{' '}
+            и{' '}
+            <Link href="/privacy" target="_blank">
+              политику конфиденциальности
+            </Link>
+          </Checkbox>
+        </Form.Item>
+
+        <Form.Item
+          name="subscribeToNews"
+          valuePropName="checked"
+        >
+          <Checkbox checked={true}>
+            Хочу получать новости и информацию об обновлениях сервера
+          </Checkbox>
         </Form.Item>
 
         <Button type="primary" htmlType="submit" block loading={submitting}>
