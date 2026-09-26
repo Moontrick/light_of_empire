@@ -1,32 +1,24 @@
+// Прогресс-пилюля «0 / 2,000» из экрана RANK: серая капсула, тёмная заливка
 .track {
   position: relative;
   width: 100%;
-  max-width: 320px;
-  height: 6px;
+  // max-width: 360px;
+  height: 22px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--uv-border);
+  background: var(--bf-tile-deep);
+  border-radius: 999px;
 }
 
 .fill {
   position: absolute;
   inset: 0 auto 0 0;
-  background: linear-gradient(90deg, var(--uv-red-deep), var(--uv-red));
-  box-shadow: 0 0 12px var(--uv-red-glow);
+  background: var(--bf-panel);
+  border-radius: 999px;
   transition: width 0.6s ease;
 }
 
 .ticks {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0,
-    transparent 24px,
-    var(--uv-bg) 24px,
-    var(--uv-bg) 25px
-  );
-  opacity: 0.55;
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

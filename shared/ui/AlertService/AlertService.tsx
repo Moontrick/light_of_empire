@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { ConfigProvider, notification } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { alertHandler } from '../../utils/alertHandler';
 import type { AlertMessage } from '../../utils/alertHandler/type';
 
@@ -29,5 +29,5 @@ export function AlertService() {
     return () => alertHandler.unsubscribe(show);
   }, [api]);
 
-  return <ConfigProvider theme={DARK_FORM_THEME}>{contextHolder}</ConfigProvider>;
+  return <ConfigProvider theme={FORM_THEME}>{contextHolder}</ConfigProvider>;
 }

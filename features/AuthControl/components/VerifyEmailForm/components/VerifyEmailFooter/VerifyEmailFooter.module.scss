@@ -1,0 +1,15 @@
+// Кнопка в тексте футера выглядит как ссылка рядом (см. AuthShell .footer a)
+.link {
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--uv-accent-soft);
+  font: inherit;
+  cursor: pointer;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.link:hover {
+  color: var(--uv-red-bright);
+  text-shadow: 0 0 16px var(--uv-red-glow);
+}

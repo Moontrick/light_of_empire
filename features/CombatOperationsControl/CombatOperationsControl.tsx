@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider, Select } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import type { NewsStatus } from '@/shared/types';
 import { NEWS_STATUS_FILTER_OPTIONS } from '@/shared/constants';
@@ -30,7 +30,7 @@ export function CombatOperationsControl() {
   } = useCombatOperationsControl();
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard
         title="Боевые операции"
         extra={

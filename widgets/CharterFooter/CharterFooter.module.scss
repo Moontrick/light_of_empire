@@ -13,6 +13,35 @@
   border: 1px solid var(--uv-border);
 }
 
+// Battlefront: футер — светлая плитка на сером фоне, без стеклянных подложек
+[data-theme='bf1'] .footer {
+  background: var(--bf-bg-deep);
+}
+
+[data-theme='bf1'] .inner {
+  background: var(--bf-tile);
+  border-color: transparent;
+}
+
+[data-theme='bf1'] .logo {
+  font-weight: 700;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+}
+
+[data-theme='bf1'] .logo:hover {
+  text-shadow: none;
+}
+
+[data-theme='bf1'] .social {
+  background: var(--bf-tile-deep);
+  border-color: transparent;
+}
+
+[data-theme='bf1'] .social:hover {
+  background: var(--bf-panel);
+  color: var(--bf-text-on-panel);
+}
+
 .top {
   display: flex;
   align-items: flex-start;

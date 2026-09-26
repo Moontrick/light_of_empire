@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react';
 import { Button, ConfigProvider } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { PurchaseStatus } from '@/shared/types';
 import { HudCard } from '@ui/HudCard';
 import { PurchasesFilters } from '@ui/PurchasesFilters';
@@ -37,7 +37,7 @@ export function PurchasesControl() {
   );
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard title="Покупка доната">
         <PurchasesFilters
           value={filters}

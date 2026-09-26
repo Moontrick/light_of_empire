@@ -163,7 +163,7 @@
   // Единый шрифт проекта — Cormorant Garamond (вариативный, --font-cormorant
   // задаётся через next/font/local в app/[locale]/layout.tsx).
   // Вес задаём через font-weight ($ls-fw-*), а не отдельными семействами.
-  --ls-font: "ElectronicArtsText-Bold", serif;
+  --ls-font: "TLOE-Bold", serif;
   --ls-font-regular: var(--ls-font);
   --ls-font-medium: var(--ls-font);
   --ls-font-semibold: var(--ls-font);
@@ -249,6 +249,9 @@
   // --- Borders -----------------------------------------------------------------
   --uv-border: rgba(255, 255, 255, 0.12);
   --uv-border-accent: rgba(210, 39, 48, 0.5);
+  --uv-hud-corner: rgba(255, 255, 255, 0.45); // уголки HudCorners
+  --uv-header-bg: rgba(15, 15, 16, 0.82); // стекло шапки
+  --uv-menu-bg: rgba(20, 20, 22, 0.98); // выпадающие панели шапки
 
   // --- Typography --------------------------------------------------------------
   // Весь сайт использует Cormorant Garamond (см. --ls-font выше);
@@ -261,6 +264,83 @@
   --uv-header-height: 68px;
   // Угловатый HUD-стиль — без скруглений.
   --uv-radius: 0;
+}
+
+// =============================================================================
+// Battlefront — светлая тема в духе меню Star Wars Battlefront (2015).
+// Светло-серый фон, угольные плашки, жёлтый акцент, uppercase, без скруглений
+// и свечений. Включается атрибутом data-theme="bf1" на <html> (root layout):
+// внутри атрибута все --uv-* токены переназначаются, поэтому старые компоненты
+// перекрашиваются сами. Новый код пишем сразу на --bf-* токенах.
+// =============================================================================
+
+:root {
+  // --- Surfaces ----------------------------------------------------------------
+  --bf-bg: #e9e9e9; // фон страницы (верх градиента)
+  --bf-bg-deep: #d6d6d6; // фон страницы (низ градиента)
+  --bf-tile: #dcdcdc; // светлая плитка меню
+  --bf-tile-hover: #d3d3d3;
+  --bf-tile-deep: #cbcbcb; // прогресс-пилюли, неактивные сегменты
+  --bf-panel: #2b2b2b; // угольная плашка заголовка / выбранная кнопка
+  --bf-panel-hover: #1f1f1f;
+
+  // --- Text --------------------------------------------------------------------
+  --bf-text: #262626;
+  --bf-text-muted: #5a5a5a;
+  --bf-text-faint: #8c8c8c;
+  --bf-text-on-panel: #f2f2f2;
+  --bf-text-on-panel-muted: rgba(242, 242, 242, 0.7);
+
+  // --- Accent ------------------------------------------------------------------
+  --bf-yellow: #f2b41f; // выделение активной плитки, крупные заголовки
+  --bf-yellow-deep: #d99a0b; // hover, подписи на тёмных плашках
+  --bf-yellow-text: #a86f00; // жёлтый для текста на светлом фоне (контраст ≥ 4.5:1)
+  --bf-yellow-soft: rgba(242, 180, 31, 0.16);
+
+  // Тот же цвет, что --bf-bg, но каналами — для полупрозрачной «дымки» над фото
+  --bf-bg-rgb: 233, 233, 233;
+
+  // --- Lines -------------------------------------------------------------------
+  --bf-line: rgba(0, 0, 0, 0.12);
+  --bf-line-strong: rgba(0, 0, 0, 0.28);
+  --bf-outline: 2px; // толщина жёлтой рамки выбранной плитки
+
+  // --- Typography --------------------------------------------------------------
+  --bf-font: "TLOE", "Myriad Pro", sans-serif;
+}
+
+[data-theme="bf1"] {
+  --ls-font: var(--bf-font);
+
+  --uv-bg: var(--bf-bg);
+  --uv-bg-elevated: var(--bf-tile);
+  --uv-bg-header: var(--bf-tile-deep);
+  --uv-bg-overlay: var(--bf-bg);
+  --uv-bg-soft: rgba(0, 0, 0, 0.05);
+  --uv-bg-hover: rgba(0, 0, 0, 0.07);
+
+  --uv-text: var(--bf-text);
+  --uv-text-muted: var(--bf-text-muted);
+  --uv-text-strong: var(--bf-text);
+
+  --uv-accent: var(--bf-yellow-text);
+  --uv-accent-soft: var(--bf-yellow-text);
+  --uv-link: #2a5697;
+
+  --uv-red: var(--bf-yellow);
+  --uv-red-bright: var(--bf-yellow-text);
+  --uv-red-deep: var(--bf-yellow-deep);
+  --uv-red-glow: transparent;
+  --uv-red-soft: var(--bf-yellow-soft);
+
+  --uv-border: var(--bf-line);
+  --uv-border-accent: var(--bf-yellow);
+  --uv-hud-corner: var(--bf-line-strong);
+  --uv-header-bg: rgba(233, 233, 233, 0.88);
+  --uv-menu-bg: rgba(233, 233, 233, 0.98);
+
+  --ls-success: #3d8b4f;
+  --ls-success-dot: #4aa35f;
 }
 
 // 0%  - 00

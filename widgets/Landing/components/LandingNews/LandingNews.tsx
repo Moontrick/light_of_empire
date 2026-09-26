@@ -1,8 +1,8 @@
 'use client';
 
 import { Skeleton } from 'antd';
-import { Link } from '@/shared/i18n/navigation';
 import { NewsCard } from '@ui/NewsCard';
+import { SectionHead } from '@ui/SectionHead';
 import { useLandingNews } from './hooks/useLandingNews';
 import styles from './LandingNews.module.scss';
 
@@ -14,18 +14,11 @@ export function LandingNews() {
   return (
     <section className={styles.news}>
       <div className={styles.inner}>
-        <div className={styles.head}>
-          <div>
-            <span className={styles.eyebrow}>Новости</span>
-            <h2 className={styles.title}>Новости и обновления</h2>
-          </div>
-          <Link href="/news" className={styles.all}>
-            Все новости
-            <span className={styles.arrow} aria-hidden>
-              →
-            </span>
-          </Link>
-        </div>
+        <SectionHead
+          eyebrow="Новости"
+          title="Обновления"
+          link={{ href: '/news', label: 'Все новости' }}
+        />
 
         {loading ? (
           <div className={styles.grid}>

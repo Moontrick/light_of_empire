@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { PurchasesFilters } from '@ui/PurchasesFilters';
 import { PurchasesList } from './components/PurchasesList';
@@ -12,7 +12,7 @@ export function MyPurchases() {
     useMyPurchases();
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard
         title="Мои покупки"
         extra={<Button onClick={goShowcase}>В витрину</Button>}

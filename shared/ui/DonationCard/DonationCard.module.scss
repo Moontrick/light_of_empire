@@ -3,39 +3,24 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  color: var(--uv-text);
+  color: var(--bf-text);
   text-decoration: none;
-  background: rgba(10, 10, 12, 0.55);
-  border: 1px solid var(--uv-border);
-  backdrop-filter: blur(2px);
-  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background: var(--uv-red);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease;
-  }
+  background: var(--bf-tile);
+  outline: var(--bf-outline) solid transparent;
+  outline-offset: calc(var(--bf-outline) * -1);
+  transition: outline-color 0.15s ease, background-color 0.15s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: var(--uv-border-accent);
-    box-shadow:
-      0 18px 40px rgba(0, 0, 0, 0.45),
-      0 0 24px var(--uv-red-soft);
-
-    &::after {
-      transform: scaleX(1);
-    }
+    background: var(--bf-tile-hover);
+    outline-color: var(--bf-yellow);
 
     .image {
-      transform: scale(1.06);
+      transform: scale(1.05);
+    }
+
+    .more {
+      color: var(--bf-text-on-panel);
+      background: var(--bf-panel);
     }
 
     .arrow {
@@ -48,17 +33,7 @@
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-bottom: 1px solid var(--uv-border);
-  background: var(--uv-bg-header);
-
-  // Затемнение снизу, чтобы чип цены читался на любом фото
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(10, 10, 12, 0.85));
-    pointer-events: none;
-  }
+  background: var(--bf-tile-deep);
 }
 
 .image {
@@ -73,47 +48,36 @@
   position: absolute;
   inset: 0;
   background: url('/images/Imperial_Emblem.svg') center / 38% no-repeat;
-  opacity: 0.12;
-}
-
-.price {
-  position: absolute;
-  z-index: 1;
-  bottom: 14px;
-  left: 14px;
-  display: inline-flex;
-  padding: 6px 12px;
-  background: rgba(10, 10, 12, 0.8);
-  border: 1px solid var(--uv-border-accent);
-  backdrop-filter: blur(4px);
+  opacity: 0.14;
 }
 
 .body {
-  position: relative;
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 22px 22px 24px;
+  gap: 8px;
+  padding: 18px 18px 18px;
 }
 
 .title {
-  margin: 0 0 10px;
-  color: var(--uv-text-strong);
-  font-size: 20px;
-  font-weight: 700;
+  margin: 0;
+  color: var(--bf-text);
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.2;
+  letter-spacing: 0.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
   text-transform: uppercase;
 }
 
 .excerpt {
   display: -webkit-box;
-  margin: 0 0 20px;
+  margin: 0 0 8px;
   overflow: hidden;
-  color: var(--uv-text-muted);
+  color: var(--bf-text-muted);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.55;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
 }
 
 .footer {
@@ -124,17 +88,39 @@
   margin-top: auto;
 }
 
+// Цена — тёмная плашка с жёлтой меткой: главный крючок карточки
+.price {
+  display: inline-flex;
+  padding: 7px 12px;
+  color: var(--bf-text-on-panel);
+  font-weight: 700;
+  background: var(--bf-panel);
+  border-left: 3px solid var(--bf-yellow);
+}
+
 .more {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--uv-red-bright);
+  padding: 8px 12px;
+  color: var(--bf-text);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  letter-spacing: 1.2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
   text-transform: uppercase;
+  background: var(--bf-tile-deep);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .arrow {
   transition: transform 0.18s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image,
+  .more,
+  .arrow {
+    transition: none;
+  }
 }

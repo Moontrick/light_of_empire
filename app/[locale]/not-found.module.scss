@@ -6,7 +6,7 @@
   min-height: 100vh;
   padding: 40px 20px;
   overflow: hidden;
-  background-image: url('/images/hero-space.jpg');
+  background-image: url('/images/d1efa08bc7bbacef158020cf5a50e41c.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -14,12 +14,11 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-      ellipse at 50% 45%,
-      rgba(210, 39, 48, 0.16) 0%,
-      transparent 50%
-    ),
-    linear-gradient(180deg, rgba(5, 6, 8, 0.82) 0%, rgba(5, 6, 8, 0.94) 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(var(--bf-bg-rgb), 0.86) 0%,
+    rgba(var(--bf-bg-rgb), 0.94) 100%
+  );
 }
 
 .panel {
@@ -29,9 +28,8 @@
   max-width: 620px;
   padding: 64px 48px 56px;
   text-align: center;
-  background: rgba(10, 10, 12, 0.5);
-  border: 1px solid var(--uv-border);
-  backdrop-filter: blur(3px);
+  background: var(--bf-tile);
+  border: 1px solid transparent;
 }
 
 .eyebrow {
@@ -50,12 +48,11 @@
   font-size: clamp(96px, 18vw, 168px);
   line-height: 0.9;
   letter-spacing: 4px !important;
-  text-shadow: 0 8px 60px rgba(0, 0, 0, 0.7);
 }
 
 .tagline {
   margin: 8px 0 28px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--bf-text-faint);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 4px !important;
@@ -107,7 +104,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.12);
 }
 
 @media (max-width: 600px) {

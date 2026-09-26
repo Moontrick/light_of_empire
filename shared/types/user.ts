@@ -51,4 +51,6 @@ export interface UserProfile {
   formation: Formation | null;
   role: UserRole;
   balance: number;
+  // Относительный путь /api/v1/image-service/…; перед <img> — через getCoverUrl
+  avatar_url: string | null;
 }

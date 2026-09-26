@@ -1,0 +1,1 @@
+export { YandexMetrikaHits } from './YandexMetrikaHits';

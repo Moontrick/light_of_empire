@@ -115,3 +115,42 @@
 .card:hover .arrow {
   transform: translateX(4px);
 }
+
+// ---- Battlefront: плоская светлая плитка с жёлтой рамкой при наведении -----
+[data-theme='bf1'] .card {
+  background: var(--bf-tile);
+  border-color: transparent;
+  outline: var(--bf-outline) solid transparent;
+  outline-offset: calc(var(--bf-outline) * -1);
+  transition: outline-color 0.15s ease, background-color 0.15s ease;
+}
+
+[data-theme='bf1'] .card:hover {
+  transform: none;
+  background: var(--bf-tile-hover);
+  border-color: transparent;
+  outline-color: var(--bf-yellow);
+  box-shadow: none;
+}
+
+[data-theme='bf1'] .media {
+  border-bottom: none;
+}
+
+[data-theme='bf1'] .image,
+[data-theme='bf1'] .card:hover .image {
+  filter: none;
+}
+
+[data-theme='bf1'] .tag {
+  color: var(--bf-yellow);
+  background: var(--bf-panel);
+}
+
+[data-theme='bf1'] .title {
+  font-weight: 600;
+}
+
+[data-theme='bf1'] .more {
+  color: var(--bf-text);
+}

@@ -1,0 +1,50 @@
+.lead {
+  margin: 0 0 24px;
+  color: var(--uv-text-muted);
+  font-size: 17px;
+  text-align: center;
+}
+
+.email {
+  color: var(--uv-text-strong);
+  font-weight: var(--ls-fw-bold);
+  overflow-wrap: anywhere;
+}
+
+// Ячейки кода — по центру карточки, antd растягивает контейнер на всю ширину
+.codeItem :global(.ant-otp) {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.codeItem :global(.ant-otp-input) {
+  width: 52px;
+  height: 56px;
+  font-size: 24px;
+}
+
+.status {
+  min-height: 24px;
+  margin: 0 0 20px;
+  color: var(--uv-text-muted);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.expired {
+  color: var(--uv-danger);
+}
+
+.resend {
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .codeItem :global(.ant-otp-input) {
+    width: 42px;
+    height: 48px;
+    font-size: 20px;
+  }
+}

@@ -5,7 +5,6 @@ export interface DonationImagesEditorProps {
   existing: DonationImage[];
   pending: PendingImage[];
   max: number;
-  processing: boolean;
   deletingId: number | null;
   onAdd: (files: File[]) => void;
   onRemoveExisting: (imageId: number) => void;

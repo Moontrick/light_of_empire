@@ -28,11 +28,12 @@
   position: absolute;
   inset: 0;
   z-index: 1;
+  // Светлая «дымка» Battlefront: фото уходит в фон страницы, текст — тёмный
   background: linear-gradient(
     180deg,
-    rgba(15, 15, 16, 0.4) 0%,
-    rgba(15, 15, 16, 0.72) 58%,
-    rgba(15, 15, 16, 0.96) 100%
+    rgba(var(--bf-bg-rgb), 0.25) 0%,
+    rgba(var(--bf-bg-rgb), 0.78) 58%,
+    rgba(var(--bf-bg-rgb), 0.98) 100%
   );
 }
 
@@ -88,7 +89,6 @@
   font-weight: 700;
   line-height: 1.02;
   text-transform: uppercase;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 }
 
 .article {

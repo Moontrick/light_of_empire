@@ -1,1 +1,1 @@
-export { DARK_FORM_THEME } from './antdTheme';
+export { FORM_THEME } from './antdTheme';

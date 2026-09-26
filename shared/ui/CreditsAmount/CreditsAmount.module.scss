@@ -13,8 +13,9 @@
   flex-shrink: 0;
 }
 
+// Наследует цвет контекста: на тёмной плашке — светлый, на плитке — тёмный
 .neutral {
-  color: var(--uv-text-strong);
+  color: inherit;
 }
 
 .plus {

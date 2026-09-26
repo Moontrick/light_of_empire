@@ -9,7 +9,6 @@ export function DonationImagesEditor({
   existing,
   pending,
   max,
-  processing,
   deletingId,
   onAdd,
   onRemoveExisting,
@@ -44,7 +43,7 @@ export function DonationImagesEditor({
         ))}
         {pending.map((image) => (
           <div key={image.key} className={styles.item}>
-            <img src={image.dataUrl} alt={image.name} className={styles.image} />
+            <img src={image.previewUrl} alt={image.name} className={styles.image} />
             <span className={styles.pendingBadge}>Загрузится при сохранении</span>
             <Button size="small" className={styles.remove} onClick={() => onRemovePending(image.key)}>
               Убрать
@@ -55,7 +54,6 @@ export function DonationImagesEditor({
 
       <ImageDropZone
         multiple
-        processing={processing}
         disabled={count >= max}
         hint={
           count >= max

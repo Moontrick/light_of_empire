@@ -8,6 +8,7 @@ import { AuthProvider } from '@/components/AuthProvider';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooterGate } from '@/components/SiteFooterGate';
 import { CharterFooter } from '@widgets/CharterFooter';
+import { YandexMetrika } from '@/components/YandexMetrika';
 import { baseMetadata, baseViewport } from '@/shared/seo';
 import type { LayoutProps } from './types';
 
@@ -20,7 +21,7 @@ export default async function LocaleLayout({ params, children }: LayoutProps) {
 
   const messages = await getMessages();
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} data-theme="bf1" suppressHydrationWarning>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AntdRegistry>
@@ -33,6 +34,7 @@ export default async function LocaleLayout({ params, children }: LayoutProps) {
             <AlertService />
           </AntdRegistry>
         </NextIntlClientProvider>
+        <YandexMetrika />
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import type { ScriptProps } from 'next/script';
 
 // Зеркало палитры из shared/styles/_variables.scss — для мест, где нужен hex
 // (manifest, theme-color, og), а не CSS-переменная.
@@ -21,12 +22,25 @@ export const SITE = {
   author: 'Canto Projects',
 };
 
+export const YANDEX_METRIKA_ID = 113087893;
+
 export const baseViewport: Viewport = {
   themeColor: BRAND.surface,
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
 };
+
+// canonical и hreflang для конкретного пути: en — без префикса, ru — /ru (localePrefix as-needed)
+export function localeAlternates(path: string): Metadata['alternates'] {
+  return {
+    canonical: path,
+    languages: {
+      en: path,
+      ru: `/ru${path === '/' ? '' : path}`,
+    },
+  };
+}
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -49,13 +63,6 @@ export const baseMetadata: Metadata = {
     'Имперская Армия',
     'устав',
   ],
-  alternates: {
-    canonical: '/',
-    languages: {
-      ru: '/ru',
-      en: '/',
-    },
-  },
   icons: {
     icon: SITE.logo,
     shortcut: SITE.logo,
@@ -95,14 +102,46 @@ export const baseMetadata: Metadata = {
   },
 };
 
-export function pageMetadata(title: string, description?: string): Metadata {
+// path — публичный путь страницы без локали ('/ustav'); с ним страница получает
+// свой canonical и hreflang вместо унаследованных от корня
+export function pageMetadata(title: string, description?: string, path?: string): Metadata {
   const desc = description ?? SITE.description;
   const fullTitle = `${title} · ${SITE.name}`;
 
   return {
     title,
     description: desc,
-    openGraph: { title: fullTitle, description: desc },
+    openGraph: { title: fullTitle, description: desc, ...(path && { url: path }) },
     twitter: { title: fullTitle, description: desc },
+    ...(path && { alternates: localeAlternates(path) }),
   };
 }
+
+const topFrameOnly = (body: string) => `
+      if (window.top === window.self) {
+        ${body}
+      }
+    `;
+
+export const SEO_SCRIPTS: ScriptProps[] = [
+  {
+    id: 'yandex-metrika',
+    strategy: 'afterInteractive',
+    dangerouslySetInnerHTML: {
+      __html: topFrameOnly(`
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(${YANDEX_METRIKA_ID}, "init", {
+              defer: false,
+              clickmap:true,
+              trackLinks:true,
+              accurateTrackBounce:true,
+            });
+        `),
+    },
+  },
+];

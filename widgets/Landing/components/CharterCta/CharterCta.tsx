@@ -1,5 +1,6 @@
 'use client';
 
+import { SectionHead } from '@ui/SectionHead';
 import { CtaCard } from './components/CtaCard';
 import { CtaCardSkeleton } from './components/CtaCardSkeleton';
 import { useCharterCta } from './hooks/useCharterCta';
@@ -11,23 +12,21 @@ export function CharterCta() {
 
   return (
     <section className={styles.cta}>
-      <div className={styles.head}>
-        <span className={styles.eyebrow}>{CTA_EYEBROW}</span>
-        <h2 className={styles.title}>{CTA_TITLE}</h2>
-        <p className={styles.text}>{CTA_TEXT}</p>
-      </div>
+      <div className={styles.inner}>
+        <SectionHead eyebrow={CTA_EYEBROW} title={CTA_TITLE} text={CTA_TEXT} />
 
-      <div className={styles.grid}>
-        {CTA_STATIC_CARDS.map((card) => (
-          <CtaCard key={card.id} card={card} />
-        ))}
-        {dynamicCards.map((card) => (
-          <CtaCard key={card.id} card={card} />
-        ))}
-        {Array.from({ length: skeletonCount }, (_, index) => (
-          <CtaCardSkeleton key={index} />
-        ))}
-        <CtaCard card={CTA_DISCORD_CARD} />
+        <div className={styles.grid}>
+          {CTA_STATIC_CARDS.map((card) => (
+            <CtaCard key={card.id} card={card} />
+          ))}
+          {dynamicCards.map((card) => (
+            <CtaCard key={card.id} card={card} />
+          ))}
+          {Array.from({ length: skeletonCount }, (_, index) => (
+            <CtaCardSkeleton key={index} />
+          ))}
+          <CtaCard card={CTA_DISCORD_CARD} />
+        </div>
       </div>
     </section>
   );

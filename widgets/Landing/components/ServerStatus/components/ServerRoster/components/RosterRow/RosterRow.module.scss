@@ -1,0 +1,65 @@
+// Строка таблицы рекордов: выбранная (лидер) — тёмная, остальные — с тонкой линией
+.row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--bf-line);
+  transition: background-color 0.15s ease;
+}
+
+.row:hover {
+  background: var(--bf-tile-hover);
+}
+
+.top {
+  margin: 0 -20px;
+  padding: 9px 20px;
+  color: var(--bf-text-on-panel);
+  background: var(--bf-panel);
+  border-bottom-color: transparent;
+}
+
+.top:hover {
+  background: var(--bf-panel);
+}
+
+.index {
+  color: var(--bf-text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.top .index {
+  color: var(--bf-yellow);
+}
+
+// Позывные бывают длинными и без пробелов — режем многоточием,
+// иначе одна строка растянет всю таблицу.
+.name {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.time {
+  color: var(--bf-text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.top .time {
+  color: var(--bf-text-on-panel-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    transition: none;
+  }
+}

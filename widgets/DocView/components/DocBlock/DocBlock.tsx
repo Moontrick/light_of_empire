@@ -1,4 +1,5 @@
 import { RichText } from '@/shared/ui/RichText';
+import { resolveImageSrc } from '@/shared/utils/resolveImageSrc';
 import { RuleItem } from './components/RuleItem';
 import type { DocBlockProps } from './types';
 import styles from './DocBlock.module.scss';
@@ -79,7 +80,7 @@ export function DocBlock({ block }: DocBlockProps) {
     if (!block.src) return null;
     return (
       <figure className={styles.imageBlock}>
-        <img src={block.src} alt={block.alt ?? ''} className={styles.image} />
+        <img src={resolveImageSrc(block.src) ?? undefined} alt={block.alt ?? ''} className={styles.image} />
         {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
       </figure>
     );

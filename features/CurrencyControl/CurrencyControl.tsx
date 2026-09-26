@@ -1,7 +1,7 @@
 'use client';
 
 import { ConfigProvider, Tabs } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { CURRENCY_NAME } from '@/shared/constants';
 import { HudCard } from '@ui/HudCard';
 import { BalancesTab } from './components/BalancesTab';
@@ -27,7 +27,7 @@ export function CurrencyControl() {
   if (!actor) return null;
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard title={CURRENCY_NAME}>
         <Tabs
           activeKey={activeTab}

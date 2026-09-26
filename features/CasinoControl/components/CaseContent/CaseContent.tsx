@@ -1,7 +1,7 @@
 'use client';
 
 import { ConfigProvider } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { BalanceChip } from '@ui/BalanceChip';
 import styles from './CaseContent.module.scss';
@@ -14,7 +14,7 @@ export function CaseContent() {
   const { activeCaseId, balance, pending, guest, handleOpenCase, handleBack } = useCaseContent();
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard
         title="Кейсы"
         extra={

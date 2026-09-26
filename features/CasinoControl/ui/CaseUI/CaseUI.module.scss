@@ -14,7 +14,7 @@
       color-mix(in srgb, var(--case-accent) 30%, transparent),
       transparent 70%
     ),
-    rgba(10, 10, 12, 0.55);
+    var(--bf-tile);
   border: 1px solid var(--uv-border);
   cursor: pointer;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -32,9 +32,7 @@
   &:hover {
     transform: translateY(-4px);
     border-color: color-mix(in srgb, var(--case-accent) 60%, var(--uv-border));
-    box-shadow:
-      0 18px 40px rgba(0, 0, 0, 0.45),
-      0 0 28px color-mix(in srgb, var(--case-accent) 30%, transparent);
+    box-shadow: 0 0 28px color-mix(in srgb, var(--case-accent) 30%, transparent);
 
     .image {
       transform: translateY(-6px) scale(1.06);
@@ -55,12 +53,12 @@
   max-width: 82%;
   max-height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.65));
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.3));
   transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 .locked .image {
-  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.65)) grayscale(0.5) brightness(0.75);
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.3)) grayscale(0.5) brightness(0.9);
 }
 
 .eyebrow {
@@ -99,7 +97,7 @@
   display: inline-flex;
   margin-left: 12px;
   padding-left: 12px;
-  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  border-left: 1px solid var(--bf-line-strong);
 }
 
 .shortage {

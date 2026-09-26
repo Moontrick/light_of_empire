@@ -1,4 +1,5 @@
 .landing {
-  background: var(--uv-bg);
+  // Меню Battlefront: ровный светло-серый фон, чуть темнеющий к низу
+  background: linear-gradient(180deg, var(--bf-bg) 0%, var(--bf-bg-deep) 100%);
   color: var(--uv-text);
 }

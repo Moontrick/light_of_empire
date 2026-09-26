@@ -21,6 +21,7 @@ export function AuthActions({ variant = 'desktop', onNavigate }: AuthActionsProp
         <UserMenu
           login={user.login}
           email={user.email}
+          avatarUrl={user.avatar_url}
           loggingOut={loggingOut}
           onLogout={handleLogout}
         />

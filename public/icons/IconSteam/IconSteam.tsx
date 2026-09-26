@@ -1,7 +1,7 @@
 import { SvgTypesProps } from '@/shared/types/SvgTypes';
 
 export function IconSteam({
-  fill = '#c7d5e0',
+  fill = '#0b0c0e',
   width = 18,
   height = 18,
   className

@@ -2,7 +2,7 @@
 
 import { Button, ConfigProvider, Skeleton } from 'antd';
 import { Link } from '@/shared/i18n/navigation';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { CreditsAmount } from '@ui/CreditsAmount';
 import { ImageGallery } from '@ui/ImageGallery';
 import { NewsContent } from '@ui/NewsContent';
@@ -62,7 +62,7 @@ export function DonationArticle({ idParam }: DonationArticleProps) {
   }
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <main className={styles.root}>
         <div className={styles.layout}>
           <Link href="/donations" className={styles.back}>

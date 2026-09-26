@@ -22,7 +22,7 @@ export interface TransactionsQuery extends MyTransactionsQuery {
 
 // Ответ credit/debit — созданная запись журнала с коротким user (без email)
 export interface AdjustBalanceResponse extends CurrencyTransaction {
-  user: { id: number; login: string };
+  user: { id: number; login: string; avatar_url: string | null };
 }
 
 export interface BalanceResponse {

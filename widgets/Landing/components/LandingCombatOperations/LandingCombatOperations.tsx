@@ -1,8 +1,8 @@
 'use client';
 
 import { Skeleton } from 'antd';
-import { Link } from '@/shared/i18n/navigation';
 import { CombatOperationCard } from '@ui/CombatOperationCard';
+import { SectionHead } from '@ui/SectionHead';
 import { useLandingCombatOperations } from './hooks/useLandingCombatOperations';
 import styles from './LandingCombatOperations.module.scss';
 
@@ -14,18 +14,11 @@ export function LandingCombatOperations() {
   return (
     <section className={styles.operations}>
       <div className={styles.inner}>
-        <div className={styles.head}>
-          <div>
-            <span className={styles.eyebrow}>Боевые операции</span>
-            <h2 className={styles.title}>Последние операции</h2>
-          </div>
-          <Link href="/combat-operations" className={styles.all}>
-            Все операции
-            <span className={styles.arrow} aria-hidden>
-              →
-            </span>
-          </Link>
-        </div>
+        <SectionHead
+          eyebrow="Боевые операции"
+          title="Последние"
+          link={{ href: '/combat-operations', label: 'Все операции' }}
+        />
 
         {loading ? (
           <div className={styles.grid}>

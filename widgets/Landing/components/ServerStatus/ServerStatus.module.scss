@@ -1,184 +1,270 @@
-// Боковые отступы 22px повторяют HUD-рамку героя (inset: 74px 22px 22px),
-// чтобы вертикальные направляющие шли по странице сплошной линией.
 .status {
   position: relative;
-  padding: 22px 22px 22px;
-  background: var(--uv-bg);
-  border-bottom: 1px solid var(--uv-border);
+  padding: 0 64px 72px;
 }
 
 .inner {
   position: relative;
+  max-width: 100%;
+  // margin: 0 auto;
+  background: var(--bf-tile);
+}
+
+// ---- Тёмная шапка плитки ---------------------------------------------------
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+  padding: 12px 24px;
+  color: var(--bf-text-on-panel);
+  background: var(--bf-panel);
+}
+
+.barMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.barTitle {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.barStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--bf-text-on-panel-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--bf-text-faint);
+}
+
+.dotOnline {
+  background: var(--bf-yellow);
+}
+
+.barCount {
+  flex: none;
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.barMax {
+  color: var(--bf-text-on-panel-muted);
+  font-weight: 400;
+}
+
+// ---- Тело: кадр | показатели | личный состав -------------------------------
+.grid {
   display: grid;
-  // Кадр забирает всю свободную ширину, панель данных не расползается:
-  // длинные строки читаются плохо, а пустота справа выглядела дырой.
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 520px);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--uv-border);
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr);
+}
+
+.gridWithRoster {
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr) minmax(280px, 0.7fr);
 }
 
 .panel {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 26px;
-  padding: 44px;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--uv-text-muted);
-  flex-shrink: 0;
-}
-
-.dotOnline {
-  background: var(--ls-success);
-  box-shadow: 0 0 10px var(--ls-success-dot);
-}
-
-.label {
-  color: var(--uv-text);
-  font-size: 14px;
-  font-weight: 600;
+  gap: 24px;
+  padding: 32px 36px;
 }
 
 .name {
-  color: var(--uv-text-strong);
-  font-size: 20px;
-  font-weight: 700;
-  text-transform: uppercase;
+  margin: 0;
+  color: var(--bf-text);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
   letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
 }
 
-.map {
-  color: var(--uv-text-muted);
-  font-size: 14px;
+// Показатели «TOTAL KILLS / K/D RATIO / GAMES»: подпись сверху, значение снизу
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
 }
 
-.count {
+.stat {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
+  min-width: 0;
 }
 
-.countRow {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 10px;
+.statLabel {
+  color: var(--bf-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
 }
 
-.countValue {
-  color: var(--uv-text-strong);
-  font-size: 56px;
+.statValue {
+  margin: 0;
+  overflow: hidden;
+  color: var(--bf-text);
+  font-size: 40px;
   font-weight: 700;
   line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-.countDivider,
-.countMax {
-  color: var(--uv-text-muted);
-  font-size: 28px;
+.statMax {
+  color: var(--bf-text-muted);
+  font-size: 18px;
   font-weight: 600;
 }
 
-.countCaption {
-  flex-basis: 100%;
-  color: var(--uv-text-muted);
-  font-size: 13px;
+// Название карты бывает длинным — переносим, а не режем
+.statValueSmall {
+  padding-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
-.footer {
+.meter {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 20px;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.action {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 46px;
-  padding: 0 24px;
-  color: var(--uv-text-strong);
-  font-size: 13px;
+.meterCaption {
+  color: var(--bf-text-muted);
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  letter-spacing: 1.2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
   text-transform: uppercase;
+}
+
+// ---- Кнопка «SOLO PLAY» ----------------------------------------------------
+.action {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: 4px;
+  min-width: 220px;
+  margin-top: auto;
+  padding: 14px 20px;
+  color: var(--bf-text-on-panel);
   text-decoration: none;
-  background: var(--uv-red);
-  border: 1px solid var(--uv-red);
-  box-shadow: 0 8px 28px var(--uv-red-glow);
-  transition: border-color 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+  background: var(--bf-panel);
+  outline: var(--bf-outline) solid var(--bf-yellow);
+  outline-offset: calc(var(--bf-outline) * -1);
+  transition: background-color 0.15s ease;
 }
 
 .action:hover {
-  background: var(--uv-red-bright);
-  border-color: var(--uv-red-bright);
-  box-shadow: 0 12px 36px var(--uv-red-glow);
+  background: var(--bf-panel-hover);
 }
 
-.rosterRow {
-  grid-column: 1 / -1;
-  padding: 24px 20px 28px;
-  border-top: 1px solid var(--uv-border);
+.actionTitle {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.actionSub {
+  color: var(--bf-text-on-panel-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.rosterCol {
+  min-width: 0;
+  border-left: 1px solid var(--bf-line);
+}
+
+@media (max-width: 1280px) {
+  .gridWithRoster {
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr);
+  }
+
+  .rosterCol {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 1px solid var(--bf-line);
+  }
+}
+
+@media (max-width: 1100px) {
+  .status {
+    padding: 0 32px 56px;
+  }
 }
 
 @media (max-width: 900px) {
-  .inner {
+  .grid,
+  .gridWithRoster {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .panel {
-    justify-content: flex-start;
-    padding: 32px 28px;
+    padding: 28px;
   }
 
-  .rosterRow {
-    padding: 24px 28px;
+  .statValue {
+    font-size: 34px;
   }
 
-  .countValue {
-    font-size: 46px;
+  .statValueSmall {
+    font-size: 18px;
   }
 }
 
 @media (max-width: 640px) {
   .status {
-    padding: 18px 18px 48px;
+    padding: 0 16px 40px;
+  }
+
+  .bar {
+    padding: 12px 16px;
+  }
+
+  .barTitle {
+    font-size: 18px;
   }
 
   .panel {
-    padding: 26px 20px;
-    gap: 22px;
+    padding: 20px 16px;
+    gap: 20px;
   }
 
-  .rosterRow {
-    padding: 20px;
-  }
-
-  .countValue {
-    font-size: 40px;
+  .stats {
+    grid-template-columns: 1fr 1fr;
   }
 
   .action {
-    width: 100%;
-    justify-content: center;
+    align-self: stretch;
   }
 }
 

@@ -1,0 +1,1 @@
+export { VerifyEmailFooter } from './VerifyEmailFooter';

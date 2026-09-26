@@ -14,7 +14,8 @@ export type CharterBlock =
   | { kind: 'subheading'; text: string }
   | { kind: 'note'; title?: string; text?: string; items?: string[] }
   | { kind: 'rules'; items: CharterRule[] }
-  // src — data-URL (у устава и страниц нет хранилища картинок); лимит blocks секции — 256 КБ
+  // src — относительный url из POST /image-service или внешняя ссылка (data-URL — только
+  // в старых записях); перед <img> — resolveImageSrc
   | { kind: 'image'; src: string; alt?: string; caption?: string };
 
 // slug — стабильный якорь секции (#slug); числовой id есть только у данных с бэка

@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider, Skeleton } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { PageFormModal } from './components/PageFormModal';
 import { StructureTree } from './components/StructureTree';
@@ -25,7 +25,7 @@ export function StructureControl() {
   } = useStructureControl();
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard
         title="Структура"
         extra={

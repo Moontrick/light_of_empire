@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider, Input, InputNumber, Skeleton, Switch } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { DONATION_IMAGES_MAX, DONATION_PRICE_MAX, DONATION_TITLE_MAX } from '@/shared/constants';
 import { HudCard } from '@ui/HudCard';
 import { NewsBlocksEditor } from '@ui/NewsBlocksEditor';
@@ -13,13 +13,13 @@ import styles from './DonationEditor.module.scss';
 export function DonationEditor({ id }: DonationEditorProps) {
   const {
     title, setTitle, price, setPrice, isActive, setIsActive, blocks, setBlocks,
-    existingImages, pendingImages, processing, deletingId,
+    existingImages, pendingImages, deletingId,
     addFiles, removePending, removeExisting,
     editable, loading, notFound, loadError, retry, saving, canSave, save, goBack,
   } = useDonationEditor(id);
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard title={editable ? 'Редактирование товара' : 'Новый товар'}>
         {loading && <Skeleton active paragraph={{ rows: 8 }} />}
 
@@ -68,9 +68,8 @@ export function DonationEditor({ id }: DonationEditorProps) {
               existing={existingImages}
               pending={pendingImages}
               max={DONATION_IMAGES_MAX}
-              processing={processing}
               deletingId={deletingId}
-              onAdd={(files) => void addFiles(files)}
+              onAdd={addFiles}
               onRemoveExisting={(imageId) => void removeExisting(imageId)}
               onRemovePending={removePending}
             />

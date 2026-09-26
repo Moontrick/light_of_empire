@@ -1,9 +1,7 @@
 .shell {
   display: flex;
   min-height: calc(100vh - var(--uv-header-height));
-  background:
-    linear-gradient(rgba(15, 15, 16, 0.86), rgba(15, 15, 16, 0.94)),
-    url('/images/hero-space.jpg') center / cover no-repeat fixed;
+  background: var(--bf-bg);
 }
 
 .main {

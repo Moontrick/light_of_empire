@@ -11,6 +11,7 @@ export function LoginForm() {
 
   return (
     <AuthShell
+      step="login"
       title="Вход"
       tagline="Доложись по форме, солдат"
       footer={

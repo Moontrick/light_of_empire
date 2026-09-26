@@ -3,7 +3,7 @@ import type { NewsBlock } from '@/shared/types';
 export interface DonationImageDto {
   id: number;
   seq: number;
-  url: string; // относительный, от хоста API
+  url: string; // относительный, от хоста API: /api/v1/image-service/<filename>
 }
 
 export interface DonationBaseDto {
@@ -38,7 +38,3 @@ export interface CreateDonationDto {
 
 // Частичное обновление: null не допускается
 export type UpdateDonationDto = Partial<CreateDonationDto>;
-
-export interface AddDonationImageDto {
-  image: string; // data-URL
-}

@@ -1,17 +1,17 @@
 import Image from 'next/image';
-import { STATUS_LIVE_LABEL, STATUS_PREVIEW_ALT } from '../../constants';
+import { STATUS_LIVE_LABEL, STATUS_PREVIEW_ALT, STATUS_PREVIEW_IMAGE } from '../../constants';
 import styles from './ServerPreview.module.scss';
 
 export function ServerPreview() {
   return (
     <div className={styles.preview}>
       <Image
-        src="/images/server.jpg"
+        src={STATUS_PREVIEW_IMAGE}
         alt={STATUS_PREVIEW_ALT}
         fill
         className={styles.image}
-        // Кадр занимает всю ширину минус панель данных (max 520px) и отступы секции (44px).
-        sizes="(max-width: 900px) 100vw, calc(100vw - 564px)"
+        // Кадр занимает чуть больше половины плитки на десктопе и всю ширину на телефоне
+        sizes="(max-width: 900px) 100vw, 55vw"
       />
 
       <span className={styles.fade} aria-hidden />

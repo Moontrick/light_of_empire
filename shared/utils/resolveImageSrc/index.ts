@@ -1,0 +1,1 @@
+export { resolveImageSrc } from './resolveImageSrc';

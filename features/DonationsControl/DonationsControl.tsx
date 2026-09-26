@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { DONATIONS_SECTION_TITLE } from '@/shared/constants';
 import { HudCard } from '@ui/HudCard';
 import { DonationsTable } from './components/DonationsTable';
@@ -11,7 +11,7 @@ export function DonationsControl() {
   const { items, loading, mutatingId, setActive, goCreate, goEdit } = useDonationsControl();
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard
         title={DONATIONS_SECTION_TITLE}
         extra={

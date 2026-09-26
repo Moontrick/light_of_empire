@@ -21,6 +21,7 @@ export interface CurrencyParticipant {
   id: number;
   login: string;
   email: string;
+  avatar_url: string | null; // относительный
 }
 
 // Запись общего журнала (/currency/transactions); actor === null — оператор удалён

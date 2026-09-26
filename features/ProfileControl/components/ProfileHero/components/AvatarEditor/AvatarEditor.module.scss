@@ -1,0 +1,52 @@
+.trigger {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.trigger:disabled {
+  cursor: default;
+}
+
+.image {
+  display: inline-flex;
+  transition: filter 0.2s ease;
+}
+
+// Подсказка «сменить»: при наведении, фокусе и во время загрузки
+// картинка размывается, поверх — жёлтая заливка с иконкой камеры
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--bf-panel);
+  font-size: 28px;
+  background: var(--bf-yellow);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.trigger:hover .image,
+.trigger:focus-visible .image,
+.trigger:disabled .image {
+  filter: blur(3px);
+}
+
+.trigger:hover .overlay,
+.trigger:focus-visible .overlay,
+.trigger:disabled .overlay {
+  opacity: 0.85;
+}
+
+.input {
+  display: none;
+}

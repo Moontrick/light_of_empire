@@ -11,6 +11,7 @@ export function useUsersControl() {
   const [loading, setLoading] = useState(true);
   const [editingUser, setEditingUser] = useState<UserListItem | null>(null);
   const [savingRoleId, setSavingRoleId] = useState<number | null>(null);
+  const [removingAvatarId, setRemovingAvatarId] = useState<number | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -28,13 +29,17 @@ export function useUsersControl() {
     void load();
   }, [load]);
 
+  const patchUser = (userId: number, changes: Partial<UserListItem>) => {
+    setUsers((prev) =>
+      prev.map((item) => (item.id === userId ? { ...item, ...changes } : item)),
+    );
+  };
+
   const changeRole = async (target: UserListItem, role: UserRole) => {
     setSavingRoleId(target.id);
     try {
       await usersApi.assignRole(target.id, role);
-      setUsers((prev) =>
-        prev.map((item) => (item.id === target.id ? { ...item, role } : item)),
-      );
+      patchUser(target.id, { role });
       alertHandler.addAlert({
         status: 'success',
         defaultText: `Роль пользователя ${target.login} обновлена`,
@@ -46,14 +51,26 @@ export function useUsersControl() {
     }
   };
 
+  const removeAvatar = async (target: UserListItem) => {
+    setRemovingAvatarId(target.id);
+    try {
+      await usersApi.deleteUserAvatar(target.id);
+      patchUser(target.id, { avatar_url: null });
+      alertHandler.addAlert({
+        status: 'success',
+        defaultText: `Аватар пользователя ${target.login} снят`,
+      });
+    } catch (error) {
+      alertHandler.addAlert({ defaultText: getApiErrorMessage(error) });
+    } finally {
+      setRemovingAvatarId(null);
+    }
+  };
+
   const applyProfileUpdate = (
     userId: number,
     changes: { position: Position | null; formation: Formation | null },
-  ) => {
-    setUsers((prev) =>
-      prev.map((item) => (item.id === userId ? { ...item, ...changes } : item)),
-    );
-  };
+  ) => patchUser(userId, changes);
 
   return {
     actor,
@@ -61,9 +78,11 @@ export function useUsersControl() {
     loading,
     editingUser,
     savingRoleId,
+    removingAvatarId,
     openEdit: setEditingUser,
     closeEdit: () => setEditingUser(null),
     changeRole,
+    removeAvatar,
     applyProfileUpdate,
   };
 }

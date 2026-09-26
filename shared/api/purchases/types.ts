@@ -10,6 +10,7 @@ export interface PurchaseParticipantDto {
   id: number;
   login: string;
   email: string;
+  avatar_url: string | null; // относительный
 }
 
 export interface PurchaseDto {

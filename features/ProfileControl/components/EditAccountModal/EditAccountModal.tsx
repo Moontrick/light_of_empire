@@ -33,10 +33,10 @@ export function EditAccountModal({ open, focusField, user, onClose }: EditAccoun
       >
         <Form.Item
           name="login"
-          label="Логин"
+          label="Позывной на сервере"
           rules={[
-            { required: true, message: 'Укажите логин' },
-            { min: 2, max: 100, message: 'Логин — от 2 до 100 символов' },
+            { required: true, message: 'Укажите Позывной на сервере' },
+            { min: 2, max: 100, message: 'Длина — от 2 до 100 символов' },
           ]}
         >
           <Input autoComplete="username" autoFocus={focusField === 'login'} />

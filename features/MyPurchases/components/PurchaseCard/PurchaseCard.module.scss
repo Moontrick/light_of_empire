@@ -12,7 +12,7 @@
 
 .card:hover {
   border-color: var(--uv-red);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
 }
 
 // Полоса слева повторяет цвет статуса (палитра категорий устава)

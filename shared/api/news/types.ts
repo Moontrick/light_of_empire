@@ -42,9 +42,8 @@ export interface CreateNewsDto {
   slug?: string;
   lead?: string;
   body?: NewsBlock[];
-  // data-URL; null очищает обложку
+  // filename из ответа POST /image-service; null очищает обложку
   image?: string | null;
-  image_mime?: string;
   status?: NewsStatus;
   published_at?: string | null;
 }

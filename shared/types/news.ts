@@ -32,8 +32,8 @@ export interface NewsListBlock {
   items: string[];
 }
 
-// src — data-URL: бэк отдельного хранилища для картинок body не даёт,
-// поэтому картинка живёт прямо в JSON (ресайз до вставки обязателен)
+// src — относительный url из POST /image-service (/api/v1/image-service/<file>) или внешняя
+// ссылка; data-URL остался только в старых записях. Перед <img> — resolveImageSrc
 export interface NewsImageBlock {
   type: 'image';
   src: string;

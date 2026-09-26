@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider, Skeleton } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { ChannelConfirmModal } from './components/ChannelConfirmModal';
 import { SettingCard } from './components/SettingCard';
@@ -23,7 +23,7 @@ export function DiscordBotControl() {
   } = useDiscordBotControl();
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard title="Настройки Discord-бота">
         {loading ? (
           <Skeleton active paragraph={{ rows: 8 }} />

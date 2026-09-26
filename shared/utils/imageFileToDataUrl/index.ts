@@ -1,1 +1,0 @@
-export { imageFileToDataUrl } from './imageFileToDataUrl';

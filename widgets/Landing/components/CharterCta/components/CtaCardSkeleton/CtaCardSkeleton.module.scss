@@ -1,12 +1,26 @@
 .card {
-  position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  background: var(--bf-tile);
+}
+
+.bar {
+  padding: 16px 20px 6px;
+  border-bottom: 1px solid var(--bf-line);
+}
+
+.media {
+  aspect-ratio: 16 / 9;
+  background: var(--bf-tile-deep);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   gap: 20px;
-  padding: 36px 32px;
-  background: rgba(10, 10, 12, 0.55);
-  border: 1px solid var(--uv-border);
-  backdrop-filter: blur(2px);
+  padding: 20px 20px 22px;
 }
 
 .action {

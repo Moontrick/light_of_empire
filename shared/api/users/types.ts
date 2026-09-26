@@ -21,7 +21,14 @@ export interface UserListItem {
   formation: Formation | null;
   role: UserRole;
   balance: number;
+  avatar_url: string | null;
+  // false — почта не подтверждена: войти не может, роль и анкету менять бессмысленно
+  is_verified: boolean;
   created_at: string;
+}
+
+export interface AvatarResponse {
+  avatar_url: string | null;
 }
 
 export interface AssignRoleDto {

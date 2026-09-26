@@ -1,74 +1,133 @@
 .root {
-  background: var(--uv-bg);
   color: var(--uv-text);
 }
 
+// ---- Hero: сцена с дымкой слева, как в главном меню ------------------------
 .hero {
-  background-image:
-    linear-gradient(180deg, rgba(13, 13, 13, 0.82) 0%, rgba(13, 13, 13, 0.7) 60%, var(--uv-bg) 100%),
-    url('/images/section-space.jpg');
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bf-bg);
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  border-bottom: 1px solid var(--uv-border);
+  background-position: center 30%;
 }
 
-.head {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 120px 24px 56px;
+.fog {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(var(--bf-bg-rgb), 0.97) 0%,
+      rgba(var(--bf-bg-rgb), 0.9) 40%,
+      rgba(var(--bf-bg-rgb), 0.45) 70%,
+      rgba(var(--bf-bg-rgb), 0.1) 100%
+    ),
+    linear-gradient(180deg, transparent 60%, var(--bf-bg) 100%);
 }
 
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 22px;
-  color: var(--uv-red-bright);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 4px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
-  text-transform: uppercase;
-}
-
-.title {
-  margin: 0 0 28px;
-  color: var(--uv-text-strong);
-  font-size: clamp(48px, 9vw, 104px);
-  font-weight: 700;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
-.headRow {
+.heroInner {
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
+  gap: 40px;
+  padding: 88px 64px 56px;
+}
+
+.head {
+  max-width: 680px;
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: var(--bf-text-muted);
+  font-size: 15px;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.crumbRoot {
+  color: var(--bf-text);
+  font-weight: 700;
+}
+
+.crumbSep {
+  color: var(--bf-text-faint);
+}
+
+.title {
+  margin: 0 0 20px;
+  color: var(--bf-text);
+  font-size: clamp(44px, 7vw, 84px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
 }
 
 .intro {
-  max-width: 620px;
+  max-width: 600px;
   margin: 0;
-  color: var(--uv-text-muted);
+  color: var(--bf-text);
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
+.wallet {
+  flex: none;
+}
+
+.loginTile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 240px;
+  padding: 14px 20px;
+  color: var(--bf-text-on-panel);
+  text-decoration: none;
+  background: var(--bf-panel);
+  outline: var(--bf-outline) solid var(--bf-yellow);
+  outline-offset: calc(var(--bf-outline) * -1);
+  transition: background-color 0.15s ease;
+}
+
+.loginTile:hover {
+  background: var(--bf-panel-hover);
+}
+
+.loginTitle {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.loginSub {
+  color: var(--bf-text-on-panel-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+// ---- Content ---------------------------------------------------------------
 .content {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 56px 24px 120px;
-  border-bottom: 1px solid var(--uv-border);
+  padding: 16px 64px 120px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .empty {
   padding: 56px 0;
-  color: var(--uv-text-muted);
+  color: var(--bf-text-muted);
   font-size: 17px;
   text-align: center;
 }
@@ -84,24 +143,50 @@
 
 .errorText {
   margin: 0;
-  color: var(--uv-text-muted);
+  color: var(--bf-text-muted);
   font-size: 17px;
 }
 
+@media (max-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .heroInner {
+    padding: 72px 32px 48px;
+  }
+
+  .content {
+    padding: 16px 32px 96px;
+  }
+}
+
 @media (max-width: 900px) {
-  .headRow {
+  .heroInner {
     flex-direction: column;
     align-items: flex-start;
+    gap: 28px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
-  .hero {
-    background-attachment: scroll;
+  .fog {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--bf-bg-rgb), 0.94) 0%,
+      rgba(var(--bf-bg-rgb), 0.88) 60%,
+      var(--bf-bg) 100%
+    );
   }
 
-  .head {
-    padding: 84px 18px 40px;
+  .heroInner {
+    padding: 56px 16px 36px;
   }
 
   .intro {
@@ -109,10 +194,14 @@
   }
 
   .content {
-    padding: 40px 18px 84px;
+    padding: 8px 16px 72px;
   }
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .loginTile {
+    width: 100%;
   }
 }

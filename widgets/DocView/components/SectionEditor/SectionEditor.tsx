@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Collapse, ConfigProvider, Input } from 'antd';
-import { DARK_FORM_THEME } from '@/shared/lib/antdTheme';
+import { FORM_THEME } from '@/shared/lib/antdTheme';
 import { BlocksEditor } from '@ui/BlocksEditor';
 import { useSectionEditor } from './hooks/useSectionEditor';
 import type { SectionEditorProps } from './types';
@@ -12,7 +12,7 @@ export function SectionEditor({ section, onClose }: SectionEditorProps) {
     useSectionEditor(section, onClose);
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <section className={styles.editor}>
         <Input
           value={title}

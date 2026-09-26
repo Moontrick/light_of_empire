@@ -5,12 +5,15 @@ import type { ImageBlockEditorProps } from './types';
 import styles from './ImageBlockEditor.module.scss';
 
 export function ImageBlockEditor({ value, onChange }: ImageBlockEditorProps) {
-  const { processing, handleFiles, setAlt, setCaption } = useImageBlockEditor({ value, onChange });
+  const { processing, previewUrl, handleFiles, setAlt, setCaption } = useImageBlockEditor({
+    value,
+    onChange,
+  });
 
   return (
     <div className={styles.root}>
       <ImageDropZone
-        previewUrl={value.src || null}
+        previewUrl={previewUrl}
         previewAlt={value.alt ?? ''}
         processing={processing}
         onFiles={(files) => void handleFiles(files)}

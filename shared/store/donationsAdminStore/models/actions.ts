@@ -21,7 +21,7 @@ export interface DonationsAdminActions {
   create: (dto: CreateDonationDto) => Promise<DonationDetail | null>;
   update: (id: number, dto: UpdateDonationDto) => Promise<boolean>;
   setActive: (id: number, isActive: boolean) => Promise<boolean>;
-  addImage: (id: number, dataUrl: string) => Promise<DonationImage | null>;
+  addImage: (id: number, file: File) => Promise<DonationImage | null>;
   deleteImage: (id: number, imageId: number) => Promise<boolean>;
 }
 
@@ -128,8 +128,8 @@ export const createDonationsAdminActions: StateCreator<
     }
   },
 
-  addImage: async (id, dataUrl) => {
-    const send = () => donationsApi.addImage(id, { image: dataUrl });
+  addImage: async (id, file) => {
+    const send = () => donationsApi.addImage(id, file);
     try {
       let response;
       try {

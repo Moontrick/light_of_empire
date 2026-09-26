@@ -7,11 +7,17 @@ import { useAuthStore } from '@store/authStore';
 import { useNewsAdminStore } from '@/shared/store/newsAdminStore';
 import { hasRoleAtLeast, NewsStatus, UserRole } from '@/shared/types';
 import type { NewsBlock } from '@/shared/types';
-import { imageFileToDataUrl } from '@/shared/utils/imageFileToDataUrl';
+import { IMAGE_UPLOAD_FAILED } from '@/shared/constants/images';
 import { alertHandler } from '@/shared/utils/alertHandler';
+import { getCoverUrl } from '@/shared/utils/getCoverUrl';
+import { uploadImageFile } from '@/shared/utils/uploadImageFile';
 
-// Обложка: keep — не менять, набор data-URL — заменить, null — очистить
-type CoverValue = { kind: 'keep' } | { kind: 'set'; dataUrl: string } | { kind: 'clear' };
+// Обложка: keep — не менять, set — загруженный в image-service файл, clear — очистить.
+// Файл уходит на сервер сразу при выборе и привязывается к новости при сохранении.
+type CoverValue =
+  | { kind: 'keep' }
+  | { kind: 'set'; filename: string; previewUrl: string }
+  | { kind: 'clear' };
 
 export function useNewsEditor(slug: string | undefined) {
   const {
@@ -59,15 +65,21 @@ export function useNewsEditor(slug: string | undefined) {
   const publishButtonLabel = isPublished ? 'Сохранить и опубликовать' : 'Опубликовать';
 
   const coverPreviewUrl =
-    cover.kind === 'set' ? cover.dataUrl : cover.kind === 'clear' ? null : editable?.imageUrl ?? null;
+    cover.kind === 'set' ? cover.previewUrl : cover.kind === 'clear' ? null : editable?.imageUrl ?? null;
 
   const pickCover = async (file: File) => {
     setCoverProcessing(true);
     try {
-      const dataUrl = await imageFileToDataUrl(file);
-      setCover({ kind: 'set', dataUrl });
-    } catch {
-      alertHandler.addAlert({ defaultText: 'Не удалось обработать изображение' });
+      const uploaded = await uploadImageFile(file);
+      setCover({
+        kind: 'set',
+        filename: uploaded.filename,
+        previewUrl: getCoverUrl(uploaded.url) ?? uploaded.url,
+      });
+    } catch (error) {
+      alertHandler.addAlert({
+        defaultText: error instanceof Error ? error.message : IMAGE_UPLOAD_FAILED,
+      });
     } finally {
       setCoverProcessing(false);
     }
@@ -99,7 +111,7 @@ export function useNewsEditor(slug: string | undefined) {
     lead: lead.trim() || undefined,
     body: blocks,
     status,
-    ...(cover.kind === 'set' ? { image: cover.dataUrl } : {}),
+    ...(cover.kind === 'set' ? { image: cover.filename } : {}),
     ...(cover.kind === 'clear' ? { image: null } : {}),
   });
 

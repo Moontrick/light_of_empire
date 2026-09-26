@@ -2,91 +2,138 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 36px 32px;
-  text-align: left;
-  background: rgba(10, 10, 12, 0.55);
-  border: 1px solid var(--uv-border);
-  backdrop-filter: blur(2px);
-  transition: border-color 0.18s ease, transform 0.18s ease, background-color 0.18s ease;
+  overflow: hidden;
+  background: var(--bf-tile);
+  outline: var(--bf-outline) solid transparent;
+  outline-offset: calc(var(--bf-outline) * -1);
+  transition: outline-color 0.15s ease, background-color 0.15s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: var(--uv-border-accent);
-  background: rgba(10, 10, 12, 0.7);
+  background: var(--bf-tile-hover);
+  outline-color: var(--bf-yellow);
 }
 
 .cardPrimary {
-  border-color: var(--uv-border-accent);
-  background: rgba(40, 12, 14, 0.55);
+  outline-color: var(--bf-yellow);
 }
 
-.cardPrimary:hover {
-  border-color: var(--uv-red);
+// ---- Шапка плитки ----------------------------------------------------------
+.bar {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid var(--bf-line);
 }
 
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 14px;
-  color: var(--uv-red-bright);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 3px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
-  text-transform: uppercase;
+.cardPrimary .bar {
+  color: var(--bf-text-on-panel);
+  background: var(--bf-panel);
+  border-bottom-color: transparent;
 }
 
 .title {
-  margin: 0 0 14px;
-  color: var(--uv-text-strong);
+  margin: 0;
+  color: var(--bf-text);
   font-size: 22px;
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
   text-transform: uppercase;
 }
 
+.cardPrimary .title {
+  color: inherit;
+}
+
+.eyebrow {
+  color: var(--bf-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.cardPrimary .eyebrow {
+  color: var(--bf-text-on-panel-muted);
+}
+
+// ---- Кадр ------------------------------------------------------------------
+.media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bf-tile-deep);
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.emblem {
+  width: 42%;
+  height: auto;
+  opacity: 0.18;
+}
+
+// ---- Текст и кнопка --------------------------------------------------------
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 20px 22px;
+}
+
 .text {
-  margin: 0 0 28px;
-  color: var(--uv-text);
+  margin: 0 0 22px;
+  color: var(--bf-text-muted);
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .action {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   gap: 8px;
   margin-top: auto;
-  align-self: flex-start;
-  height: 46px;
-  padding: 0 24px;
-  color: var(--uv-text-strong);
+  height: 42px;
+  padding: 0 18px;
+  color: var(--bf-text);
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  letter-spacing: 1.2px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
   text-transform: uppercase;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--uv-border);
-  transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+  background: var(--bf-tile-deep);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .action:hover {
-  border-color: var(--uv-red);
-  color: var(--uv-red-bright);
+  color: var(--bf-text-on-panel);
+  background: var(--bf-panel);
 }
 
-.actionPrimary {
-  color: var(--uv-text-strong);
-  background: var(--uv-red);
-  border-color: var(--uv-red);
-  box-shadow: 0 8px 28px var(--uv-red-glow);
+.cardPrimary .action {
+  color: var(--bf-text-on-panel);
+  background: var(--bf-panel);
 }
 
-.actionPrimary:hover {
-  color: var(--uv-text-strong);
-  background: var(--uv-red-bright);
-  border-color: var(--uv-red-bright);
-  box-shadow: 0 12px 36px var(--uv-red-glow);
+.cardPrimary .action:hover {
+  background: var(--bf-panel-hover);
 }
 
 .arrow {
@@ -95,4 +142,13 @@
 
 .action:hover .arrow {
   transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image,
+  .action,
+  .arrow {
+    transition: none;
+  }
 }

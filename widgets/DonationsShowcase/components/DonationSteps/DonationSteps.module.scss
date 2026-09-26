@@ -1,0 +1,53 @@
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  padding: 20px 22px;
+  background: var(--bf-tile);
+}
+
+.index {
+  flex: none;
+  color: var(--bf-yellow-text);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.title {
+  color: var(--bf-text);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+}
+
+.text {
+  margin: 0;
+  color: var(--bf-text-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .steps {
+    grid-template-columns: 1fr;
+    margin-bottom: 28px;
+  }
+}

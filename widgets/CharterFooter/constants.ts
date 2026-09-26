@@ -12,7 +12,7 @@ export const FOOTER_TAGLINE =
 
 export const FOOTER_COPYRIGHT = '© 2026 The Light of Empire. Все права защищены.';
 
-export const FOOTER_NOTE = 'By Canto Projects';
+export const FOOTER_NOTE = 'By Canto Projects | Ahri';
 
 const DISCORD_URL = 'https://discord.gg/Bzs8dA6NQ6';
 const VK_URL = 'https://vk.ru/thelightofempire';

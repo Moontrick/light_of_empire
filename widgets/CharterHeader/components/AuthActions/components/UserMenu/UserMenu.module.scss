@@ -47,7 +47,7 @@
   flex-direction: column;
   min-width: 200px;
   padding: 8px;
-  background: rgba(20, 20, 22, 0.98);
+  background: var(--uv-menu-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--uv-border);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);

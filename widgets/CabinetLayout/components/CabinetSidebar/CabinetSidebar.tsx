@@ -17,7 +17,7 @@ export function CabinetSidebar() {
         {pending && <Skeleton active avatar={{ size: 36 }} title={false} paragraph={{ rows: 2 }} />}
         {!pending && user && (
           <Link href="/profile" className={styles.userLink}>
-            <UserAvatar size="sm" alt={user.login} />
+            <UserAvatar size="sm" alt={user.login} src={user.avatar_url} />
             <div className={styles.userMeta}>
               <span className={styles.userLogin}>{user.login}</span>
               <RoleBadge role={user.role} />

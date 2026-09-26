@@ -1,3 +1,4 @@
+import { resolveImageSrc } from '@/shared/utils/resolveImageSrc';
 import type { NewsContentProps } from './types';
 import styles from './NewsContent.module.scss';
 
@@ -51,7 +52,7 @@ export function NewsContent({ blocks }: NewsContentProps) {
         if (block.type === 'image') {
           return (
             <figure key={key} className={styles.imageBlock}>
-              <img src={block.src} alt={block.alt ?? ''} className={styles.image} />
+              <img src={resolveImageSrc(block.src) ?? undefined} alt={block.alt ?? ''} className={styles.image} />
               {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
             </figure>
           );

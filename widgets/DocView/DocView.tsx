@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider } from 'antd';
-import { DARK_FORM_THEME } from '@/shared/lib/antdTheme';
+import { FORM_THEME } from '@/shared/lib/antdTheme';
 import { DocHero } from './components/DocHero';
 import { DocBody } from './components/DocBody';
 import { DocFooter } from './components/DocFooter';
@@ -58,7 +58,7 @@ export function DocView({ doc, canEdit, banner, afterHero }: DocViewProps) {
           }
         />
         {editMode && (
-          <ConfigProvider theme={DARK_FORM_THEME}>
+          <ConfigProvider theme={FORM_THEME}>
             {addingSection ? (
               <SectionEditor section={null} onClose={stopAddSection} />
             ) : (

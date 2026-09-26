@@ -11,7 +11,62 @@
 }
 
 .userLogin {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   color: var(--uv-text-strong);
+}
+
+.unverified {
+  padding: 1px 8px;
+  border: 1px dashed var(--uv-danger);
+  color: var(--uv-danger);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.avatarCell {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+// Кнопка снятия аватара — поверх угла аватарки, видна при наведении на ячейку
+.removeAvatar {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: var(--uv-bg-elevated);
+  border: 1px solid var(--uv-border);
+  border-radius: 50%;
+  color: var(--uv-text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.userCell:hover .removeAvatar,
+.removeAvatar:focus-visible {
+  opacity: 1;
+}
+
+.removeAvatar:hover {
+  color: var(--uv-red-bright);
+}
+
+.removeAvatar:disabled {
+  cursor: default;
+  opacity: 0.5;
 }
 
 .userEmail {

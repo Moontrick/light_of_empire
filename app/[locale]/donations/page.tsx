@@ -4,6 +4,7 @@ import { pageMetadata } from '@/shared/seo';
 export const metadata = pageMetadata(
   'Донат',
   'Товары за кредиты Империи: скины, привилегии и памятные знаки для бойцов Имперской Армии.',
+  '/donations',
 );
 
 export default function DonationsPage() {

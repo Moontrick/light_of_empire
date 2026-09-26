@@ -7,7 +7,7 @@ import { useUserMenu } from './hooks/useUserMenu';
 import type { UserMenuProps } from './types';
 import styles from './UserMenu.module.scss';
 
-export function UserMenu({ login, email, loggingOut, onLogout }: UserMenuProps) {
+export function UserMenu({ login, email, avatarUrl, loggingOut, onLogout }: UserMenuProps) {
   const { open, toggle, close, ref } = useUserMenu();
 
   return (
@@ -19,7 +19,7 @@ export function UserMenu({ login, email, loggingOut, onLogout }: UserMenuProps) 
         aria-expanded={open}
         title={email}
       >
-        <UserAvatar size="sm" alt={login} />
+        <UserAvatar size="sm" alt={login} src={avatarUrl} />
         <span className={styles.login}>{login}</span>
         <span className={styles.caret} />
       </button>

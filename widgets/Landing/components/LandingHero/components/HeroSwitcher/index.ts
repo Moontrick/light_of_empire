@@ -1,0 +1,1 @@
+export { HeroSwitcher } from './HeroSwitcher';

@@ -2,7 +2,6 @@ import type { StatusResponse } from '@/shared/types';
 import { baseService } from '../api';
 import { DONATIONS_ROUTES } from './routes';
 import type {
-  AddDonationImageDto,
   CreateDonationDto,
   DonationDetailDto,
   DonationImageDto,
@@ -23,9 +22,13 @@ export const donationsApi = {
   update: (id: number, dto: UpdateDonationDto) =>
     baseService.put<DonationDetailDto>(DONATIONS_ROUTES.DETAIL(id), dto),
 
-  addImage: (id: number, dto: AddDonationImageDto) =>
-    baseService.post<DonationImageDto>(DONATIONS_ROUTES.IMAGES(id), dto),
+  // Файл уходит сразу в донат, отдельный POST /image-service не нужен
+  addImage: (id: number, file: File | Blob) => {
+    const form = new FormData();
+    form.append('image', file);
+    return baseService.post<DonationImageDto>(DONATIONS_ROUTES.IMAGES(id), form);
+  },
 
   deleteImage: (id: number, imageId: number) =>
-    baseService.delete<StatusResponse>(DONATIONS_ROUTES.IMAGE(id, imageId)),
+    baseService.delete<StatusResponse>(DONATIONS_ROUTES.DELETE_IMAGE(id, imageId)),
 };

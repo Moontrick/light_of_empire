@@ -1,7 +1,7 @@
 'use client';
 
 import { ConfigProvider } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { RevealOnScroll } from '@ui/RevealOnScroll';
 import { ProfileHero } from './components/ProfileHero';
 import { RecentTransactions } from './components/RecentTransactions';
@@ -35,7 +35,7 @@ export function ProfileControl() {
   if (!user) return null;
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <div className={styles.layout}>
         <div className={styles.main}>
           <RevealOnScroll>

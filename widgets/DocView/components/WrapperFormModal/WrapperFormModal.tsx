@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider, Form, Input, Modal } from 'antd';
-import { DARK_FORM_THEME } from '@/shared/lib/antdTheme';
+import { FORM_THEME } from '@/shared/lib/antdTheme';
 import { RichTextInput } from '@ui/RichTextInput';
 import { useWrapperForm } from './hooks/useWrapperForm';
 import type { WrapperFormModalProps } from './types';
@@ -11,7 +11,7 @@ export function WrapperFormModal({ open, onClose, initial }: WrapperFormModalPro
   const { form, saving, submit } = useWrapperForm(open, initial, onClose);
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <Modal
         open={open}
         onCancel={onClose}

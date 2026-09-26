@@ -14,7 +14,7 @@ interface DynamicPageProps {
 export async function generateMetadata({ params }: DynamicPageProps): Promise<Metadata> {
   const { slug } = await params;
   const node = findTreeNode(await fetchPagesTree(), slug);
-  return pageMetadata(node?.name ?? FALLBACK_TITLE);
+  return pageMetadata(node?.name ?? FALLBACK_TITLE, undefined, `/${slug}`);
 }
 
 export default async function DynamicPage({ params }: DynamicPageProps) {

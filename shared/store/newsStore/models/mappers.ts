@@ -5,8 +5,8 @@ import { formatNewsDate } from '@/shared/utils/formatNewsDate';
 
 export function mapNewsListItemDto(dto: NewsListItemDto): NewsPost {
   const isoDate = (dto.published_at ?? dto.created_at).slice(0, 10);
-  const coverUrl = getCoverUrl(dto.image_url);
-  const imageUrl = coverUrl ? `${coverUrl}?v=${encodeURIComponent(dto.changed_at)}` : coverUrl;
+  // URL image-service immutable: смена обложки меняет сам URL, cache-busting не нужен
+  const imageUrl = getCoverUrl(dto.image_url);
 
   return {
     id: dto.id,

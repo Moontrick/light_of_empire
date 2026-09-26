@@ -39,6 +39,7 @@ export interface PurchaseParticipant {
   id: number;
   login: string;
   email: string;
+  avatar_url: string | null; // относительный
 }
 
 // Своя заявка (/purchases/me, ответ POST /purchases)

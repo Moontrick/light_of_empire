@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand';
-import { authApi, LoginDto, RegisterDto } from '@/shared/api/auth';
+import { authApi, LoginDto, RegisterDto, VerifyEmailDto } from '@/shared/api/auth';
 import { refreshSession } from '@/shared/api/api';
 import { clearAccessToken, setAccessToken } from '@/shared/api/accessToken';
 import type { AuthState } from '../types';
@@ -8,6 +8,10 @@ export interface AuthActions {
   initSession: () => Promise<void>;
   login: (dto: LoginDto) => Promise<void>;
   register: (dto: RegisterDto) => Promise<void>;
+  verifyEmail: (dto: VerifyEmailDto) => Promise<void>;
+  resendCode: (email: string) => Promise<string>;
+  startVerification: (email: string) => void;
+  cancelVerification: () => void;
   fetchMe: () => Promise<void>;
   logout: () => Promise<void>;
   reset: () => void;
@@ -40,10 +44,31 @@ export const createAuthActions: StateCreator<
     await get().fetchMe();
   },
 
+  // Токенов register больше не выдаёт — сессия появится после verifyEmail
   register: async (dto) => {
     const { data } = await authApi.register(dto);
+    set({ pendingVerification: { email: data.email, codeExpiresAt: data.code_expires_at } });
+  },
+
+  verifyEmail: async (dto) => {
+    const { data } = await authApi.verify(dto);
     setAccessToken(data.access_token);
     await get().fetchMe();
+    set({ pendingVerification: null });
+  },
+
+  resendCode: async (email) => {
+    const { data } = await authApi.resendCode({ email });
+    set({ pendingVerification: { email: data.email, codeExpiresAt: data.code_expires_at } });
+    return data.code_expires_at;
+  },
+
+  startVerification: (email) => {
+    set({ pendingVerification: { email, codeExpiresAt: null } });
+  },
+
+  cancelVerification: () => {
+    set({ pendingVerification: null });
   },
 
   fetchMe: async () => {

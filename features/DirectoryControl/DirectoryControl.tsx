@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, ConfigProvider } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { DIRECTORY_CONFIGS } from './constants';
 import { DirectoryList } from './components/DirectoryList';
@@ -25,7 +25,7 @@ export function DirectoryControl({ kind }: DirectoryControlProps) {
   } = useDirectoryControl(config);
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard
         title={config.title}
         extra={

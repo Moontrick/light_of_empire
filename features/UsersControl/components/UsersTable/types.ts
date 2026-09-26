@@ -6,6 +6,8 @@ export interface UsersTableProps {
   loading: boolean;
   actorRole: UserRole;
   savingRoleId: number | null;
+  removingAvatarId: number | null;
   onChangeRole: (target: UserListItem, role: UserRole) => Promise<void>;
   onEdit: (target: UserListItem) => void;
+  onRemoveAvatar: (target: UserListItem) => Promise<void>;
 }

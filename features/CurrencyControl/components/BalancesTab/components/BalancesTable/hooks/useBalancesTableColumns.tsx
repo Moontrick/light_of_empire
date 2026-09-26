@@ -23,7 +23,7 @@ export function useBalancesTableColumns({
         key: 'user',
         render: (_, user) => (
           <div className={styles.userCell}>
-            <UserAvatar size="sm" alt={user.login} />
+            <UserAvatar size="sm" alt={user.login} src={user.avatar_url} />
             <div className={styles.userMeta}>
               <span className={styles.userLogin}>{user.login}</span>
               <span className={styles.userEmail}>{user.email}</span>

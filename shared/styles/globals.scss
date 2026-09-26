@@ -55,7 +55,7 @@ ul {
 }
 
 #nprogress .bar {
-    background: #306fad;
+    background: var(--bf-yellow);
 
     position: fixed;
     z-index: 1031;
@@ -89,22 +89,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Единое семейство с настоящими весами — для темы bf1, где regular и bold
+// должны различаться (старые TLOE-* ниже — по одному весу на имя).
 @font-face {
-  font-family: 'ElectronicArtsText-Medium';
-  src: url('../../public/fonts/mp-sb.ttf');
-  font-weight: 500;
+  font-family: 'TLOE';
+  src: url('../../public/fonts/mp-r.ttf');
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'ElectronicArtsText-Bold';
+  font-family: 'TLOE';
+  src: url('../../public/fonts/mp-sb.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TLOE';
   src: url('../../public/fonts/mp-b.ttf');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'ElectronicArtsText-Regular';
+  font-family: 'TLOE-Medium';
+  src: url('../../public/fonts/mp-sb.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TLOE-Bold';
+  src: url('../../public/fonts/mp-b.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TLOE-Regular';
   src: url('../../public/fonts/mp-r.ttf');
   font-weight: 400;
   font-style: normal;

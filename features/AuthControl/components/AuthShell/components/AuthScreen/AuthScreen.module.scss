@@ -1,0 +1,43 @@
+.screen {
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin: 0 0 10px;
+  color: var(--uv-text-strong);
+  font-size: 32px;
+  font-weight: var(--ls-fw-bold);
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 0 0 32px;
+  color: var(--uv-text-muted);
+  font-size: 17px;
+  text-align: center;
+}
+
+.footer {
+  margin: 28px 0 0;
+  color: var(--uv-text-muted);
+  text-align: center;
+}
+
+.footer a {
+  color: var(--uv-accent-soft);
+  text-decoration: none;
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.footer a:hover {
+  color: var(--uv-red-bright);
+  text-shadow: 0 0 16px var(--uv-red-glow);
+}

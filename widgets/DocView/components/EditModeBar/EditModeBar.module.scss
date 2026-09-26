@@ -17,7 +17,7 @@
   font-size: 15px;
   cursor: pointer;
   // Бар висит поверх контента — тень отделяет его от текста страницы
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 

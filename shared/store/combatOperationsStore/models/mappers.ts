@@ -5,9 +5,8 @@ import { getCoverUrl } from '@/shared/utils/getCoverUrl';
 
 export function mapCombatOperationListItemDto(dto: CombatOperationListItemDto): CombatOperation {
   const isoDate = (dto.published_at ?? dto.created_at).slice(0, 10);
-  const coverUrl = getCoverUrl(dto.image_url);
-  // ?v= сбрасывает кеш браузера после смены обложки (ETag бэка привязан к changed_at)
-  const imageUrl = coverUrl ? `${coverUrl}?v=${encodeURIComponent(dto.changed_at)}` : coverUrl;
+  // URL image-service immutable: смена обложки меняет сам URL, cache-busting не нужен
+  const imageUrl = getCoverUrl(dto.image_url);
 
   return {
     id: dto.id,

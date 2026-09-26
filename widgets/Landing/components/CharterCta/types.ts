@@ -7,6 +7,8 @@ export interface CtaCardData {
   text: string;
   href: string;
   ctaLabel: string;
+  // Кадр внутри плитки; без него рисуется имперская эмблема на сером
+  image?: string;
   external?: boolean;
   variant?: CtaVariant;
   discord?: boolean;

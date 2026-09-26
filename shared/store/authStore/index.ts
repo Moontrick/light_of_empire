@@ -8,4 +8,4 @@ export const useAuthStore = create<AuthState & AuthActions>()((set, get, store) 
   ...createAuthActions(set, get, store),
 }));
 
-export type { AuthState, AuthStatus } from './types';
+export type { AuthState, AuthStatus, PendingVerification } from './types';

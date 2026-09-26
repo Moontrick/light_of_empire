@@ -2,9 +2,21 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(15, 15, 16, 0.82);
+  background: var(--uv-header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--uv-border);
+}
+
+// Battlefront: лого без разрядки и свечения, крупнее и жирнее
+[data-theme='bf1'] .logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+}
+
+[data-theme='bf1'] .logo:hover {
+  color: var(--bf-yellow-deep);
+  text-shadow: none;
 }
 
 .transparent {

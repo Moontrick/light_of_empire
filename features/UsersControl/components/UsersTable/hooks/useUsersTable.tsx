@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Button, Select } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
+import { Button, Popconfirm, Select, Tooltip } from 'antd';
+import { EditOutlined, UserDeleteOutlined } from '@ant-design/icons';
 import type { TableProps } from 'antd';
 import { format } from 'date-fns';
 import { IconDiscord } from '@/public/icons/IconDiscord';
@@ -19,8 +19,10 @@ import styles from '../UsersTable.module.scss';
 export function useUsersTable({
   actorRole,
   savingRoleId,
+  removingAvatarId,
   onChangeRole,
   onEdit,
+  onRemoveAvatar,
 }: Omit<UsersTableProps, 'users' | 'loading'>) {
   const [editingRoleId, setEditingRoleId] = useState<number | null>(null);
   const [externalUrl, setExternalUrl] = useState<string | null>(null);
@@ -51,9 +53,37 @@ export function useUsersTable({
         key: 'user',
         render: (_, user) => (
           <div className={styles.userCell}>
-            <UserAvatar size="sm" alt={user.login} />
+            <span className={styles.avatarCell}>
+              <UserAvatar size="sm" alt={user.login} src={user.avatar_url} />
+              {user.avatar_url && (
+                <Popconfirm
+                  title="Снять аватар пользователя?"
+                  okText="Снять"
+                  cancelText="Отмена"
+                  onConfirm={() => onRemoveAvatar(user)}
+                >
+                  <Tooltip title="Снять аватар">
+                    <button
+                      type="button"
+                      className={styles.removeAvatar}
+                      aria-label={`Снять аватар пользователя ${user.login}`}
+                      disabled={removingAvatarId === user.id}
+                    >
+                      <UserDeleteOutlined />
+                    </button>
+                  </Tooltip>
+                </Popconfirm>
+              )}
+            </span>
             <div className={styles.userMeta}>
-              <span className={styles.userLogin}>{user.login}</span>
+              <span className={styles.userLogin}>
+                {user.login}
+                {!user.is_verified && (
+                  <Tooltip title="Почта не подтверждена — войти не может">
+                    <span className={styles.unverified}>не подтверждён</span>
+                  </Tooltip>
+                )}
+              </span>
               <span className={styles.userEmail}>{user.email}</span>
             </div>
           </div>
@@ -172,7 +202,7 @@ export function useUsersTable({
     ],
     // canAssignRole пересоздаётся каждый рендер, зависимости — его составляющие
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [actorRole, roleOptions, savingRoleId, editingRoleId, onChangeRole, onEdit],
+    [actorRole, roleOptions, savingRoleId, removingAvatarId, editingRoleId, onChangeRole, onEdit, onRemoveAvatar],
   );
 
   return { columns, externalUrl, closeExternal: () => setExternalUrl(null) };

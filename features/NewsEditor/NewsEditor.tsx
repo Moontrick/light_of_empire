@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Collapse, ConfigProvider, Input, Skeleton } from 'antd';
-import { DARK_FORM_THEME } from '@utils/antdTheme';
+import { FORM_THEME } from '@utils/antdTheme';
 import { HudCard } from '@ui/HudCard';
 import { NewsBlocksEditor } from '@ui/NewsBlocksEditor';
 import { NewsStatus } from '@/shared/types';
@@ -24,7 +24,7 @@ export function NewsEditor({ slug }: NewsEditorProps) {
   } = useNewsEditor(slug);
 
   return (
-    <ConfigProvider theme={DARK_FORM_THEME}>
+    <ConfigProvider theme={FORM_THEME}>
       <HudCard title={editable ? 'Редактирование новости' : 'Новая новость'}>
         {loading && <Skeleton active paragraph={{ rows: 8 }} />}
 

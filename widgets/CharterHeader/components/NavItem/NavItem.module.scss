@@ -64,7 +64,7 @@
   z-index: 50;
   min-width: 248px;
   padding: 8px;
-  background: rgba(20, 20, 22, 0.98);
+  background: var(--uv-menu-bg);
   backdrop-filter: blur(12px);
   border: 1px solid var(--uv-border);
   border-radius: var(--uv-radius);
@@ -94,6 +94,38 @@
 .depth2 > .link:hover {
   background: var(--uv-bg-hover);
   color: var(--uv-red-bright);
+}
+
+// ---- Battlefront: верхнее меню как в игре — uppercase, активный пункт жирный --
+[data-theme='bf1'] .depth0 > .link {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  color: var(--bf-text-muted);
+}
+
+[data-theme='bf1'] .depth0 > .link:hover,
+[data-theme='bf1'] .depth0 > .active {
+  color: var(--bf-text);
+}
+
+[data-theme='bf1'] .depth0 > .active {
+  font-weight: 700;
+}
+
+[data-theme='bf1'] .submenuDepth0 {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+[data-theme='bf1'] .depth1 > .link,
+[data-theme='bf1'] .depth2 > .link {
+  border-radius: 0;
+}
+
+[data-theme='bf1'] .depth1 > .link:hover,
+[data-theme='bf1'] .depth2 > .link:hover {
+  color: var(--bf-text);
 }
 
 // ---- Nested group (third level shown inline in the same panel) -------------

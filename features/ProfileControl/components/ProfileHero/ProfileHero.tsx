@@ -1,9 +1,9 @@
 import { HudCard } from '@ui/HudCard';
-import { UserAvatar } from '@ui/UserAvatar';
 import { DirectoryTag } from '@ui/DirectoryTag';
 import { RoleBadge } from '@ui/RoleBadge';
 import { ProfileStats } from './components/ProfileStats';
 import { LinkedAccounts } from './components/LinkedAccounts';
+import { AvatarEditor } from './components/AvatarEditor';
 import type { ProfileHeroProps } from './types';
 import styles from './ProfileHero.module.scss';
 
@@ -20,7 +20,7 @@ export function ProfileHero({
       <div className={styles.body}>
         <div className={styles.top}>
           <div className={styles.identity}>
-            <UserAvatar size="lg" alt={user.login} />
+            <AvatarEditor login={user.login} avatarUrl={user.avatar_url} />
             <div className={styles.meta}>
               <div className={styles.loginRow}>
                 <span className={styles.login}>{user.login}</span>

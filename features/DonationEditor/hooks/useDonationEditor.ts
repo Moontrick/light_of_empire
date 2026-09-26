@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from '@/shared/i18n/navigation';
 import type { CreateDonationDto, UpdateDonationDto } from '@/shared/api/donations';
 import { useDonationsAdminStore } from '@/shared/store/donationsAdminStore';
@@ -11,8 +11,8 @@ import {
   DONATION_TITLE_MAX,
   DONATION_TITLE_MIN,
 } from '@/shared/constants';
+import { IMAGE_UPLOAD_MAX_BYTES, IMAGE_UPLOAD_MAX_LABEL } from '@/shared/constants/images';
 import { alertHandler } from '@/shared/utils/alertHandler';
-import { imageFileToDataUrl } from '@/shared/utils/imageFileToDataUrl';
 import type { PendingImage } from '../types';
 
 export function useDonationEditor(id: number | undefined) {
@@ -28,9 +28,11 @@ export function useDonationEditor(id: number | undefined) {
   const [blocks, setBlocks] = useState<NewsBlock[]>([]);
   const [existingImages, setExistingImages] = useState<DonationImage[]>([]);
   const [pendingImages, setPendingImages] = useState<PendingImage[]>([]);
-  const [processing, setProcessing] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [uploading, setUploading] = useState(false);
+  // Актуальный список для очистки object URL при размонтировании
+  const pendingRef = useRef<PendingImage[]>([]);
+  pendingRef.current = pendingImages;
 
   // Невалидный id (например, /admin/donations/abc → NaN) не должен уходить в запрос — сразу «не найден»
   const invalidId = id !== undefined && !(Number.isInteger(id) && id > 0);
@@ -50,6 +52,11 @@ export function useDonationEditor(id: number | undefined) {
     setPendingImages([]);
   }, [editable]);
 
+  useEffect(
+    () => () => pendingRef.current.forEach((image) => URL.revokeObjectURL(image.previewUrl)),
+    [],
+  );
+
   const goBack = () => router.push('/admin/donations');
 
   const trimmedTitle = title.trim();
@@ -63,42 +70,46 @@ export function useDonationEditor(id: number | undefined) {
   const loading =
     id !== undefined && !invalidId && (editableStatus === 'idle' || editableStatus === 'loading');
 
-  const addFiles = async (files: File[]) => {
+  const addFiles = (files: File[]) => {
     const free = DONATION_IMAGES_MAX - existingImages.length - pendingImages.length;
-    setProcessing(true);
-    try {
-      const next: PendingImage[] = [];
-      for (const file of files.slice(0, Math.max(0, free))) {
-        try {
-          // Ресайз до 1600px обычно укладывает файл в лимит бэка (2 МБ); PNG без сжатия может не влезть — сервер ответит 400 с причиной
-          next.push({
-            key: `${file.name}-${file.size}-${Date.now()}-${next.length}`,
-            dataUrl: await imageFileToDataUrl(file),
-            name: file.name,
-          });
-        } catch {
-          alertHandler.addAlert({ defaultText: `Не удалось обработать «${file.name}»` });
-        }
-      }
-      setPendingImages((prev) => [...prev, ...next]);
-      if (free <= 0) {
+    const next: PendingImage[] = [];
+
+    for (const file of files.slice(0, Math.max(0, free))) {
+      if (file.size > IMAGE_UPLOAD_MAX_BYTES) {
         alertHandler.addAlert({
-          status: 'warning',
-          defaultText: `Больше картинок добавить нельзя (лимит ${DONATION_IMAGES_MAX})`,
+          defaultText: `«${file.name}» больше ${IMAGE_UPLOAD_MAX_LABEL} — не добавлена`,
         });
-      } else if (files.length > free) {
-        alertHandler.addAlert({
-          status: 'warning',
-          defaultText: `Добавлены первые ${free} — больше не помещается`,
-        });
+        continue;
       }
-    } finally {
-      setProcessing(false);
+      next.push({
+        key: `${file.name}-${file.size}-${Date.now()}-${next.length}`,
+        file,
+        previewUrl: URL.createObjectURL(file),
+        name: file.name,
+      });
+    }
+
+    setPendingImages((prev) => [...prev, ...next]);
+
+    if (free <= 0) {
+      alertHandler.addAlert({
+        status: 'warning',
+        defaultText: `Больше картинок добавить нельзя (лимит ${DONATION_IMAGES_MAX})`,
+      });
+    } else if (files.length > free) {
+      alertHandler.addAlert({
+        status: 'warning',
+        defaultText: `Добавлены первые ${free} — больше не помещается`,
+      });
     }
   };
 
   const removePending = (key: string) =>
-    setPendingImages((prev) => prev.filter((image) => image.key !== key));
+    setPendingImages((prev) => {
+      const target = prev.find((image) => image.key === key);
+      if (target) URL.revokeObjectURL(target.previewUrl);
+      return prev.filter((image) => image.key !== key);
+    });
 
   const removeExisting = async (imageId: number) => {
     if (id === undefined) return;
@@ -127,7 +138,7 @@ export function useDonationEditor(id: number | undefined) {
     try {
       // Последовательно: параллельные запросы сталкиваются на seq (409)
       for (const [index, image] of pendingImages.entries()) {
-        const uploaded = await addImage(donationId, image.dataUrl);
+        const uploaded = await addImage(donationId, image.file);
         if (!uploaded) {
           alertHandler.addAlert({ status: 'warning', defaultText: `Картинка ${index + 1} не загружена` });
         }
@@ -161,7 +172,7 @@ export function useDonationEditor(id: number | undefined) {
 
   return {
     title, setTitle, price, setPrice, isActive, setIsActive, blocks, setBlocks,
-    existingImages, pendingImages, processing, deletingId,
+    existingImages, pendingImages, deletingId,
     addFiles, removePending, removeExisting,
     editable, loading, notFound: invalidId || editableStatus === 'notFound',
     loadError: editableStatus === 'error',
