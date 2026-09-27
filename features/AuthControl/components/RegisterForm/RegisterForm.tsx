@@ -78,11 +78,11 @@ export function RegisterForm() {
         >
           <Checkbox>
             Я принимаю{' '}
-            <Link href="/terms" target="_blank">
+            <Link href="/terms" target="_blank" style={{ color: 'var(--bf-link)' }}>
               пользовательское соглашение
             </Link>{' '}
             и{' '}
-            <Link href="/privacy" target="_blank">
+            <Link href="/privacy" target="_blank" style={{ color: 'var(--bf-link)' }}>
               политику конфиденциальности
             </Link>
           </Checkbox>

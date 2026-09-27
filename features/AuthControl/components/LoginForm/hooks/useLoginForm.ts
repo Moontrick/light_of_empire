@@ -20,7 +20,7 @@ export function useLoginForm() {
     setSubmitting(true);
     try {
       await login(values);
-      alertHandler.addAlert({ status: 'success', defaultText: 'С возвращением, солдат' });
+      // alertHandler.addAlert({ status: 'success', defaultText: 'С возвращением, солдат' });
       router.replace('/');
     } catch (error) {
       // 403 — пароль верный, но почта не подтверждена: уводим на экран кода

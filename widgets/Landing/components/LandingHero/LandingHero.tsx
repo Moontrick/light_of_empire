@@ -13,10 +13,11 @@ import {
   HERO_LOCATION_LABEL,
 } from './constants';
 import styles from './LandingHero.module.scss';
+import { useTheme } from '@/shared/utils/theme/useTheme';
 
 export function LandingHero() {
   const { slides, active, slide, select } = useHeroSlides();
-
+  const {isDark} = useTheme()
   return (
     <section className={styles.hero}>
       <div

@@ -5,33 +5,47 @@ import type { ThemeConfig } from 'antd';
 import { useMemo, type ReactNode } from 'react';
 import { useTheme } from './useTheme';
 
-const BF = {
-  light: { bg: '#e9e9e9', text: '#262626', link: '#2a5697', success: '#3d8b4f' },
-  dark: { bg: '#161616', text: '#e6e6e6', link: '#5095eb', success: '#5cb870' },
-} as const;
-
 export function AntdThemeProvider({ children }: { children: ReactNode }) {
   const { resolved } = useTheme();
 
-  const config = useMemo<ThemeConfig>(() => {
-    const p = BF[resolved];
-    return {
-      algorithm: resolved === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
-      token: {
-        colorPrimary: '#f2b41f',
-        colorBgBase: p.bg,
-        colorTextBase: p.text,
-        colorLink: p.link,
-        colorSuccess: p.success,
-        borderRadius: 0, // угловатый стиль BF
-        fontFamily: 'var(--bf-font)',
+  const config = useMemo<ThemeConfig>(() => ({
+    algorithm: resolved === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
+    token: {
+      colorPrimary: 'var(--bf-yellow)',
+      colorPrimaryHover: 'var(--bf-yellow-deep)',
+      colorBgBase: 'var(--bf-bg)',
+      colorBgContainer: 'var(--bf-tile)',
+      colorBgElevated: 'var(--bf-tile)',
+      colorText: 'var(--bf-text)',
+      colorTextBase: 'var(--bf-text)',
+      colorTextSecondary: 'var(--bf-text-muted)',
+      colorTextTertiary: 'var(--bf-text-faint)',
+      colorBorder: 'var(--bf-line)',
+      colorBorderSecondary: 'var(--bf-line)',
+      colorLink: 'var(--bf-link)',
+      colorSuccess: 'var(--bf-success)',
+      colorWarning: 'var(--bf-yellow-deep)',
+      colorError: 'var(--bf-yellow)',
+      borderRadius: 0,
+      fontFamily: 'var(--bf-font)',
+    },
+    components: {
+      Button: {
+        primaryColor: 'var(--bf-text-on-yellow)',
+        primaryBg: 'var(--bf-yellow)',
+        primaryHoverBg: 'var(--bf-yellow-deep)',
+        primaryActiveBg: 'var(--bf-yellow-deep)',
+        defaultBg: 'var(--bf-tile)',
+        defaultColor: 'var(--bf-text)',
+        defaultBorderColor: 'transparent',
       },
-      components: {
-        // Тёмный текст на жёлтой кнопке (= --bf-text-on-yellow)
-        Button: { primaryColor: '#1a1a1a' },
+      Input: {
+        colorBgContainer: 'var(--bf-tile)',
+        colorText: 'var(--bf-text)',
+        colorTextPlaceholder: 'var(--bf-text-faint)',
       },
-    };
-  }, [resolved]);
+    },
+  }), [resolved]);
 
   return <ConfigProvider theme={config}>{children}</ConfigProvider>;
 }

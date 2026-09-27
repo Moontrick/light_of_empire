@@ -43,6 +43,8 @@
   --menu-bg: #000000;
 
   //NEW
+  --panel-primary-bg: rgba(220, 220, 220, 0.9);
+
   --sidebar-width: 265px;
 
   --color-primary-light: #3876d2;
@@ -74,6 +76,23 @@
   --color-error-bg: #fbe5e5;
 
   --shadow-modal: 0 20px 60px rgba(45, 44, 54, 0.18);
+
+    --bf-hero-gradient-x: linear-gradient(
+    90deg,
+    rgba(var(--bf-bg-rgb), 0.97) 0%,
+    rgba(var(--bf-bg-rgb), 0.9) 34%,
+    rgba(var(--bf-bg-rgb), 0.4) 62%,
+    rgba(var(--bf-bg-rgb), 0.06) 100%
+  );
+
+  // Вертикальная «дымка»: мягкий верх, прозрачная середина, сливается с фоном внизу.
+  --bf-hero-gradient-y: linear-gradient(
+    180deg,
+    rgba(var(--bf-bg-rgb), 0.55) 0%,
+    transparent 22%,
+    transparent 68%,
+    var(--bf-bg) 100%
+  );
 }
 
 // =============================================================================
@@ -376,6 +395,8 @@
   --bf-link: #5095eb; // тот же синий, что в тёмной теме устава
   --bf-success: #5cb870;
   --bf-success-dot: #6cc47f;
+
+  --panel-primary-bg: #2b2b2b;
 }
 
 // --- Маппинг --uv-* / --ls-* на --bf-* (общий для обоих режимов) -------------

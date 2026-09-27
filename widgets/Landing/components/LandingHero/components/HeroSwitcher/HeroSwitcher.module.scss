@@ -2,7 +2,7 @@
   display: inline-flex;
   max-width: 100%;
   overflow-x: auto;
-  background: rgba(203, 203, 203, 0.85);
+  background: var(--bf-tile-deep);
   scrollbar-width: none;
 }
 

@@ -23,20 +23,8 @@
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(
-      90deg,
-      rgba(233, 233, 233, 0.97) 0%,
-      rgba(233, 233, 233, 0.9) 34%,
-      rgba(233, 233, 233, 0.4) 62%,
-      rgba(233, 233, 233, 0.06) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(233, 233, 233, 0.55) 0%,
-      transparent 22%,
-      transparent 68%,
-      var(--bf-bg) 100%
-    );
+    var(--bf-hero-gradient-x),
+    var(--bf-hero-gradient-y);
 }
 
 @keyframes heroFade {
@@ -139,7 +127,7 @@
 
 .tile {
   color: var(--bf-text);
-  background: rgba(220, 220, 220, 0.9);
+  background: var(--panel-primary-bg);
   outline: var(--bf-outline) solid transparent;
   outline-offset: calc(var(--bf-outline) * -1);
 }
