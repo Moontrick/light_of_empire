@@ -16,8 +16,8 @@ export const purchasesApi = {
   getMy: (params: MyPurchasesQuery) =>
     baseService.get<PaginatedResponse<PurchaseDto>>(PURCHASES_ROUTES.MY, { params }),
 
-  getAll: (params: PurchasesQuery) =>
-    baseService.get<PaginatedResponse<PurchaseFullDto>>(PURCHASES_ROUTES.LIST, { params }),
+  getAll: (params: PurchasesQuery, signal?: AbortSignal) =>
+    baseService.get<PaginatedResponse<PurchaseFullDto>>(PURCHASES_ROUTES.LIST, { params, signal }, ),
 
   resolve: (id: number, dto: ResolvePurchaseDto) =>
     baseService.patch<PurchaseFullDto>(PURCHASES_ROUTES.STATUS(id), dto),

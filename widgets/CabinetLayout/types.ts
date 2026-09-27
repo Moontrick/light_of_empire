@@ -8,8 +8,9 @@ export interface CabinetLayoutProps {
 export interface CabinetNavItem {
   label: string;
   href: string;
-  // Пункт виден только с этой роли (секция может быть доступна раньше)
   minRole?: UserRole;
+  bandage?: number;
+  bandageName?: string;
 }
 
 export interface CabinetNavSection {

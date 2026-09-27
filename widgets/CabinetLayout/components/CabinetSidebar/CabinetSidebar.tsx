@@ -38,6 +38,7 @@ export function CabinetSidebar() {
                     className={classNames(styles.item, { [styles.active]: item.active })}
                   >
                     {item.label}
+                    {(item.bandage !== null && item.bandage !== 0) && <span className={styles.bandage}>{item.bandage}</span>}
                   </Link>
                 </li>
               ))}

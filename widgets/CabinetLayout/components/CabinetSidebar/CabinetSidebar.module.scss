@@ -81,6 +81,9 @@
   display: block;
   padding: 10px 12px;
   color: var(--uv-text-muted);
+      display: flex;
+    align-items: center;
+    gap: 12px;
   font-size: 15px;
   letter-spacing: 0.6px;
   text-decoration: none;
@@ -131,4 +134,20 @@
     flex-wrap: wrap;
     gap: 4px;
   }
+}
+
+
+.bandage{
+  // position: absolute;
+  width: auto;
+  height: 24px;
+  border:1px solid var(--bf-yellow);
+  color: var--bf-text;
+  min-width: 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
 }
