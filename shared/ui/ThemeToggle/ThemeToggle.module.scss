@@ -1,0 +1,74 @@
+.toggle {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--size, 36px);
+  height: var(--size, 36px);
+  padding: 0;
+  border: 1px solid var(--bf-line-strong);
+  border-radius: 50%;
+  background: var(--bf-tile);
+  color: var(--bf-text);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+
+  &:hover {
+    background: var(--bf-tile-hover);
+    border-color: var(--bf-yellow);
+  }
+
+  &:focus-visible {
+    outline: var(--bf-outline) solid var(--bf-yellow);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.94);
+  }
+
+  // Жёлтая точка — тема сейчас следует за системой
+  &[data-auto]::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 25%;
+    height: 25%;
+    max-width: 8px;
+    max-height: 8px;
+    border-radius: 50%;
+    background: var(--bf-yellow);
+    box-shadow: 0 0 0 2px var(--bf-bg);
+  }
+}
+
+// Кружок, залитый наполовину; в тёмной теме переворачивается на 180°
+.disc {
+  width: 50%;
+  height: 50%;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:global(html[data-mode="dark"]) .disc {
+  transform: rotate(180deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-mode])) .disc {
+    transform: rotate(180deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .disc {
+    transition: none;
+  }
+}

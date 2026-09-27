@@ -10,6 +10,8 @@ import { SiteFooterGate } from '@/components/SiteFooterGate';
 import { CharterFooter } from '@widgets/CharterFooter';
 import { YandexMetrika } from '@/components/YandexMetrika';
 import { baseMetadata, baseViewport } from '@/shared/seo';
+import { AntdThemeProvider } from '@/shared/utils/theme/AntdThemeProvider';
+import { themeInitScript } from '@/shared/utils/theme/themeScript';
 import type { LayoutProps } from './types';
 
 export const metadata = baseMetadata;
@@ -20,18 +22,29 @@ export default async function LocaleLayout({ params, children }: LayoutProps) {
   setRequestLocale(locale);
 
   const messages = await getMessages();
+
   return (
-    <html lang={locale} data-theme="bf1" suppressHydrationWarning>
+    <html
+      lang={locale}
+      data-theme="bf1"
+      className={cormorant.variable}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AntdRegistry>
-            <AuthProvider />
-            <SiteHeader />
-            {children}
-            <SiteFooterGate>
-              <CharterFooter />
-            </SiteFooterGate>
-            <AlertService />
+            <AntdThemeProvider>
+              <AuthProvider />
+              <SiteHeader />
+              {children}
+              <SiteFooterGate>
+                <CharterFooter />
+              </SiteFooterGate>
+              <AlertService />
+            </AntdThemeProvider>
           </AntdRegistry>
         </NextIntlClientProvider>
         <YandexMetrika />

@@ -16,6 +16,7 @@ import {
   SERVER_ADDRESS_IP,
 } from './constants';
 import styles from './CharterFooter.module.scss';
+import { ThemeToggle } from '@/shared/ui/ThemeToggle';
 
 export function CharterFooter() {
   const { columns, loading } = useCharterFooter();
@@ -53,6 +54,9 @@ export function CharterFooter() {
             <a href={CONNECT_URL_IP} className={styles.connect}>
               connect {SERVER_ADDRESS_IP}
             </a>
+            <div>
+              <ThemeToggle size={44} />
+            </div>
           </div>
 
           <nav className={styles.columns}>
