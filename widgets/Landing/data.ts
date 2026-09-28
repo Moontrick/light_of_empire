@@ -1,4 +1,4 @@
-export const DISCORD_URL = 'https://discord.gg/Bzs8dA6NQ6';
+export const DISCORD_URL = 'https://discord.gg/JZSnn9pQ6S';
 
 export interface HeroSlide {
   id: string;

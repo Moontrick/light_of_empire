@@ -14,7 +14,7 @@ export const FOOTER_COPYRIGHT = '© 2026 The Light of Empire. Все права 
 
 export const FOOTER_NOTE = 'By Canto Projects | Ahri';
 
-const DISCORD_URL = 'https://discord.gg/Bzs8dA6NQ6';
+const DISCORD_URL = 'https://discord.gg/JZSnn9pQ6S';
 const VK_URL = 'https://vk.ru/thelightofempire';
 const STEAM_COLLECTION_URL = 'https://steamcommunity.com/sharedfiles/filedetails/?id=3772309446';
 
