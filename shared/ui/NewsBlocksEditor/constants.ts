@@ -1,7 +1,7 @@
 import type { NewsBlock } from '@/shared/types';
 
 export const NEWS_BLOCK_KINDS = [
-  'paragraph', 'heading', 'quote', 'member', 'list', 'image',
+  'paragraph', 'heading', 'quote', 'member', 'list', 'image', 'link',
 ] as const;
 
 export type NewsBlockKind = (typeof NEWS_BLOCK_KINDS)[number];
@@ -13,6 +13,7 @@ export const NEWS_BLOCK_LABELS: Record<NewsBlockKind, string> = {
   member: 'Персона',
   list: 'Список',
   image: 'Картинка',
+  link: 'Ссылка',
 };
 
 export function createEmptyNewsBlock(kind: NewsBlockKind): NewsBlock {
@@ -27,6 +28,8 @@ export function createEmptyNewsBlock(kind: NewsBlockKind): NewsBlock {
     return { type: 'list', items: [''] };
   case 'image':
     return { type: 'image', src: '' };
+  case 'link':
+    return { type: 'link', url: '' };
   default:
     return { type: 'paragraph', text: '' };
   }

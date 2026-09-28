@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import type { MouseEvent } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
+import type { KeyboardEvent, MouseEvent } from 'react';
 import {
   colorMarkers,
   MARKS,
@@ -7,12 +7,31 @@ import {
   type MarkupColor,
 } from '@/shared/utils/charterMarkup';
 
+const HOTKEY_MARKS: Record<string, keyof typeof MARKS> = {
+  b: 'bold',
+  i: 'italic',
+  u: 'underline',
+};
+
 export function useRichTextInput(value: string, onChange: (value: string) => void) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const hasFocusedRef = useRef(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
+
+  // Высота по содержимому: сбрасываем в auto, чтобы scrollHeight учёл и удалённые строки;
+  // rows у textarea задаёт минимум. В скрытом контейнере scrollHeight равен 0 — оставляем auto
+  const fitHeight = () => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    if (el.scrollHeight > 0) el.style.height = `${el.scrollHeight}px`;
+  };
+
+  useLayoutEffect(fitHeight, [value]);
 
   const handleTextareaFocus = () => {
     hasFocusedRef.current = true;
+    fitHeight();
   };
 
   // mousedown по кнопке тулбара не должен красть фокус и выделение у textarea
@@ -46,5 +65,25 @@ export function useRichTextInput(value: string, onChange: (value: string) => voi
     applyMarkers(open, close);
   };
 
-  return { textareaRef, handleTextareaFocus, keepSelection, applyMark, applyColor };
+  // Ctrl/Cmd+B/I/U — как в привычных редакторах; Enter остаётся переносом строки
+  const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
+    const mark = HOTKEY_MARKS[event.key.toLowerCase()];
+    if (!mark) return;
+    event.preventDefault();
+    applyMark(mark);
+  };
+
+  const togglePreview = () => setPreviewOpen((open) => !open);
+
+  return {
+    textareaRef,
+    handleTextareaFocus,
+    keepSelection,
+    applyMark,
+    applyColor,
+    handleKeyDown,
+    previewOpen,
+    togglePreview,
+  };
 }

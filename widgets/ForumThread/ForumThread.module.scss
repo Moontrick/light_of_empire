@@ -1,0 +1,75 @@
+.root {
+  background: var(--uv-bg);
+  color: var(--uv-text);
+}
+
+.content {
+  max-width: var(--uv-content-max);
+  margin: 0 auto;
+  padding: 110px 24px 120px;
+}
+
+.composer {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--uv-border);
+}
+
+.composerTitle {
+  margin: 0 0 12px;
+  color: var(--uv-text-strong);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.guestHint {
+  margin-top: 32px;
+  color: var(--uv-text-muted);
+  font-size: 15px;
+}
+
+.notFound {
+  max-width: var(--uv-content-max);
+  margin: 0 auto;
+  padding: 140px 24px 120px;
+  text-align: center;
+}
+
+.notFoundTitle {
+  margin: 0 0 12px;
+  color: var(--uv-text-strong);
+  font-size: 32px;
+}
+
+.notFoundText {
+  margin: 0 0 24px;
+  color: var(--uv-text-muted);
+}
+
+.notFoundActions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  color: var(--uv-text-strong);
+  font-size: 14px;
+  letter-spacing: 1.5px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--uv-border);
+}
+
+.back:hover {
+  border-color: var(--uv-red);
+}
+
+@media (max-width: 640px) {
+  .content {
+    padding: 84px 18px 84px;
+  }
+}

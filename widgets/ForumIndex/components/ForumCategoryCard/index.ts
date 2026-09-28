@@ -1,0 +1,1 @@
+export { ForumCategoryCard } from './ForumCategoryCard';

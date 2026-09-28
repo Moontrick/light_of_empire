@@ -1,15 +1,12 @@
-import { Input } from 'antd';
+import { RichTextInput } from '@ui/RichTextInput';
 import type { ParagraphBlockEditorProps } from './types';
-
-const { TextArea } = Input;
 
 export function ParagraphBlockEditor({ value, onChange }: ParagraphBlockEditorProps) {
   return (
-    <TextArea
+    <RichTextInput
       value={value.text}
-      onChange={(event) => onChange({ ...value, text: event.target.value })}
+      onChange={(text) => onChange({ ...value, text })}
       placeholder="Текст абзаца"
-      autoSize={{ minRows: 3 }}
     />
   );
 }

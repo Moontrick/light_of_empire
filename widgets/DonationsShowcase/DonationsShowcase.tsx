@@ -25,7 +25,7 @@ import {
 import styles from './DonationsShowcase.module.scss';
 
 export function DonationsShowcase() {
-  const { featured, rest, loading, error, empty, retry, balance, authPending, guest } =
+  const { featured, rest, loading, error, empty, retry, balance, authPending, guest, averageItem } =
     useDonationsShowcase();
 
   return (
@@ -76,7 +76,7 @@ export function DonationsShowcase() {
           <p className={styles.empty}>{SHOWCASE_EMPTY}</p>
         ) : (
           <>
-            {featured && <DonationFeatured item={featured} />}
+            {averageItem && <DonationFeatured item={averageItem} />}
 
             <SectionHead eyebrow={SHOWCASE_CATALOG_ROOT} title={SHOWCASE_CATALOG_TITLE} />
             <div className={styles.grid}>

@@ -1,0 +1,51 @@
+.root {
+  background: var(--uv-bg);
+  color: var(--uv-text);
+}
+
+.content {
+  max-width: var(--uv-content-max);
+  margin: 0 auto;
+  padding: 110px 24px 120px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hint {
+  color: var(--uv-text-muted);
+  font-size: 12px;
+}
+
+.error {
+  color: var(--uv-danger);
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--uv-text-muted);
+}
+
+@media (max-width: 640px) {
+  .content {
+    padding: 84px 18px 84px;
+  }
+}

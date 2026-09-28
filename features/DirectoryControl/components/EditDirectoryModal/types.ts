@@ -1,4 +1,4 @@
-import type { ColorPickerValue } from '../../lib/toColorString';
+import type { ColorPickerValue } from '@/shared/utils/toColorString';
 import type { DirectoryConfig, EditingEntry } from '../../types';
 
 export interface EditDirectoryModalProps {

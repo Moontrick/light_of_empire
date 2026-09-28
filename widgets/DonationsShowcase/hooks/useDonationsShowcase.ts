@@ -14,7 +14,18 @@ export function useDonationsShowcase() {
   useEffect(() => {
     void fetchList();
   }, [fetchList]);
+  
+  const averageItem = useMemo<DonationListItem | null>(() => {
+    if (items.length === 0) return null;
 
+    const avg = items.reduce((acc, item) => acc + item.price, 0) / items.length;
+
+    return items.reduce((closest, item) =>
+      Math.abs(item.price - avg) < Math.abs(closest.price - avg)
+        ? item
+        : closest
+    );
+  }, [items]);
   // Главный лот витрины — самый дорогой товар: именно он «продаёт» магазин
   const featured = useMemo<DonationListItem | null>(() => {
     if (items.length < SHOWCASE_FEATURED_MIN_ITEMS) return null;
@@ -29,6 +40,7 @@ export function useDonationsShowcase() {
 
   return {
     featured,
+    averageItem,
     rest,
     loading: listStatus === 'idle' || listStatus === 'loading',
     error: listStatus === 'error',

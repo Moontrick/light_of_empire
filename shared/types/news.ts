@@ -41,13 +41,21 @@ export interface NewsImageBlock {
   caption?: string;
 }
 
+// url — внешний (https://…) или внутренний (/news) адрес; text — подпись вместо url
+export interface NewsLinkBlock {
+  type: 'link';
+  url: string;
+  text?: string;
+}
+
 export type NewsBlock =
   | NewsParagraphBlock
   | NewsHeadingBlock
   | NewsQuoteBlock
   | NewsMemberBlock
   | NewsListBlock
-  | NewsImageBlock;
+  | NewsImageBlock
+  | NewsLinkBlock;
 
 // View-model для UI: даты отформатированы, imageUrl абсолютный
 export interface NewsPost {

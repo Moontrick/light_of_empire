@@ -3,6 +3,7 @@
 import { Button, Dropdown } from 'antd';
 import type { NewsBlock } from '@/shared/types';
 import { BlockCard } from '@ui/BlocksEditor/components/BlockCard';
+import { LinkBlockEditor } from '@ui/BlocksEditor/components/LinkBlockEditor';
 import { NEWS_BLOCK_KINDS, NEWS_BLOCK_LABELS, createEmptyNewsBlock } from './constants';
 import { ParagraphBlockEditor } from './components/ParagraphBlockEditor';
 import { HeadingBlockEditor } from './components/HeadingBlockEditor';
@@ -33,6 +34,13 @@ function BlockBody({
     return <NewsListBlockEditor value={block} onChange={onChange} />;
   case 'image':
     return <ImageBlockEditor value={block} onChange={onChange} />;
+  case 'link':
+    return (
+      <LinkBlockEditor
+        value={block}
+        onChange={(fields) => onChange({ type: 'link', ...fields })}
+      />
+    );
   default:
     return null;
   }

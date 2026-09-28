@@ -7,3 +7,4 @@ export * from './news';
 export * from './combatOperation';
 export * from './currency';
 export * from './donation';
+export * from './forum';

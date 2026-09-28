@@ -27,5 +27,6 @@ export const NAV_ITEMS: NavNode[] = [
   { label: 'Устав ИА', href: '/ustav' },
   { label: 'Новости', href: '/news' },
   { label: 'Хроника', href: '/chronicle' },
+  { label: 'Форум', href: '/forum' },
   { label: 'Донат', href: '/donations' },
 ];

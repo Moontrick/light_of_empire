@@ -1,16 +1,15 @@
 import { Flex, Input } from 'antd';
+import { RichTextInput } from '@ui/RichTextInput';
 import type { QuoteBlockEditorProps } from './types';
-
-const { TextArea } = Input;
 
 export function QuoteBlockEditor({ value, onChange }: QuoteBlockEditorProps) {
   return (
     <Flex vertical gap="small">
-      <TextArea
+      <RichTextInput
         value={value.text}
-        onChange={(event) => onChange({ ...value, text: event.target.value })}
+        onChange={(text) => onChange({ ...value, text })}
         placeholder="Текст цитаты"
-        autoSize={{ minRows: 2 }}
+        rows={3}
       />
       <Input
         value={value.author ?? ''}

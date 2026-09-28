@@ -151,3 +151,29 @@
   top: 0;
   right: 0;
 }
+
+
+.logout {
+  margin-bottom: 24px;
+  padding: 9px 12px;
+  background: none;
+  border: none;
+  color: var(--uv-text-muted);
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.logout:hover:not(:disabled) {
+  background: var(--uv-bg-hover);
+  color: var(--uv-red-bright);
+}
+
+.logout:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

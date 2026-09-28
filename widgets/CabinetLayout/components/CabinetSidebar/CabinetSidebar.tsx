@@ -9,7 +9,7 @@ import { useCabinetSidebar } from './hooks/useCabinetSidebar';
 import styles from './CabinetSidebar.module.scss';
 
 export function CabinetSidebar() {
-  const { user, pending, sections } = useCabinetSidebar();
+  const { user, pending, sections, loggingOut, handleLogout } = useCabinetSidebar();
 
   return (
     <aside className={styles.sidebar}>
@@ -46,6 +46,17 @@ export function CabinetSidebar() {
           </div>
         ))}
       </nav>
+      <button
+        type="button"
+        className={styles.logout}
+        disabled={loggingOut}
+        onClick={() => {
+          close();
+          handleLogout();
+        }}
+      >
+          Выйти
+      </button>
     </aside>
   );
 }

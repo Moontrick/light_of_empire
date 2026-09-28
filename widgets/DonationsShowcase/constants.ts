@@ -9,8 +9,8 @@ export const SHOWCASE_HERO_IMAGE = '/images/0b37cdaab49a502abb2c2fd54679fb1a.jpg
 export const SHOWCASE_LOGIN_TITLE = 'Войти';
 export const SHOWCASE_LOGIN_SUB = 'Покупки доступны бойцам с аккаунтом';
 
-export const SHOWCASE_FEATURED_EYEBROW = 'Лучший лот';
-export const SHOWCASE_FEATURED_ACTION = 'Открыть лот';
+export const SHOWCASE_FEATURED_EYEBROW = 'Лучшее предложение';
+export const SHOWCASE_FEATURED_ACTION = 'Открыть товар';
 export const SHOWCASE_CATALOG_ROOT = 'Витрина';
 export const SHOWCASE_CATALOG_TITLE = 'Все товары';
 

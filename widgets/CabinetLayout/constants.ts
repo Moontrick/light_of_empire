@@ -19,6 +19,7 @@ export const CABINET_NAV_SECTIONS: CabinetNavSection[] = [
       { label: 'Покупка доната', href: '/admin/purchases', minRole: UserRole.CURATOR, bandageName: 'purchases' },
       { label: 'Донат', href: '/admin/donations', minRole: UserRole.OWNER },
       { label: 'Новости', href: '/admin/news' },
+      { label: 'Форум', href: '/admin/forum' },
       { label: 'Боевые операции', href: '/admin/combat-operations' },
       { label: 'Структура', href: '/admin/structure' },
       { label: 'Настройки бота', href: '/admin/discord-bot', minRole: UserRole.OWNER },

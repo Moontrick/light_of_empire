@@ -1,0 +1,36 @@
+.root {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px !important; // перебиваем глобальный * { letter-spacing: 0 !important }
+  text-transform: uppercase;
+  border: 1px solid var(--uv-border);
+  color: var(--uv-text-muted);
+}
+
+.pinned {
+  color: var(--uv-accent-soft);
+  border-color: var(--uv-border-accent);
+  background: var(--uv-red-soft);
+}
+
+.CLOSED {
+  color: var(--uv-text-muted);
+}
+
+.LOCKED {
+  color: var(--uv-danger);
+  border-color: var(--uv-danger);
+}
+
+.DELETED {
+  color: var(--uv-text-muted);
+  text-decoration: line-through;
+}

@@ -1,0 +1,1 @@
+export { isForumAuthor } from './isForumAuthor';

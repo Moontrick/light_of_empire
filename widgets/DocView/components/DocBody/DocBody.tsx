@@ -26,6 +26,8 @@ function blockText(block: CharterBlock): string {
     return block.items.map(ruleText).join(' ');
   case 'image':
     return [block.alt ?? '', block.caption ?? ''].join(' ');
+  case 'link':
+    return [block.text ?? '', block.url].join(' ');
   default:
     return '';
   }

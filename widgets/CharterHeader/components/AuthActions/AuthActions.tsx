@@ -7,6 +7,7 @@ import { UserMenu } from './components/UserMenu';
 import { useAuthActions } from './hooks/useAuthActions';
 import type { AuthActionsProps } from './types';
 import styles from './AuthActions.module.scss';
+import { ThemeToggle } from '@/shared/ui/ThemeToggle';
 
 export function AuthActions({ variant = 'desktop', onNavigate }: AuthActionsProps) {
   const { user, status, loggingOut, handleLogout } = useAuthActions();
@@ -45,6 +46,7 @@ export function AuthActions({ variant = 'desktop', onNavigate }: AuthActionsProp
 
       {!pending && !user && (
         <>
+          <ThemeToggle />
           <Link href="/login" className={styles.action} onClick={onNavigate}>
             Войти
           </Link>
@@ -55,6 +57,7 @@ export function AuthActions({ variant = 'desktop', onNavigate }: AuthActionsProp
           >
             Регистрация
           </Link>
+
         </>
       )}
     </div>

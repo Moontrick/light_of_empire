@@ -3,7 +3,7 @@ import { Form } from 'antd';
 import { alertHandler } from '@/shared/utils/alertHandler';
 import { getApiErrorMessage } from '@/shared/utils/getApiErrorMessage';
 import { composeNameStyles, parseNameStyles } from '../../../lib/nameStyles';
-import { toColorString } from '../../../lib/toColorString';
+import { toColorString } from '@/shared/utils/toColorString';
 import type { DirectoryFormValues, EditDirectoryModalProps } from '../types';
 
 export function useEditDirectoryModal({

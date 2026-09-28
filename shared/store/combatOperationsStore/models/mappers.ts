@@ -1,5 +1,6 @@
 import type { CombatOperationDetailDto, CombatOperationListItemDto } from '@/shared/api/combatOperations';
 import type { CombatOperation, CombatOperationDetail } from '@/shared/types';
+import { stripMarkup } from '@/shared/utils/charterMarkup';
 import { formatNewsDate } from '@/shared/utils/formatNewsDate';
 import { getCoverUrl } from '@/shared/utils/getCoverUrl';
 
@@ -13,7 +14,7 @@ export function mapCombatOperationListItemDto(dto: CombatOperationListItemDto): 
     slug: dto.slug,
     title: dto.title,
     tag: dto.tag,
-    smallBody: dto.small_body,
+    smallBody: stripMarkup(dto.small_body),
     imageUrl,
     status: dto.status,
     isoDate,

@@ -1,4 +1,5 @@
 import { getCoverUrl } from '@/shared/utils/getCoverUrl';
+import { stripMarkup } from '@/shared/utils/charterMarkup';
 import type { NewsDetailDto, NewsListItemDto } from '@/shared/api/news';
 import type { NewsPost, NewsPostDetail } from '@/shared/types';
 import { formatNewsDate } from '@/shared/utils/formatNewsDate';
@@ -14,7 +15,7 @@ export function mapNewsListItemDto(dto: NewsListItemDto): NewsPost {
     title: dto.title,
     tag: dto.tag,
     excerpt: dto.excerpt,
-    smallBody: dto.small_body,
+    smallBody: stripMarkup(dto.small_body),
     imageUrl,
     readingTime: `${dto.reading_minutes} мин`,
     status: dto.status,

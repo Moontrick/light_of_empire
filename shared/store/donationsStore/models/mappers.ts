@@ -5,6 +5,7 @@ import type {
   DonationListItemDto,
 } from '@/shared/api/donations';
 import type { DonationDetail, DonationImage, DonationListItem } from '@/shared/types';
+import { stripMarkup } from '@/shared/utils/charterMarkup';
 import { getCoverUrl } from '@/shared/utils/getCoverUrl';
 
 export function mapDonationImageDto(dto: DonationImageDto): DonationImage {
@@ -27,7 +28,7 @@ function mapDonationBase(dto: DonationBaseDto): Omit<DonationListItem, 'smallBod
 }
 
 export function mapDonationListItemDto(dto: DonationListItemDto): DonationListItem {
-  return { ...mapDonationBase(dto), smallBody: dto.small_body };
+  return { ...mapDonationBase(dto), smallBody: stripMarkup(dto.small_body) };
 }
 
 export function mapDonationDetailDto(dto: DonationDetailDto): DonationDetail {

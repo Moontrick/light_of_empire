@@ -1,4 +1,4 @@
-import { DocBlock } from '../DocBlock';
+import { DocBlock } from '@ui/DocBlock';
 import type { DocSectionProps } from './types';
 import styles from './DocSection.module.scss';
 

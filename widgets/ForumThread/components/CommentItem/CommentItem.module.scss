@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--uv-border);
+  scroll-margin-top: calc(var(--uv-header-height) + 16px);
+}
+
+.body {
+  padding-left: 48px;
+}
+
+.deleted {
+  margin: 0;
+  color: var(--uv-text-muted);
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  padding-left: 44px;
+}
+
+@media (max-width: 640px) {
+  .body,
+  .actions {
+    padding-left: 0;
+  }
+}

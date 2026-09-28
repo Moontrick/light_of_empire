@@ -55,7 +55,7 @@ export function CharterFooter() {
               connect {SERVER_ADDRESS_IP}
             </a>
             <div>
-              <ThemeToggle size={44} />
+              <ThemeToggle />
             </div>
           </div>
 

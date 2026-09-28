@@ -3,7 +3,7 @@
 import { Form } from 'antd';
 import { DirectoryTag } from '@ui/DirectoryTag';
 import { composeNameStyles } from '../../../../lib/nameStyles';
-import { toColorString } from '../../../../lib/toColorString';
+import { toColorString } from '@/shared/utils/toColorString';
 import type { TagPreviewProps } from './types';
 import styles from './TagPreview.module.scss';
 

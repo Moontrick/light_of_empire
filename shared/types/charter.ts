@@ -16,7 +16,9 @@ export type CharterBlock =
   | { kind: 'rules'; items: CharterRule[] }
   // src — относительный url из POST /image-service или внешняя ссылка (data-URL — только
   // в старых записях); перед <img> — resolveImageSrc
-  | { kind: 'image'; src: string; alt?: string; caption?: string };
+  | { kind: 'image'; src: string; alt?: string; caption?: string }
+  // url — внешний (https://…) или внутренний (/news) адрес; text — подпись вместо url
+  | { kind: 'link'; url: string; text?: string };
 
 // slug — стабильный якорь секции (#slug); числовой id есть только у данных с бэка
 export interface CharterSectionData {

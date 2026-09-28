@@ -4,5 +4,6 @@ export interface RichTextInputProps {
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
+  // Минимальная высота в строках; дальше поле растёт по содержимому
   rows?: number;
 }

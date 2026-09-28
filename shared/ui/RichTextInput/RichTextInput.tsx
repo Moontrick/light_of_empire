@@ -1,6 +1,7 @@
 'use client';
 
 import { Button, Dropdown, Tooltip } from 'antd';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { MARKUP_COLORS } from '@/shared/utils/charterMarkup';
 import { RichText } from '@ui/RichText';
 import { COLOR_LABELS } from './constants';
@@ -12,14 +13,25 @@ export function RichTextInput({
   value = '',
   onChange = () => {},
   placeholder,
-  rows = 4,
+  rows = 3,
 }: RichTextInputProps) {
-  const { textareaRef, handleTextareaFocus, keepSelection, applyMark, applyColor } = useRichTextInput(value, onChange);
+  const {
+    textareaRef,
+    handleTextareaFocus,
+    keepSelection,
+    applyMark,
+    applyColor,
+    handleKeyDown,
+    previewOpen,
+    togglePreview,
+  } = useRichTextInput(value, onChange);
+
+  const showPreview = previewOpen && value.trim().length > 0;
 
   return (
     <div className={styles.root}>
       <div className={styles.toolbar}>
-        <Tooltip title="Жирный">
+        <Tooltip title="Жирный (Ctrl+B)">
           <Button
             size="small"
             onClick={() => applyMark('bold')}
@@ -30,7 +42,7 @@ export function RichTextInput({
             Ж
           </Button>
         </Tooltip>
-        <Tooltip title="Курсив">
+        <Tooltip title="Курсив (Ctrl+I)">
           <Button
             size="small"
             onClick={() => applyMark('italic')}
@@ -41,7 +53,7 @@ export function RichTextInput({
             К
           </Button>
         </Tooltip>
-        <Tooltip title="Подчёркнутый">
+        <Tooltip title="Подчёркнутый (Ctrl+U)">
           <Button
             size="small"
             onClick={() => applyMark('underline')}
@@ -66,6 +78,17 @@ export function RichTextInput({
             Цвет
           </Button>
         </Dropdown>
+        <Tooltip title={previewOpen ? 'Скрыть предпросмотр' : 'Показать предпросмотр'}>
+          <Button
+            size="small"
+            type={previewOpen ? 'primary' : 'default'}
+            icon={previewOpen ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+            onClick={togglePreview}
+            aria-label="Предпросмотр"
+            aria-pressed={previewOpen}
+            className={styles.previewToggle}
+          />
+        </Tooltip>
       </div>
       <textarea
         ref={textareaRef}
@@ -73,10 +96,11 @@ export function RichTextInput({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         onFocus={handleTextareaFocus}
+        onKeyDown={handleKeyDown}
         placeholder={placeholder}
         rows={rows}
       />
-      {value.trim() && (
+      {showPreview && (
         <div className={styles.preview}>
           <span className={styles.previewLabel}>Предпросмотр</span>
           <div className={styles.previewBody}>

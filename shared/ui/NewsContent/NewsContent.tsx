@@ -1,3 +1,5 @@
+import { LinkBlock } from '@ui/LinkBlock';
+import { RichText } from '@ui/RichText';
 import { resolveImageSrc } from '@/shared/utils/resolveImageSrc';
 import type { NewsContentProps } from './types';
 import styles from './NewsContent.module.scss';
@@ -11,7 +13,7 @@ export function NewsContent({ blocks }: NewsContentProps) {
         if (block.type === 'heading') {
           return (
             <h2 key={key} className={styles.heading}>
-              {block.text}
+              <RichText text={block.text} />
             </h2>
           );
         }
@@ -19,7 +21,9 @@ export function NewsContent({ blocks }: NewsContentProps) {
         if (block.type === 'quote') {
           return (
             <blockquote key={key} className={styles.quote}>
-              <p>{block.text}</p>
+              <p>
+                <RichText text={block.text} />
+              </p>
               {block.author && <cite>{block.author}</cite>}
             </blockquote>
           );
@@ -37,11 +41,15 @@ export function NewsContent({ blocks }: NewsContentProps) {
         if (block.type === 'list') {
           return (
             <div key={key} className={styles.listBlock}>
-              {block.title && <p className={styles.listTitle}>{block.title}</p>}
+              {block.title && (
+                <p className={styles.listTitle}>
+                  <RichText text={block.title} />
+                </p>
+              )}
               <ul className={styles.list}>
                 {block.items.map((item, itemIndex) => (
                   <li key={itemIndex} className={styles.listItem}>
-                    {item}
+                    <RichText text={item} />
                   </li>
                 ))}
               </ul>
@@ -58,9 +66,18 @@ export function NewsContent({ blocks }: NewsContentProps) {
           );
         }
 
+        if (block.type === 'link') {
+          if (!block.url.trim()) return null;
+          return (
+            <div key={key} className={styles.linkBlock}>
+              <LinkBlock url={block.url} text={block.text} />
+            </div>
+          );
+        }
+
         return (
           <p key={key} className={styles.paragraph}>
-            {block.text}
+            <RichText text={block.text} />
           </p>
         );
       })}

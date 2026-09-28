@@ -1,3 +1,4 @@
+import { LinkBlock } from '@/shared/ui/LinkBlock';
 import { RichText } from '@/shared/ui/RichText';
 import { resolveImageSrc } from '@/shared/utils/resolveImageSrc';
 import { RuleItem } from './components/RuleItem';
@@ -83,6 +84,14 @@ export function DocBlock({ block }: DocBlockProps) {
         <img src={resolveImageSrc(block.src) ?? undefined} alt={block.alt ?? ''} className={styles.image} />
         {block.caption && <figcaption className={styles.caption}>{block.caption}</figcaption>}
       </figure>
+    );
+
+  case 'link':
+    if (!block.url.trim()) return null;
+    return (
+      <div className={styles.linkBlock}>
+        <LinkBlock url={block.url} text={block.text} />
+      </div>
     );
 
   default:

@@ -1,4 +1,5 @@
 export { parseMarkup } from './parseMarkup';
+export { stripMarkup } from './stripMarkup';
 export { colorMarkers, MARKS, toggleWrap } from './selection';
 export type { WrapResult } from './selection';
 export { MARKUP_COLORS } from './types';

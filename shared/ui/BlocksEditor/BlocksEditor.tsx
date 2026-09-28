@@ -10,6 +10,7 @@ import { ListBlockEditor } from './components/ListBlockEditor';
 import { NoteBlockEditor } from './components/NoteBlockEditor';
 import { RulesBlockEditor } from './components/RulesBlockEditor';
 import { ImageBlockEditor } from './components/ImageBlockEditor';
+import { LinkBlockEditor } from './components/LinkBlockEditor';
 import type { BlocksEditorProps } from './types';
 import styles from './BlocksEditor.module.scss';
 
@@ -33,12 +34,19 @@ function BlockBody({
     return <RulesBlockEditor value={block} onChange={onChange} />;
   case 'image':
     return <ImageBlockEditor value={block} onChange={onChange} />;
+  case 'link':
+    return (
+      <LinkBlockEditor
+        value={block}
+        onChange={(fields) => onChange({ kind: 'link', ...fields })}
+      />
+    );
   default:
     return null;
   }
 }
 
-export function BlocksEditor({ value, onChange }: BlocksEditorProps) {
+export function BlocksEditor({ value, onChange, allowedKinds = BLOCK_KINDS }: BlocksEditorProps) {
   const move = (from: number, to: number) => {
     const next = [...value];
     const [moved] = next.splice(from, 1);
@@ -66,7 +74,7 @@ export function BlocksEditor({ value, onChange }: BlocksEditorProps) {
       ))}
       <Dropdown
         menu={{
-          items: BLOCK_KINDS.map((kind) => ({
+          items: allowedKinds.map((kind) => ({
             key: kind,
             label: BLOCK_LABELS[kind],
             onClick: () => onChange([...value, createEmptyBlock(kind)]),
